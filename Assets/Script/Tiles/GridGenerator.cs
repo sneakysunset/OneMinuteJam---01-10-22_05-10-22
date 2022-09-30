@@ -22,7 +22,7 @@ public class GridGenerator : MonoBehaviour
 
     [Header("Input Values")]
     
-    [SerializeField] public int raws;
+    [SerializeField] public int rows;
     [SerializeField] public int columns;
     [HideInInspector] public Vector3 ogPos;
     //public float maxDepth = 50f;
@@ -50,7 +50,7 @@ public class GridGenerator : MonoBehaviour
 
         GridTiles[] list = FindObjectsOfType<GridTiles>();
 
-        grid = new GridTiles[raws, columns];
+        grid = new GridTiles[rows, columns];
 
         for (int i = 0; i < list.Length; i++)
         {
@@ -79,7 +79,7 @@ public class GridGenerator : MonoBehaviour
         GridTiles[] list = FindObjectsOfType<GridTiles>();
         if (list.Length != 0)
         {
-            grid = new GridTiles[raws, columns];
+            grid = new GridTiles[rows, columns];
             for (int i = 0; i < list.Length; i++)
             {
                 int x = (int)list[i].transform.position.x / (int)list[i].transform.localScale.x;
@@ -96,7 +96,7 @@ public class GridGenerator : MonoBehaviour
         if (instantiateGrid)
         {
             GridTiles[] list = FindObjectsOfType<GridTiles>();
-            grid = new GridTiles[raws, columns];
+            grid = new GridTiles[rows, columns];
             for (int i = 0; i < list.Length; i++)
             {
                 int x = (int)list[i].transform.position.x / (int)list[i].transform.localScale.x;
@@ -107,7 +107,7 @@ public class GridGenerator : MonoBehaviour
 
 
 
-            for (int x = 0; x < raws; x++)
+            for (int x = 0; x < rows; x++)
             {
                 for (int y = 0; y < columns; y++)
                 {
@@ -181,7 +181,7 @@ public class GridGenerator : MonoBehaviour
 
                 //right
                 case 4:
-                    if (x + 1 < raws && grid[x + 1, y] && (grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y == 0 || grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y == -1) && grid[x + 1, y].walkable)
+                    if (x + 1 < rows && grid[x + 1, y] && (grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y == 0 || grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y == -1) && grid[x + 1, y].walkable)
                     {
                         return true;
                     }

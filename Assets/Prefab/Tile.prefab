@@ -58,7 +58,9 @@ MonoBehaviour:
   originalPos: 0
   walkableMat: {fileID: 2100000, guid: f04b29d2d6532ec4abae258d30ab85bc, type: 2}
   unwalkableMat: {fileID: 2100000, guid: badff3033ff51824a82ddea1f8717a17, type: 2}
-  meshR: {fileID: 4657526486285527471}
+  ogPosMat: {fileID: 2100000, guid: 1698c57351a18d54f888d623957c07e6, type: 2}
+  tilemeshR: {fileID: 4657526486285527471}
+  contourMeshR: {fileID: 1724981042311170806}
 --- !u!1001 &1035173427590787703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -123,6 +125,11 @@ PrefabInstance:
 --- !u!4 &709059389549811100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dee8ac4ba7a01e24181210c364cb8e4d, type: 3}
+  m_PrefabInstance: {fileID: 1035173427590787703}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1724981042311170806 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7372971340350523263, guid: dee8ac4ba7a01e24181210c364cb8e4d, type: 3}
   m_PrefabInstance: {fileID: 1035173427590787703}
   m_PrefabAsset: {fileID: 0}
 --- !u!23 &4657526486285527471 stripped

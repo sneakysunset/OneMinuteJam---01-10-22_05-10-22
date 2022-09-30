@@ -6,18 +6,47 @@ public class GridTiles : MonoBehaviour
 {
     public bool walkable;
     public bool originalPos;
-    public Material walkableMat, unwalkableMat;
-    public MeshRenderer meshR;
+    public Material walkableMat, unwalkableMat, ogPosMat;
+    public MeshRenderer tilemeshR, contourMeshR;
+    bool isRuntime = false;
 
     private void OnDrawGizmos()
     {
-        if (walkable)
+        if (!isRuntime)
         {
-            meshR.material = walkableMat;
+            MaterialsInGizmo();
         }
-        else
+    }
+
+    void MaterialsInGizmo()
+    {
+        if (originalPos && tilemeshR.sharedMaterial != ogPosMat)
         {
-            meshR.material = unwalkableMat;
+            walkable = true;
+            tilemeshR.material = ogPosMat;
+        }
+
+        if (walkable && !originalPos && (tilemeshR.sharedMaterial != ogPosMat || tilemeshR.sharedMaterial != walkableMat))
+        {
+            tilemeshR.sharedMaterial = walkableMat;
+        }
+        else if (tilemeshR.sharedMaterial != unwalkableMat && !walkable)
+        {
+            tilemeshR.sharedMaterial = unwalkableMat;
+        }
+    }
+
+    private void Start()
+    {
+        isRuntime = true;
+        if (!walkable)
+        {
+            tilemeshR.enabled = false;
+            contourMeshR.enabled = false;
+        }
+        if (originalPos)
+        {
+            tilemeshR.material = walkableMat;
         }
     }
 }
