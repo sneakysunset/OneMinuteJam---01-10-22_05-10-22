@@ -152,12 +152,10 @@ public class GridGenerator : MonoBehaviour
                 case 1:
                     if (y + 1 < columns && grid[x, y + 1].step == -1 && grid[x, y + 1] && grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x, y + 1].walkable)
                     {
-                        print(1);
                         return true;
                     }
                     else
                     {
-                        print(2);
                         return false;
                     }
 
