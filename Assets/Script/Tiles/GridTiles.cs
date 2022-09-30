@@ -15,8 +15,26 @@ public class GridTiles : MonoBehaviour
         if (!isRuntime)
         {
             MaterialsInGizmo();
+            MoveTileOnGizmo();
         }
     }
+
+    void MoveTileOnGizmo()
+    {
+        if(transform.position.x != (int)transform.position.x)
+        {
+            transform.position = new Vector3((int)transform.position.x, transform.position.y, transform.position.z);
+        }
+        if (transform.position.y != (int)transform.position.y)
+        {
+            transform.position = new Vector3(transform.position.x, (int)transform.position.y, transform.position.z);
+        }
+        if (transform.position.z != (int)transform.position.z)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, (int)transform.position.z);
+        }
+    }
+
 
     void MaterialsInGizmo()
     {

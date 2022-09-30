@@ -14,7 +14,7 @@ public class GridGenerator : MonoBehaviour
     public Transform playerT;
     public Transform tileFolder;
     public static GridGenerator Instance { get; private set; }
-    
+    [HideInInspector] public bool inAnim;
     [Header("Components References")]
     
 
@@ -142,11 +142,13 @@ public class GridGenerator : MonoBehaviour
     {
         if (grid[x,y] != null)
         {
+            if (inAnim)
+                return false;
             switch (direction)
             {
                 //up
                 case 1:
-                    if (y + 1 < columns && grid[x, y + 1] && (grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y == 0 || grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y == -1) && grid[x, y + 1].walkable)
+                    if (y + 1 < columns && grid[x, y + 1] && (grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y <= 1 || grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y == -1) && grid[x, y + 1].walkable)
                     {
                         return true;
                     }
@@ -159,7 +161,7 @@ public class GridGenerator : MonoBehaviour
 
                 //down
                 case 2:
-                    if (y - 1 > -1 && grid[x, y - 1] && (grid[x, y - 1].transform.position.y - grid[x, y].transform.position.y == 0 || grid[x, y - 1].transform.position.y - grid[x, y].transform.position.y == -1) && grid[x, y - 1].walkable)
+                    if (y - 1 > -1 && grid[x, y - 1] && (grid[x, y - 1].transform.position.y - grid[x, y].transform.position.y <= 1 || grid[x, y - 1].transform.position.y - grid[x, y].transform.position.y == -1) && grid[x, y - 1].walkable)
                     {
                         return true;
                     }
@@ -170,7 +172,7 @@ public class GridGenerator : MonoBehaviour
 
                 //left
                 case 3:
-                    if (x - 1 > -1 && grid[x - 1, y] && (grid[x - 1, y].transform.position.y - grid[x, y].transform.position.y == 0 || grid[x - 1, y].transform.position.y - grid[x, y].transform.position.y == -1) && grid[x - 1, y].walkable)
+                    if (x - 1 > -1 && grid[x - 1, y] && (grid[x - 1, y].transform.position.y - grid[x, y].transform.position.y <= 1 || grid[x - 1, y].transform.position.y - grid[x, y].transform.position.y == -1) && grid[x - 1, y].walkable)
                     {
                         return true;
                     }
@@ -181,7 +183,7 @@ public class GridGenerator : MonoBehaviour
 
                 //right
                 case 4:
-                    if (x + 1 < rows && grid[x + 1, y] && (grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y == 0 || grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y == -1) && grid[x + 1, y].walkable)
+                    if (x + 1 < rows && grid[x + 1, y] && (grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y <= 1 || grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y == -1) && grid[x + 1, y].walkable)
                     {
                         return true;
                     }
