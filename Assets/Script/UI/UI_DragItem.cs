@@ -8,6 +8,7 @@ public class UI_DragItem : MonoBehaviour
     
     public RectTransform rectTransform;
     UI_ActionManager actionManager;
+    public bool dragged, anchored;
 
     private void Start()
     {
@@ -16,15 +17,16 @@ public class UI_DragItem : MonoBehaviour
 
     private void Update()
     {
-        if (actionManager.dragging)
+        if (actionManager.dragging && dragged)
         {
             if (actionManager.hovering)
             {
-                print(1);
+                anchored = true;
                 rectTransform.anchoredPosition = actionManager.currentHoveredItem.rectTransform.anchoredPosition;
             }
             else if (!actionManager.hovering)
             {
+                anchored = false;
                 var pos = rectTransform.anchoredPosition;
                 pos.x = Input.mousePosition.x - (Screen.width / 2);
                 pos.y = Input.mousePosition.y - (Screen.height / 2);
@@ -33,12 +35,17 @@ public class UI_DragItem : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0))
             {
+                dragged = false;
                 actionManager.dragging = false;
             }
         }
-        else
+        else if(!anchored)
         {
             Destroy(this.gameObject);
+        }
+        else if (anchored)
+        {
+            
         }
     }
 

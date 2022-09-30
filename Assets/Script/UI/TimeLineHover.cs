@@ -21,7 +21,6 @@ public class TimeLineHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             actionManager.currentHoveredItem = this;
             actionManager.hovering = true;
-            print(1);
         }
     }
 

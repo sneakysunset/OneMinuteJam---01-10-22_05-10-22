@@ -18,6 +18,7 @@ public class UI_InstDragAction : MonoBehaviour
         pos.x -= (Screen.width / 2);
         pos.y -= (Screen.height / 2);
         UI_DragItem dragItem = Instantiate(dragItemPref, pos, Quaternion.identity, dragItemFolder).GetComponent<UI_DragItem>();
+        dragItem.dragged = true;
         dragItem.name = "DragItem - " + typeOfAction.ToString();
         dragItem.transform.Find("Action - Text").GetComponent<TextMeshProUGUI>().text = typeOfAction.ToString();
         dragItem.actionType = typeOfAction;
