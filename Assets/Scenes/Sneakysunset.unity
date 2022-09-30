@@ -3495,7 +3495,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3337ef53eba0a0149bd4efc5fd96d377, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5460,6 +5460,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1380716366}
   - component: {fileID: 1380716367}
+  - component: {fileID: 1380716370}
+  - component: {fileID: 1380716368}
+  - component: {fileID: 1380716371}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -5499,9 +5502,149 @@ MonoBehaviour:
   playerT: {fileID: 1856723136}
   tileFolder: {fileID: 1682742673}
   inAnim: 0
+  highlighter: {fileID: 1380716368}
+  pathFM: {fileID: 1380716371}
   rows: 10
   columns: 10
   ogPos: {x: 0, y: 0, z: 0}
+  stepHeight: 1
+  dropHeight: -2
+--- !u!114 &1380716368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380716365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469a557295f3f624899645175823ae58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Notes: Comment Here.
+  highlightedTiles: []
+--- !u!114 &1380716370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380716365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0985d82209bc579448f633e232e33300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Notes: Comment Here.
+  startPosX: 0
+  startPosY: 0
+  row: 0
+  columns: 0
+  player: {fileID: 1856723136}
+--- !u!114 &1380716371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380716365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e296f0c32e7164898526563cbede20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeForMovement: 0.2
+  movementAnimCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  firstMAC:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.7027767
+      value: 0.22506562
+      inSlope: 1.109257
+      outSlope: 1.109257
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  lastMAC:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.37273622
+      value: 0.8357353
+      inSlope: 1.0887427
+      outSlope: 1.0887427
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  player: {fileID: 1856723136}
 --- !u!1001 &1383458952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7453,8 +7596,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087941040}
-  m_LocalRotation: {x: 0.1221292, y: 0, z: 0, w: 0.99251425}
-  m_LocalPosition: {x: 0, y: 4.68, z: -10}
+  m_LocalRotation: {x: 0.45990643, y: -0, z: -0, w: 0.88796747}
+  m_LocalPosition: {x: 0, y: 7.6499996, z: -3.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

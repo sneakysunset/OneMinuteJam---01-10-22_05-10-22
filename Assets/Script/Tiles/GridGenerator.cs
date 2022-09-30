@@ -16,20 +16,22 @@ public class GridGenerator : MonoBehaviour
     public static GridGenerator Instance { get; private set; }
     [HideInInspector] public bool inAnim;
     [Header("Components References")]
-    
 
 
-
+    public PathHighlighter highlighter;
+    public PathFindingMovement pathFM;
     [Header("Input Values")]
     
     [SerializeField] public int rows;
     [SerializeField] public int columns;
     [HideInInspector] public Vector3 ogPos;
+    public int stepHeight;
+    public int dropHeight;
     //public float maxDepth = 50f;
 
     void GetReferences()
     {
-
+        highlighter = GetComponent<PathHighlighter>();
     }
   
     #endregion
@@ -138,7 +140,7 @@ public class GridGenerator : MonoBehaviour
 
     }
 
-    public bool TestDirectionForMovement(int x, int y, int direction)
+    public bool PFTestDirectionForMovement(int x, int y, int direction, int step)
     {
         if (grid[x,y] != null)
         {
@@ -148,12 +150,14 @@ public class GridGenerator : MonoBehaviour
             {
                 //up
                 case 1:
-                    if (y + 1 < columns && grid[x, y + 1] && (grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y <= 1 || grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y == -1) && grid[x, y + 1].walkable)
+                    if (y + 1 < columns && grid[x, y + 1].step == -1 && grid[x, y + 1] && grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x, y + 1].walkable)
                     {
+                        print(1);
                         return true;
                     }
                     else
                     {
+                        print(2);
                         return false;
                     }
 
@@ -161,7 +165,7 @@ public class GridGenerator : MonoBehaviour
 
                 //down
                 case 2:
-                    if (y - 1 > -1 && grid[x, y - 1] && (grid[x, y - 1].transform.position.y - grid[x, y].transform.position.y <= 1 || grid[x, y - 1].transform.position.y - grid[x, y].transform.position.y == -1) && grid[x, y - 1].walkable)
+                    if (y - 1 > -1 && grid[x, y - 1].step == -1 && grid[x, y - 1] && grid[x, y - 1].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x, y - 1].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x, y - 1].walkable)
                     {
                         return true;
                     }
@@ -172,7 +176,7 @@ public class GridGenerator : MonoBehaviour
 
                 //left
                 case 3:
-                    if (x - 1 > -1 && grid[x - 1, y] && (grid[x - 1, y].transform.position.y - grid[x, y].transform.position.y <= 1 || grid[x - 1, y].transform.position.y - grid[x, y].transform.position.y == -1) && grid[x - 1, y].walkable)
+                    if (x - 1 > -1 && grid[x-1, y].step == -1 && grid[x - 1, y] && grid[x - 1, y].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x-1, y].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x - 1, y].walkable)
                     {
                         return true;
                     }
@@ -183,7 +187,7 @@ public class GridGenerator : MonoBehaviour
 
                 //right
                 case 4:
-                    if (x + 1 < rows && grid[x + 1, y] && (grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y <= 1 || grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y == -1) && grid[x + 1, y].walkable)
+                    if (x + 1 < rows && grid[x+1, y].step == -1 && grid[x + 1, y] && grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x + 1, y].walkable)
                     {
                         return true;
                     }
@@ -199,6 +203,69 @@ public class GridGenerator : MonoBehaviour
 
             return false;
         
+    }
+
+    public bool TestDirectionForMovement(int x, int y, int direction)
+    {
+        if (grid[x, y] != null)
+        {
+            if (inAnim)
+                return false;
+            switch (direction)
+            {
+                //up
+                case 1:
+                    if (y + 1 < columns && grid[x, y + 1] && grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x, y + 1].walkable)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+
+
+                //down
+                case 2:
+                    if (y - 1 > -1 && grid[x, y - 1] && grid[x, y - 1].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x, y - 1].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x, y - 1].walkable)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                //left
+                case 3:
+                    if (x - 1 > -1 && grid[x - 1, y] && grid[x - 1, y].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x - 1, y].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x - 1, y].walkable)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                //right
+                case 4:
+                    if (x + 1 < rows && grid[x + 1, y] && grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x + 1, y].walkable)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                default:
+                    return false;
+            }
+        }
+
+        return false;
+
     }
 
 }
