@@ -12,10 +12,10 @@ public class UI_TimeLineManager : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < actions.Count; i++)
+        for (int i = 0; i < spots.Count; i++)
         {
             var xPos = xLeftMostPos + i * xInBetween;
-            actions[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPos, yPos);
+            spots[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPos, yPos);
         }
     }
 
@@ -23,10 +23,10 @@ public class UI_TimeLineManager : MonoBehaviour
     {
         if (setUpActions)
         {
-            for (int i = 0; i < actions.Count; i++)
+            for (int i = 0; i < spots.Count; i++)
             {
                 var xPos = xLeftMostPos + i * xInBetween;
-                actions[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPos, yPos);
+                spots[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPos, yPos);
             }
             setUpActions = false;
         }
