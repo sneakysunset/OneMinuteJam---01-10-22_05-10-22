@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class UI_TimeLineManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<TimeLineHover> spots;
+    public float yPos;
+    public float xInBetween;
+    public float xLeftMostPos;
+    public bool setUpActions;
+
+    private void Start()
     {
-        
+        for (int i = 0; i < actions.Count; i++)
+        {
+            var xPos = xLeftMostPos + i * xInBetween;
+            actions[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPos, yPos);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDrawGizmos()
     {
-        
+        if (setUpActions)
+        {
+            for (int i = 0; i < actions.Count; i++)
+            {
+                var xPos = xLeftMostPos + i * xInBetween;
+                actions[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPos, yPos);
+            }
+            setUpActions = false;
+        }
     }
 }

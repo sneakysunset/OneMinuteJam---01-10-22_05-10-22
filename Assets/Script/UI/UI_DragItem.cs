@@ -20,6 +20,7 @@ public class UI_DragItem : MonoBehaviour
         {
             if (actionManager.hovering)
             {
+                print(1);
                 rectTransform.anchoredPosition = actionManager.currentHoveredItem.rectTransform.anchoredPosition;
             }
             else if (!actionManager.hovering)
@@ -34,6 +35,10 @@ public class UI_DragItem : MonoBehaviour
             {
                 actionManager.dragging = false;
             }
+        }
+        else
+        {
+            Destroy(this.gameObject);
         }
     }
 
