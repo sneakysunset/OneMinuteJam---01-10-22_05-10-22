@@ -15,7 +15,7 @@ public class StepAssignement : MonoBehaviour
 
     private void Awake()
     {
-        player = GridGenerator.Instance.playerT;       
+        player = GridGenerator.Instance.player_A;       
         grid = GridGenerator.Instance.grid;
         row = GridGenerator.Instance.rows;
         columns = GridGenerator.Instance.columns;
@@ -23,14 +23,15 @@ public class StepAssignement : MonoBehaviour
     private void Start()
     {
 
-        foreach (GridTiles obj in grid)
-        {
-            if (obj.originalPos)
-            {
-                var ogPos = new Vector3(obj.transform.position.x, player.position.y, obj.transform.position.z);
-                player.position = ogPos;
-            }
-        }
+        //foreach (GridTiles obj in grid)
+        //{
+        //    if (obj.originalPos)
+        //    {
+        //        var ogPos = new Vector3(obj.transform.position.x, player.position.y, obj.transform.position.z);
+        //        player.position = ogPos;
+        //    }
+        //}
+        
         Initialisation();
     }
 
