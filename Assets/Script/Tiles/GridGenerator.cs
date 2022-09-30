@@ -11,7 +11,8 @@ public class GridGenerator : MonoBehaviour
     public GridTiles[,] grid;
     [SerializeField] public bool instantiateGrid = false;
     public GameObject Tile;
-    public Transform playerT;
+    public Transform player_A;
+    public Transform player_B;
     public Transform tileFolder;
     public static GridGenerator Instance { get; private set; }
     [HideInInspector] public bool inAnim;
@@ -71,7 +72,18 @@ public class GridGenerator : MonoBehaviour
             if (obj.originalPos)
             {
                 ogPos = new Vector3(obj.transform.position.x, obj.transform.position.y, obj.transform.position.z);
-                playerT.position = ogPos;
+
+                //check which avatar to spawn
+                switch (obj.avatar)
+                {
+                    case GridTiles.Avatar.Avatar_A:
+                        player_A.position = ogPos;
+                        break;
+
+                    case GridTiles.Avatar.Avatar_B:
+                        player_B.position = ogPos;
+                        break;
+                }
             }
         }
     }

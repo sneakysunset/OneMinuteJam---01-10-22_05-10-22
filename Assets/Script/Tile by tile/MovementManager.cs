@@ -17,7 +17,6 @@ public class MovementManager : MonoBehaviour
     IEnumerator smoothMovement(Vector3 startPos, Vector3 endPos, Transform player)
     {
         float i = 0;
-        GridGenerator.Instance.inAnim = true;
         while(i < 1)
         {
             player.position = Vector3.Lerp(startPos, endPos, movementAnimCurve.Evaluate(i));
@@ -26,7 +25,6 @@ public class MovementManager : MonoBehaviour
             yield return null;
         }
         player.position = endPos;
-        GridGenerator.Instance.inAnim = false;
 
         yield return null;
     }

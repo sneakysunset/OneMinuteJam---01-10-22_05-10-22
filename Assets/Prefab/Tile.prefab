@@ -132,9 +132,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkable: 0
   originalPos: 0
+  avatar: 0
   walkableMat: {fileID: 2100000, guid: f04b29d2d6532ec4abae258d30ab85bc, type: 2}
   unwalkableMat: {fileID: 2100000, guid: badff3033ff51824a82ddea1f8717a17, type: 2}
-  ogPosMat: {fileID: 2100000, guid: 1698c57351a18d54f888d623957c07e6, type: 2}
+  ogPosMatA: {fileID: 2100000, guid: 1698c57351a18d54f888d623957c07e6, type: 2}
+  ogPosMatB: {fileID: 2100000, guid: b5cf07291f441b143bc3420f1a162232, type: 2}
   tilemeshR: {fileID: 4657526486285527471}
   contourMeshR: {fileID: 1724981042311170806}
   step: 0
