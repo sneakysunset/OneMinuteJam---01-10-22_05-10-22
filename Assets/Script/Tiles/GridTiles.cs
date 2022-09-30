@@ -9,13 +9,27 @@ public class GridTiles : MonoBehaviour
     public Material walkableMat, unwalkableMat, ogPosMat;
     public MeshRenderer tilemeshR, contourMeshR;
     bool isRuntime = false;
-
+    public int step;
+    public bool highlight;
+    public GameObject Highlight;
     private void OnDrawGizmos()
     {
         if (!isRuntime)
         {
             MaterialsInGizmo();
             MoveTileOnGizmo();
+        }
+    }
+
+    private void Update()
+    {
+        if (highlight)
+        {
+            Highlight.SetActive(true);
+        }
+        else
+        {
+            Highlight.SetActive(false);
         }
     }
 
@@ -65,6 +79,28 @@ public class GridTiles : MonoBehaviour
         if (originalPos)
         {
             tilemeshR.material = walkableMat;
+        }
+    }
+
+    private void OnMouseOver()
+    {
+        if (walkable && !GridGenerator.Instance.inAnim)
+        {
+            var hl = GridGenerator.Instance.highlighter;
+            foreach (GridTiles tile in hl.highlightedTiles)
+            {
+                tile.highlight = false;
+            }
+            hl.highlightedTiles.Clear();
+            hl.PathAssignment((int)transform.position.x,(int)transform.position.z, step);
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        if (walkable && !GridGenerator.Instance.inAnim)
+        {
+            GridGenerator.Instance.pathFM.Move();
         }
     }
 }
