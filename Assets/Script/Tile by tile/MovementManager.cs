@@ -7,7 +7,7 @@ public class MovementManager : MonoBehaviour
     [Range(.1f, 10)]
     public float timeForMovement;
     public AnimationCurve movementAnimCurve;
-
+    
     public void Move(Vector3 destination, Transform player)
     {
         StartCoroutine(smoothMovement(player.position, destination, player));

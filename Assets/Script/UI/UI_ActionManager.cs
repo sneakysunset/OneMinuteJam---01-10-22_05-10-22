@@ -10,6 +10,8 @@ public class UI_ActionManager : MonoBehaviour
     public float xInBetween;
     public float xLeftMostPos;
     public bool setUpActions;
+    public TimeLineHover currentHoveredItem;
+    public bool dragging, hovering;
 
     private void Start()
     {

@@ -6,6 +6,13 @@ public class UI_InstDragAction : MonoBehaviour
 {
     public GameObject dragItemPref;
     public Transform dragItemFolder;
+    UI_ActionManager actionManager;
+
+    private void Start()
+    {
+        actionManager = FindObjectOfType<UI_ActionManager>();
+    }
+
     public void InstatiateDragItem(Vector2 pos, UI_Actions.Action typeOfAction)
     {
         pos.x -= (Screen.width / 2);
@@ -14,6 +21,6 @@ public class UI_InstDragAction : MonoBehaviour
         dragItem.name = "DragItem - " + typeOfAction.ToString();
         dragItem.transform.Find("Action - Text").GetComponent<TextMeshProUGUI>().text = typeOfAction.ToString();
         dragItem.actionType = typeOfAction;
-        dragItem.dragged = true;
+        actionManager.dragging = true;
     }
 }

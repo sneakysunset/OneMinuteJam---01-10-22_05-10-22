@@ -10,7 +10,6 @@ public class OnClickEvent : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData pointerEventData)
     {
-        print(1);
         UI_Actions.Action actionType = GetComponent<UI_Actions>().actionType;
         OnActionClickEvent?.Invoke(Input.mousePosition, actionType);
     }
