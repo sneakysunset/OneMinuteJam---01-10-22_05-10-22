@@ -34,5 +34,10 @@ public class UI_ActionManager : MonoBehaviour
             }
             setUpActions = false;
         }
+
+
+        Gizmos.color = Color.red;
+        var target = Camera.main.ScreenToViewportPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+        Gizmos.DrawSphere(target, .2f);
     }
 }
