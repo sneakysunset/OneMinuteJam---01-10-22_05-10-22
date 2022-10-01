@@ -213,7 +213,7 @@ public class GridGenerator : MonoBehaviour
         
     }*/
 
-    public bool TestDirectionForMovement(int x, int y, int newX, int newY, int direction, UI_Actions.PlayerTarget playerTarget)
+    public bool TestDirectionForMovement(int x, int y, int newX, int newY,  UI_Actions.PlayerTarget playerTarget)
     {
         Transform otherPlayer = null;
         bool ready = false;

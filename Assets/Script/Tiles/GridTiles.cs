@@ -56,7 +56,7 @@ public class GridTiles : MonoBehaviour
     }
 
 
-    public void TileEffect(UI_Actions.PlayerTarget playerTarget)
+    public void TileEffect(UI_Actions.PlayerTarget playerTarget, Vector3 previousPos)
     {
         timeLineManager = FindObjectOfType<UI_TimeLineManager>();
         movementEvents = FindObjectOfType<MovementEvents>();
@@ -69,10 +69,10 @@ public class GridTiles : MonoBehaviour
                     timeLineManager.playerBready = true;
                 break;
             case TileVariant.Tapis_Roulant:
-                TapisRoulant(playerTarget);
+                TapisRoulant(playerTarget, previousPos);
                 break;
             case TileVariant.Glace:
-                Glace(playerTarget);
+                Glace(playerTarget, previousPos);
                 break;
             case TileVariant.Arc_Electrique:
                 ArcElectrique();
@@ -102,29 +102,29 @@ public class GridTiles : MonoBehaviour
             timeLineManager.playerBready = true;
     }
 
-    void TapisRoulant(UI_Actions.PlayerTarget playerTarget)
+    void TapisRoulant(UI_Actions.PlayerTarget playerTarget, Vector3 previousPos)
     {
         switch (tapisRoulantDirection)
         {
             case Direction.Up:
-                movementEvents.TapisRoulantMovement(1, playerTarget);
+                movementEvents.TapisRoulantMovement(1, playerTarget, previousPos);
                 break;
             case Direction.Down:
-                movementEvents.TapisRoulantMovement(2, playerTarget);
+                movementEvents.TapisRoulantMovement(2, playerTarget, previousPos);
                 break;
             case Direction.Left:
-                movementEvents.TapisRoulantMovement(3, playerTarget);
+                movementEvents.TapisRoulantMovement(3, playerTarget, previousPos);
                 break;
             case Direction.Right:
-                movementEvents.TapisRoulantMovement(4, playerTarget);
+                movementEvents.TapisRoulantMovement(4, playerTarget, previousPos);
                 break;
 
         }
     }
 
-    void Glace(UI_Actions.PlayerTarget playerTarget)
+    void Glace(UI_Actions.PlayerTarget playerTarget, Vector3 previousPos)
     {
-        movementEvents.MovementActivation(1, playerTarget);
+        movementEvents.MovementActivation(1, playerTarget, previousPos);
     }
 
     void ArcElectrique()
