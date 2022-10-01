@@ -14,6 +14,7 @@ public class GridGenerator : MonoBehaviour
     public Transform player_A;
     public Transform player_B;
     public Transform tileFolder;
+    public UI_TimeLineManager timeLineManager;
     public static GridGenerator Instance { get; private set; }
     [HideInInspector] public bool inAnim;
     [Header("Components References")]
@@ -29,6 +30,7 @@ public class GridGenerator : MonoBehaviour
 
     void GetReferences()
     {
+        timeLineManager = FindObjectOfType<UI_TimeLineManager>();
     }
   
     #endregion
@@ -214,26 +216,39 @@ public class GridGenerator : MonoBehaviour
     public bool TestDirectionForMovement(int x, int y, int newX, int newY, int direction, UI_Actions.PlayerTarget playerTarget)
     {
         Transform otherPlayer = null;
+        bool ready = false;
+        bool end = false;
         if(playerTarget == UI_Actions.PlayerTarget.Avatar_A)
         {
             otherPlayer = player_B;
+            end = timeLineManager.endA;
+            ready = timeLineManager.playerAready;
         }
         else if(playerTarget == UI_Actions.PlayerTarget.Avatar_B)
         {
             otherPlayer = player_A;
+            end = timeLineManager.endB;
+            ready = timeLineManager.playerBready;
         }
         if (grid[x, y] != null)
         {
             if (inAnim)
                 return false;
 
-            if (newX < rows && newX > -1 && newY < columns && newY > -1 && grid[newX, newY] && grid[newX, newY].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[newX, newY].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[newX, newY].walkable /*&& grid[newX, newY].transform.position != otherPlayer.position*/)
+            if (newX < rows && newX > -1 && newY < columns && newY > -1 && grid[newX, newY] && grid[newX, newY].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[newX, newY].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[newX, newY].walkable && !end /*&& grid[newX, newY].transform.position != otherPlayer.position*/)
             {
                 return true;
             }
             else
             {
-                print(newX + " " + newY);
+                if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+                {
+                    timeLineManager.playerAready = true;
+                }
+                else
+                {
+                    timeLineManager.playerBready = true;
+                }
                 return false;
             }
         }
