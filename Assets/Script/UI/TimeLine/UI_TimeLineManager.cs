@@ -12,6 +12,7 @@ public class UI_TimeLineManager : MonoBehaviour
     public Timeline_Item[] timeline_Items;
     public int currentIndex;
     public bool playerAready, playerBready;
+    public bool endA, endB;
     public bool playin;
     //public ObservableCollection<Timeline_Item> timeline_Items;
     private void Start()
@@ -20,12 +21,19 @@ public class UI_TimeLineManager : MonoBehaviour
         timeline_Items = new Timeline_Item[spots.Length];
     }
 
+    
+
     private void Update()
     {
         if(playerAready && playerBready)
         {
             currentIndex++;
             LaunchTimeline();
+        }
+
+        if(endA && endB)
+        {
+            print("Success");
         }
     }
 

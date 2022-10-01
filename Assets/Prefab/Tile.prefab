@@ -144,6 +144,8 @@ MonoBehaviour:
   unwalkableMat: {fileID: 2100000, guid: badff3033ff51824a82ddea1f8717a17, type: 2}
   ogPosMatA: {fileID: 2100000, guid: 1698c57351a18d54f888d623957c07e6, type: 2}
   ogPosMatB: {fileID: 2100000, guid: b5cf07291f441b143bc3420f1a162232, type: 2}
+  tileEndMatP1: {fileID: 2100000, guid: 157de3d0f72fc88489ab4930ec0560da, type: 2}
+  tileEndMatP2: {fileID: 2100000, guid: a392fb2270f5b594a87460c360795629, type: 2}
   tilemeshR: {fileID: 4657526486285527471}
   contourMeshR: {fileID: 1724981042311170806}
 --- !u!65 &4090391093530551919
