@@ -54,7 +54,7 @@ public class GridGenerator : MonoBehaviour
         for (int i = 0; i < list.Length; i++)
         {
             int x = (int)list[i].transform.position.x / (int)list[i].transform.localScale.x;
-            int y = (int)list[i].transform.position.z / (int)list[i].transform.localScale.y;
+            int y = (int)list[i].transform.position.z / (int)list[i].transform.localScale.z;
             grid[x, y] = list[i];
             grid[x, y].name = "tiles " + x + " "+ y;
         }
@@ -93,7 +93,7 @@ public class GridGenerator : MonoBehaviour
             for (int i = 0; i < list.Length; i++)
             {
                 int x = (int)list[i].transform.position.x / (int)list[i].transform.localScale.x;
-                int y = (int)list[i].transform.position.z / (int)list[i].transform.localScale.y;
+                int y = (int)list[i].transform.position.z / (int)list[i].transform.localScale.z;
                 grid[x, y] = list[i];
                 grid[x, y].name = "tiles " + x + " " + y;
             }
@@ -110,7 +110,7 @@ public class GridGenerator : MonoBehaviour
             for (int i = 0; i < list.Length; i++)
             {
                 int x = (int)list[i].transform.position.x / (int)list[i].transform.localScale.x;
-                int y = (int)list[i].transform.position.z / (int)list[i].transform.localScale.y;
+                int y = (int)list[i].transform.position.z / (int)list[i].transform.localScale.z;
                 grid[x, y] = list[i];
                 grid[x, y].name = "tiles " + x + " " + y;
             }
@@ -211,14 +211,23 @@ public class GridGenerator : MonoBehaviour
         
     }*/
 
-    public bool TestDirectionForMovement(int x, int y, int newX, int newY, int direction)
+    public bool TestDirectionForMovement(int x, int y, int newX, int newY, int direction, UI_Actions.PlayerTarget playerTarget)
     {
+        Transform otherPlayer = null;
+        if(playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+        {
+            otherPlayer = player_B;
+        }
+        else if(playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+        {
+            otherPlayer = player_A;
+        }
         if (grid[x, y] != null)
         {
             if (inAnim)
                 return false;
 
-            if (y + 1 < columns && grid[newX, newY] && grid[newX, newY].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[newX, newY].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[newX, newY].walkable)
+            if (newX < rows && newX > -1 && newY < columns && newY > -1 && grid[newX, newY] && grid[newX, newY].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[newX, newY].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[newX, newY].walkable && grid[newX, newY].transform.position != otherPlayer.position)
             {
                 return true;
             }

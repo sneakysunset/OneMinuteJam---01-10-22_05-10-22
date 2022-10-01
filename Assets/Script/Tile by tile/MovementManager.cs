@@ -18,7 +18,7 @@ public class MovementManager : MonoBehaviour
     IEnumerator smoothMovement(Vector3 startPos, Vector3 endPos, Transform player, UI_Actions.PlayerTarget playerTarget)
     {
         float i = 0;
-        while(i < 1)
+        while (i < 1)
         {
             player.position = Vector3.Lerp(startPos, endPos, movementAnimCurve.Evaluate(i));
 
@@ -27,7 +27,7 @@ public class MovementManager : MonoBehaviour
         }
         player.position = endPos;
 
-        GridGenerator.Instance.grid[(int)player.position.x, (int)player.position.z].TileEffect(playerTarget);
+        GridGenerator.Instance.grid[Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z)].TileEffect(playerTarget);
         yield return null;
         //yield return new WaitForSeconds(1);
 /*        timeLineManager.currentIndex++;
