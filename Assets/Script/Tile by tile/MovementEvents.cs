@@ -27,7 +27,7 @@ public class MovementEvents : MonoBehaviour
     }
 
     public UnityEvent<Vector3, Transform, UI_Actions.PlayerTarget> MoveEvent;
-    public void MovementActivation(int direction, UI_Actions.PlayerTarget playerTarget)
+    public void MovementActivation(int direction, UI_Actions.PlayerTarget playerTarget, Vector3 previousPos)
     {
 
 
@@ -79,14 +79,14 @@ public class MovementEvents : MonoBehaviour
         }
 
 
-        if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), direction, playerTarget))
+        if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget))
         {
             MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
         }
 
     }
     
-    public void TapisRoulantMovement(int direction, UI_Actions.PlayerTarget playerTarget)
+    public void TapisRoulantMovement(int direction, UI_Actions.PlayerTarget playerTarget,Vector3 previousPos)
     {
         switch (playerTarget)
         {
@@ -129,11 +129,69 @@ public class MovementEvents : MonoBehaviour
 
         }
 
-        if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), direction, playerTarget))
+        if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget))
         {
             
             MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
         }
+    }
+
+    public void GlaceMovement(UI_Actions.PlayerTarget playerTarget, Vector3 previousPos)
+    {
+        switch (playerTarget)
+        {
+            case UI_Actions.PlayerTarget.Avatar_A:
+                player = playerA;
+                break;
+            case UI_Actions.PlayerTarget.Avatar_B:
+                player = playerB;
+                break;
+            case UI_Actions.PlayerTarget.Both:
+                glaceMoveBoth(previousPos);
+                return;
+        }
+
+        Vector3 nextPos = Vector3.zero;
+
+        nextPos.x =  player.position.x - previousPos.x;
+        nextPos.z = player.position.z - previousPos.z;
+
+        nextPos.x += player.position.x;
+        nextPos.z += player.position.z;
+        print(nextPos);
+       
+
+        if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget))
+        {
+
+            MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
+        }
+    }
+
+    void glaceMoveBoth(Vector3 previousPos)
+    {
+        var playerTarget = UI_Actions.PlayerTarget.Avatar_A;
+        player = playerA;
+        for (int i = 0; i < 2; i++)
+        {
+            if (i == 1)
+            {
+                player = playerB;
+                playerTarget = UI_Actions.PlayerTarget.Avatar_B;
+
+            }
+
+            Vector3 nextPos = Vector3.zero;
+
+            nextPos.x = player.position.x - previousPos.x;
+            nextPos.z = player.position.z - previousPos.z;
+
+            if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.y), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget))
+            {
+                MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
+            }
+        }
+
     }
 
     void moveBoth(int direction)
@@ -185,7 +243,7 @@ public class MovementEvents : MonoBehaviour
             }
 
 
-            if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.y), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), direction, playerTarget))
+            if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.y), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget))
             {
                 MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
             }

@@ -22,13 +22,22 @@ public class GridTiles : MonoBehaviour
         End_Tile
     }
 
+    public enum Direction
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
     public TileVariant tileType;
     public bool walkable;
     public bool originalPos;
-    public int tapisRoulantDirection;
+    //public int tapisRoulantDirection;
+    public Direction tapisRoulantDirection;
     public Vector2 teleporteurReceptorCoordinates;
     public Avatar avatar;
-    public Material walkableMat, teleporterMat, tapisRoulantMat, glaceMat, loopMat, unwalkableMat, ogPosMatA, ogPosMatB;
+    public Material walkableMat, teleporterMat, tapisRoulantMat, glaceMat, loopMat, unwalkableMat, ogPosMatA, ogPosMatB, tileEndMatP1, tileEndMatP2;
     public MeshRenderer tilemeshR, contourMeshR;
     UI_TimeLineManager timeLineManager;
     MovementEvents movementEvents;
@@ -47,7 +56,7 @@ public class GridTiles : MonoBehaviour
     }
 
 
-    public void TileEffect(UI_Actions.PlayerTarget playerTarget)
+    public void TileEffect(UI_Actions.PlayerTarget playerTarget, Vector3 previousPos)
     {
         timeLineManager = FindObjectOfType<UI_TimeLineManager>();
         movementEvents = FindObjectOfType<MovementEvents>();
@@ -60,10 +69,10 @@ public class GridTiles : MonoBehaviour
                     timeLineManager.playerBready = true;
                 break;
             case TileVariant.Tapis_Roulant:
-                TapisRoulant(playerTarget);
+                TapisRoulant(playerTarget, previousPos);
                 break;
             case TileVariant.Glace:
-                Glace(playerTarget);
+                Glace(playerTarget, previousPos);
                 break;
             case TileVariant.Arc_Electrique:
                 ArcElectrique();
@@ -74,17 +83,48 @@ public class GridTiles : MonoBehaviour
             case TileVariant.Boucle:
                 Boucle(playerTarget);
                 break;
+            case TileVariant.End_Tile:
+                End_Tile(playerTarget);
+                break;
+        }
+    }
+    
+    void End_Tile(UI_Actions.PlayerTarget playerTarget)
+    {
+        if (playerTarget == UI_Actions.PlayerTarget.Avatar_A && avatar == Avatar.Avatar_A)
+            timeLineManager.endA = true;
+        else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B && avatar == Avatar.Avatar_B)
+            timeLineManager.endB = true;
+
+        if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+            timeLineManager.playerAready = true;
+        else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+            timeLineManager.playerBready = true;
+    }
+
+    void TapisRoulant(UI_Actions.PlayerTarget playerTarget, Vector3 previousPos)
+    {
+        switch (tapisRoulantDirection)
+        {
+            case Direction.Up:
+                movementEvents.TapisRoulantMovement(1, playerTarget, previousPos);
+                break;
+            case Direction.Down:
+                movementEvents.TapisRoulantMovement(2, playerTarget, previousPos);
+                break;
+            case Direction.Left:
+                movementEvents.TapisRoulantMovement(3, playerTarget, previousPos);
+                break;
+            case Direction.Right:
+                movementEvents.TapisRoulantMovement(4, playerTarget, previousPos);
+                break;
+
         }
     }
 
-    void TapisRoulant(UI_Actions.PlayerTarget playerTarget)
+    void Glace(UI_Actions.PlayerTarget playerTarget, Vector3 previousPos)
     {
-        movementEvents.TapisRoulantMovement(tapisRoulantDirection, playerTarget);
-    }
-
-    void Glace(UI_Actions.PlayerTarget playerTarget)
-    {
-        movementEvents.MovementActivation(1, playerTarget);
+        movementEvents.GlaceMovement( playerTarget, previousPos);
     }
 
     void ArcElectrique()
@@ -172,6 +212,22 @@ public class GridTiles : MonoBehaviour
                     break;
                 case TileVariant.Tapis_Roulant:
                     tilemeshR.sharedMaterial = tapisRoulantMat;
+                    switch (tapisRoulantDirection)
+                    {
+                        case Direction.Up:
+                            tilemeshR.transform.rotation = Quaternion.Euler(0,90,0);
+                            break;
+                        case Direction.Down:
+                            tilemeshR.transform.rotation = Quaternion.Euler(0, -90, 0);
+                            break;                        
+                        case Direction.Left:
+                            tilemeshR.transform.rotation = Quaternion.Euler(0, 0, 0);
+                            break;                        
+                        case Direction.Right:
+                            tilemeshR.transform.rotation = Quaternion.Euler(0, 180, 0);
+                            break;
+
+                    }
                     break;
                 case TileVariant.Glace:
                     tilemeshR.sharedMaterial = glaceMat;
@@ -181,6 +237,17 @@ public class GridTiles : MonoBehaviour
                     break;
                 case TileVariant.Boucle:
                     tilemeshR.sharedMaterial = loopMat;
+                    break;
+                case TileVariant.End_Tile:
+                    switch (avatar)
+                    {
+                        case Avatar.Avatar_A:
+                            tilemeshR.sharedMaterial = tileEndMatP1;
+                            break; 
+                        case Avatar.Avatar_B:
+                            tilemeshR.sharedMaterial = tileEndMatP2;
+                            break;
+                    }
                     break;
             }
             
