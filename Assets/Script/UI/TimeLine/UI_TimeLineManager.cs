@@ -11,6 +11,7 @@ public class UI_TimeLineManager : MonoBehaviour
     public bool setUpActions;
     public Timeline_Item[] timeline_Items;
     public int currentIndex;
+    public bool playerAReady, playerBready;
     //public ObservableCollection<Timeline_Item> timeline_Items;
     private void Start()
     {
