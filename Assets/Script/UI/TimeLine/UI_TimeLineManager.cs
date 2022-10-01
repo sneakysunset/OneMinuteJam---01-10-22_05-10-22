@@ -12,6 +12,7 @@ public class UI_TimeLineManager : MonoBehaviour
     public Timeline_Item[] timeline_Items;
     public int currentIndex;
     public bool playerAready, playerBready;
+    public bool playin;
     //public ObservableCollection<Timeline_Item> timeline_Items;
     private void Start()
     {
@@ -28,6 +29,15 @@ public class UI_TimeLineManager : MonoBehaviour
         }
     }
 
+
+    public void ResetTimeline()
+    {
+        foreach(Timeline_Item item in timeline_Items)
+        {
+            Destroy(item?.gameObject);
+        }
+    }
+
     public void preLaunchTimeline()
     {
         for (int i = 0; i < spots.Length; i++)
@@ -37,7 +47,7 @@ public class UI_TimeLineManager : MonoBehaviour
                 return;
             }
         }
-
+        playin = true;
         LaunchTimeline();
     }
 
@@ -56,8 +66,10 @@ public class UI_TimeLineManager : MonoBehaviour
             playerAready = false;
             playerBready = false;
             timeline_Items[currentIndex].invokeTimeLineEvent();
-
-
+        }
+        else
+        {
+            playin = false;
         }
     }
 
