@@ -136,7 +136,6 @@ MonoBehaviour:
   tapisRoulantDirection: 0
   teleporteurReceptorCoordinates: {x: 0, y: 0}
   avatar: 0
-  walkableMat: {fileID: 2100000, guid: f04b29d2d6532ec4abae258d30ab85bc, type: 2}
   teleporterMat: {fileID: 2100000, guid: 60c13c4c0ec03484fbbebea07f317366, type: 2}
   tapisRoulantMat: {fileID: 2100000, guid: 308356aabb6d9ac4bbb8e20e6acfde74, type: 2}
   glaceMat: {fileID: 2100000, guid: f74cbe0e72c35b34b9cfc7642a70dedf, type: 2}
@@ -146,6 +145,10 @@ MonoBehaviour:
   ogPosMatB: {fileID: 2100000, guid: b5cf07291f441b143bc3420f1a162232, type: 2}
   tileEndMatP1: {fileID: 2100000, guid: 157de3d0f72fc88489ab4930ec0560da, type: 2}
   tileEndMatP2: {fileID: 2100000, guid: a392fb2270f5b594a87460c360795629, type: 2}
+  walkableMats:
+  - {fileID: 2100000, guid: f04b29d2d6532ec4abae258d30ab85bc, type: 2}
+  - {fileID: 2100000, guid: b6f820b8af09f8448955471902a12e37, type: 2}
+  - {fileID: 2100000, guid: 9afad7ccf2a249b46bb656ac38ecb94f, type: 2}
   tilemeshR: {fileID: 4657526486285527471}
   contourMeshR: {fileID: 1724981042311170806}
 --- !u!65 &4090391093530551919
@@ -219,6 +222,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: dee8ac4ba7a01e24181210c364cb8e4d, type: 3}
       propertyPath: m_Name
       value: Tiles
+      objectReference: {fileID: 0}
+    - target: {fileID: 6459526698687470731, guid: dee8ac4ba7a01e24181210c364cb8e4d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee8ac4ba7a01e24181210c364cb8e4d, type: 3}

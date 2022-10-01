@@ -37,7 +37,8 @@ public class GridTiles : MonoBehaviour
     public Direction tapisRoulantDirection;
     public Vector2 teleporteurReceptorCoordinates;
     public Avatar avatar;
-    public Material walkableMat, teleporterMat, tapisRoulantMat, glaceMat, loopMat, unwalkableMat, ogPosMatA, ogPosMatB, tileEndMatP1, tileEndMatP2;
+    public Material teleporterMat, tapisRoulantMat, glaceMat, loopMat, unwalkableMat, ogPosMatA, ogPosMatB, tileEndMatP1, tileEndMatP2;
+    public Material[] walkableMats;
     public MeshRenderer tilemeshR, contourMeshR;
     UI_TimeLineManager timeLineManager;
     MovementEvents movementEvents;
@@ -203,12 +204,12 @@ public class GridTiles : MonoBehaviour
             }
         }
 
-        if (walkable && !originalPos && (tilemeshR.sharedMaterial != ogPosMatA || tilemeshR.sharedMaterial != walkableMat))
+        if (walkable && !originalPos && (tilemeshR.sharedMaterial != ogPosMatA || tilemeshR.sharedMaterial != walkableMats[0]))
         {
             switch (tileType)
             {
                 case TileVariant.Tile:
-                    tilemeshR.sharedMaterial = walkableMat;
+                    tilemeshR.sharedMaterial = walkableMats[0];
                     break;
                 case TileVariant.Tapis_Roulant:
                     tilemeshR.sharedMaterial = tapisRoulantMat;
@@ -268,8 +269,21 @@ public class GridTiles : MonoBehaviour
         }
         if (originalPos)
         {
-            tilemeshR.material = walkableMat;
+            int rdMatIndex = Random.Range(0, walkableMats.Length - 1);
+            tilemeshR.material = walkableMats[rdMatIndex];
         }
+
+        if(walkable && tileType == TileVariant.Tile)
+        {
+            int rdMatIndex = Random.Range(0, walkableMats.Length - 1);
+            tilemeshR.material = walkableMats[rdMatIndex];
+        }
+
+/*        if(tileType == TileVariant.Glace)
+        {
+            float rotation = Random.Range(0, 3) * 90;
+            tilemeshR.transform.rotation = Quaternion.Euler(0, rotation, 0);
+        }*/
     }
 
 
