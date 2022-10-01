@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Timeline_Item : MonoBehaviour
 {
     public UI_Actions.Action actionType;
     public UI_Actions.PlayerTarget playerTarget;
     [HideInInspector] public RectTransform rectTransform;
     ActionEventsCaller actionEventCaller;
+    public Image highlight;
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();

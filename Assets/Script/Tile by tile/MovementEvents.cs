@@ -113,7 +113,7 @@ public class MovementEvents : MonoBehaviour
 
             //down
             case 2:
-                nextPos = player.position - Vector3.back;
+                nextPos = player.position + Vector3.back;
                 break;
 
             //left

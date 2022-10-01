@@ -27,7 +27,7 @@ public class GridTiles : MonoBehaviour
     public int tapisRoulantDirection;
     public Vector2 teleporteurReceptorCoordinates;
     public Avatar avatar;
-    public Material walkableMat, unwalkableMat, ogPosMatA, ogPosMatB;
+    public Material walkableMat, teleporterMat, tapisRoulantMat, glaceMat, loopMat, unwalkableMat, ogPosMatA, ogPosMatB;
     public MeshRenderer tilemeshR, contourMeshR;
     UI_TimeLineManager timeLineManager;
     MovementEvents movementEvents;
@@ -152,7 +152,25 @@ public class GridTiles : MonoBehaviour
 
         if (walkable && !originalPos && (tilemeshR.sharedMaterial != ogPosMatA || tilemeshR.sharedMaterial != walkableMat))
         {
-            tilemeshR.sharedMaterial = walkableMat;
+            switch (tileType)
+            {
+                case TileVariant.Tile:
+                    tilemeshR.sharedMaterial = walkableMat;
+                    break;
+                case TileVariant.Tapis_Roulant:
+                    tilemeshR.sharedMaterial = tapisRoulantMat;
+                    break;
+                case TileVariant.Glace:
+                    tilemeshR.sharedMaterial = glaceMat;
+                    break;
+                case TileVariant.Teleporteur:
+                    tilemeshR.sharedMaterial = teleporterMat;
+                    break;
+                case TileVariant.Boucle:
+                    tilemeshR.sharedMaterial = loopMat;
+                    break;
+            }
+            
         }
         else if (tilemeshR.sharedMaterial != unwalkableMat && !walkable)
         {

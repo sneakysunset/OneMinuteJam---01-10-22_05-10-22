@@ -130,18 +130,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab719fe8745e5646acef9a43f87a506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileType: 0
   walkable: 0
   originalPos: 0
+  tapisRoulantDirection: 0
+  teleporteurReceptorCoordinates: {x: 0, y: 0}
   avatar: 0
   walkableMat: {fileID: 2100000, guid: f04b29d2d6532ec4abae258d30ab85bc, type: 2}
+  teleporterMat: {fileID: 2100000, guid: 60c13c4c0ec03484fbbebea07f317366, type: 2}
+  tapisRoulantMat: {fileID: 2100000, guid: 308356aabb6d9ac4bbb8e20e6acfde74, type: 2}
+  glaceMat: {fileID: 2100000, guid: f74cbe0e72c35b34b9cfc7642a70dedf, type: 2}
+  loopMat: {fileID: 2100000, guid: 5aaf229857801704f9d34fa1bcc61a0b, type: 2}
   unwalkableMat: {fileID: 2100000, guid: badff3033ff51824a82ddea1f8717a17, type: 2}
   ogPosMatA: {fileID: 2100000, guid: 1698c57351a18d54f888d623957c07e6, type: 2}
   ogPosMatB: {fileID: 2100000, guid: b5cf07291f441b143bc3420f1a162232, type: 2}
   tilemeshR: {fileID: 4657526486285527471}
   contourMeshR: {fileID: 1724981042311170806}
-  step: 0
-  highlight: 0
-  Highlight: {fileID: 6912545716280071238}
 --- !u!65 &4090391093530551919
 BoxCollider:
   m_ObjectHideFlags: 0

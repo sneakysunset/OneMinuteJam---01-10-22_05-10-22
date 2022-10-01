@@ -33,8 +33,16 @@ public class UI_TimeLineManager : MonoBehaviour
 
     public void LaunchTimeline()
     {
+        for (int i = 0; i < timeline_Items.Length; i++)
+        {
+            if(i != currentIndex)
+            {
+                timeline_Items[i].highlight.enabled = false;
+            }
+        }
         if(currentIndex < timeline_Items.Length)
         {
+            timeline_Items[currentIndex].highlight.enabled = true;
             timeline_Items[currentIndex].invokeTimeLineEvent();
 
 
