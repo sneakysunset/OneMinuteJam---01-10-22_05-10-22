@@ -7,18 +7,18 @@ public class MovementManager : MonoBehaviour
     [Range(.1f, 10)]
     public float timeForMovement;
     public AnimationCurve movementAnimCurve;
-
-    public void Move(Vector3 destination, Transform player)
+    public UI_TimeLineManager timeLineManager;
+    
+    public void Move(Vector3 destination, Transform player, UI_Actions.PlayerTarget playerTarget)
     {
-        StartCoroutine(smoothMovement(player.position, destination, player));
+        StartCoroutine(smoothMovement(player.position, destination, player, playerTarget));
 
     }
 
-    IEnumerator smoothMovement(Vector3 startPos, Vector3 endPos, Transform player)
+    IEnumerator smoothMovement(Vector3 startPos, Vector3 endPos, Transform player, UI_Actions.PlayerTarget playerTarget)
     {
         float i = 0;
-        GridGenerator.Instance.inAnim = true;
-        while(i < 1)
+        while (i < 1)
         {
             player.position = Vector3.Lerp(startPos, endPos, movementAnimCurve.Evaluate(i));
 
@@ -26,8 +26,12 @@ public class MovementManager : MonoBehaviour
             yield return null;
         }
         player.position = endPos;
-        GridGenerator.Instance.inAnim = false;
 
+        GridGenerator.Instance.grid[Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z)].TileEffect(playerTarget);
         yield return null;
+        //yield return new WaitForSeconds(1);
+/*        timeLineManager.currentIndex++;
+        timeLineManager.LaunchTimeline();*/
+
     }
 }

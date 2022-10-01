@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PathFindingMovement : MonoBehaviour
 {
-    [Range(.1f, 10)]
+/*    [Range(.1f, 10)]
     public float timeForMovement;
     public AnimationCurve movementAnimCurve, firstMAC, lastMAC;
     List<GridTiles> path;
@@ -55,5 +55,5 @@ public class PathFindingMovement : MonoBehaviour
         {
             StartCoroutine(smoothMovement(player.position, path[index - 1].transform.position, player, index - 1, lastMAC));
         }
-    }
+    }*/
 }
