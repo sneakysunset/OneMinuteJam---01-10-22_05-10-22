@@ -212,6 +212,22 @@ public class GridTiles : MonoBehaviour
                     break;
                 case TileVariant.Tapis_Roulant:
                     tilemeshR.sharedMaterial = tapisRoulantMat;
+                    switch (tapisRoulantDirection)
+                    {
+                        case Direction.Up:
+                            tilemeshR.transform.rotation = Quaternion.Euler(0,90,0);
+                            break;
+                        case Direction.Down:
+                            tilemeshR.transform.rotation = Quaternion.Euler(0, -90, 0);
+                            break;                        
+                        case Direction.Left:
+                            tilemeshR.transform.rotation = Quaternion.Euler(0, 0, 0);
+                            break;                        
+                        case Direction.Right:
+                            tilemeshR.transform.rotation = Quaternion.Euler(0, 180, 0);
+                            break;
+
+                    }
                     break;
                 case TileVariant.Glace:
                     tilemeshR.sharedMaterial = glaceMat;

@@ -156,6 +156,8 @@ public class MovementEvents : MonoBehaviour
         nextPos.x =  player.position.x - previousPos.x;
         nextPos.z = player.position.z - previousPos.z;
 
+        nextPos.x += player.position.x;
+        nextPos.z += player.position.z;
         print(nextPos);
        
 
