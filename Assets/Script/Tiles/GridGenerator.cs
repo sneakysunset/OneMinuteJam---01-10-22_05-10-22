@@ -233,6 +233,7 @@ public class GridGenerator : MonoBehaviour
             }
             else
             {
+                print(newX + " " + newY);
                 return false;
             }
         }

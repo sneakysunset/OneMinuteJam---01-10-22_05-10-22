@@ -94,14 +94,21 @@ public class GridTiles : MonoBehaviour
 
     void Teleporteur(UI_Actions.PlayerTarget playerTarget)
     {
-        Player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+            Player = GridGenerator.Instance.player_A;
+        else
+            Player = GridGenerator.Instance.player_B;
         Player.position = GridGenerator.Instance.grid[(int)teleporteurReceptorCoordinates.x, (int)teleporteurReceptorCoordinates.y].transform.position;
-        GridGenerator.Instance.grid[(int)teleporteurReceptorCoordinates.x, (int)teleporteurReceptorCoordinates.y].TileEffect(playerTarget);
+        //GridGenerator.Instance.grid[(int)teleporteurReceptorCoordinates.x, (int)teleporteurReceptorCoordinates.y].TileEffect(playerTarget);
+        if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+            timeLineManager.playerAready = true;
+        else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+            timeLineManager.playerBready = true;
     }
 
     void Boucle(UI_Actions.PlayerTarget playerTarget)
     {
-        timeLineManager.currentIndex = 0;
+        timeLineManager.currentIndex = -1;
         if(playerTarget == UI_Actions.PlayerTarget.Avatar_A)
             timeLineManager.playerAready = true;
         else if(playerTarget == UI_Actions.PlayerTarget.Avatar_B)

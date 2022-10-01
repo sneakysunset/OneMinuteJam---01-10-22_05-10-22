@@ -79,7 +79,7 @@ public class MovementEvents : MonoBehaviour
         }
 
 
-        if (GridGenerator.Instance.TestDirectionForMovement((int)player.position.x, (int)player.position.z, (int)nextPos.x, (int)nextPos.z, direction, playerTarget))
+        if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), direction, playerTarget))
         {
             MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
         }
