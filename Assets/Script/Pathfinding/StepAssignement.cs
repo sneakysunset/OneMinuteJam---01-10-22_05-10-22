@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class StepAssignement : MonoBehaviour
 {
-    [TextArea]
-    [SerializeField] string Notes = "Comment Here.";
+    //[TextArea]
+    //[SerializeField] string Notes = "Comment Here.";
     #region variables
     [HideInInspector] public int startPosX, startPosY, row, columns;
     GridTiles[,] grid;

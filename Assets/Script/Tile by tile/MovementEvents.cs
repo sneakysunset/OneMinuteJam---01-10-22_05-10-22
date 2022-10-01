@@ -44,51 +44,45 @@ public class MovementEvents : MonoBehaviour
                 moveBoth(direction);
                 return;
         }
-        
+
         //calculate next positions relative to player forward
         Vector3 fwdPos = player.position + player.forward;
         Vector3 RightPos = player.position + player.right;
         Vector3 LeftPos = player.position - player.right;
         Vector3 BackPos = player.position - player.forward;
 
-
+        Vector3 nextPos = Vector3.zero;
 
         switch (direction)
         {
             //up
             case 1:
-                if (GridGenerator.Instance.TestDirectionForMovement((int)player.position.x, (int)player.position.z, direction))
-                {
-                    MoveEvent?.Invoke(grid[(int)fwdPos.x, (int)fwdPos.z].transform.position, player);
-                }
-                    return;
-
+                nextPos = fwdPos;
+                break;
+                
             //down
             case 2:
-                if (GridGenerator.Instance.TestDirectionForMovement((int)player.position.x, (int)player.position.z, direction))
-                {
-                    MoveEvent?.Invoke(grid[(int)BackPos.x, (int)BackPos.z].transform.position, player);
-                }
-                    return;
+                nextPos = BackPos;
+                break;
 
             //left
             case 3:
-                if (GridGenerator.Instance.TestDirectionForMovement((int)player.position.x, (int)player.position.z, direction))
-                {
-                    MoveEvent?.Invoke(grid[(int)LeftPos.x, (int)LeftPos.z].transform.position, player);
-                }
-                return;
+                nextPos = LeftPos;
+                break;
 
             //right
             case 4:
-                if (GridGenerator.Instance.TestDirectionForMovement((int)player.position.x, (int)player.position.z, direction))
-                {
-                    MoveEvent?.Invoke(grid[(int)RightPos.x, (int)RightPos.z].transform.position, player);
-                }
-                return;
+                nextPos = RightPos;
+                break;
             default:
-                return;
+                break;
 
+        }
+
+
+        if (GridGenerator.Instance.TestDirectionForMovement((int)player.position.x, (int)player.position.y, (int)nextPos.x, (int)nextPos.z, direction))
+        {
+            MoveEvent?.Invoke(grid[(int)nextPos.x, (int)nextPos.z].transform.position, player);
         }
 
     }
@@ -106,42 +100,39 @@ public class MovementEvents : MonoBehaviour
             Vector3 LeftPos = player.position - player.right;
             Vector3 BackPos = player.position - player.forward;
 
+
+            Vector3 nextPos = Vector3.zero;
+
             switch (direction)
             {
                 //up
                 case 1:
-                    if (GridGenerator.Instance.TestDirectionForMovement((int)player.position.x, (int)player.position.z, direction))
-                    {
-                        MoveEvent?.Invoke(grid[(int)fwdPos.x, (int)fwdPos.z].transform.position, player);
-                    }
+                    nextPos = fwdPos;
                     break;
 
                 //down
                 case 2:
-                    if (GridGenerator.Instance.TestDirectionForMovement((int)player.position.x, (int)player.position.z, direction))
-                    {
-                        MoveEvent?.Invoke(grid[(int)BackPos.x, (int)BackPos.z].transform.position, player);
-                    }
+                    nextPos = BackPos;
                     break;
 
                 //left
                 case 3:
-                    if (GridGenerator.Instance.TestDirectionForMovement((int)player.position.x, (int)player.position.z, direction))
-                    {
-                        MoveEvent?.Invoke(grid[(int)LeftPos.x, (int)LeftPos.z].transform.position, player);
-                    }
+                    nextPos = LeftPos;
                     break;
 
                 //right
                 case 4:
-                    if (GridGenerator.Instance.TestDirectionForMovement((int)player.position.x, (int)player.position.z, direction))
-                    {
-                        MoveEvent?.Invoke(grid[(int)RightPos.x, (int)RightPos.z].transform.position, player);
-                    }
+                    nextPos = RightPos;
                     break;
                 default:
                     break;
 
+            }
+
+
+            if (GridGenerator.Instance.TestDirectionForMovement((int)player.position.x, (int)player.position.y, (int)nextPos.x, (int)nextPos.z, direction))
+            {
+                MoveEvent?.Invoke(grid[(int)nextPos.x, (int)nextPos.z].transform.position, player);
             }
         }
 

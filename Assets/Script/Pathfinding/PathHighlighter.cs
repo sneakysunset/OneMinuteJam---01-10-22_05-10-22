@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PathHighlighter : MonoBehaviour
 {
-    [TextArea]
-    [SerializeField] string Notes = "Comment Here.";
+    //[TextArea]
+    //[SerializeField] string Notes = "Comment Here.";
     #region variables
     GridGenerator gridGenerator;
     GridTiles[,] grid;
