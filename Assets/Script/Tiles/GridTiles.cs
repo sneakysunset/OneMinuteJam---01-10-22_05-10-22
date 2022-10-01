@@ -124,7 +124,7 @@ public class GridTiles : MonoBehaviour
 
     void Glace(UI_Actions.PlayerTarget playerTarget, Vector3 previousPos)
     {
-        movementEvents.MovementActivation(1, playerTarget, previousPos);
+        movementEvents.GlaceMovement( playerTarget, previousPos);
     }
 
     void ArcElectrique()
