@@ -9,10 +9,12 @@ public class Timeline_Item : MonoBehaviour
     [HideInInspector] public RectTransform rectTransform;
     ActionEventsCaller actionEventCaller;
     public Image highlight;
+    public UI_TimeLineManager timeLineManager;
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         actionEventCaller = FindObjectOfType<ActionEventsCaller>();
+        timeLineManager = FindObjectOfType<UI_TimeLineManager>();
     }
 
     public void invokeTimeLineEvent()
@@ -21,26 +23,62 @@ public class Timeline_Item : MonoBehaviour
         {
             case UI_Actions.Action.MoveForward:
                 actionEventCaller.MoveEventCaller(1, playerTarget);
+
+                if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+                    timeLineManager.playerAready = true;
+                else if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+                    timeLineManager.playerBready = true;
+
                 break;
 
             case UI_Actions.Action.MoveDown:
                 actionEventCaller.MoveEventCaller(2, playerTarget);
+
+                if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+                    timeLineManager.playerAready = true;
+                else if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+                    timeLineManager.playerBready = true;
+
                 break;
 
             case UI_Actions.Action.MoveLeft:
                 actionEventCaller.MoveEventCaller(3, playerTarget);
+
+                if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+                    timeLineManager.playerAready = true;
+                else if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+                    timeLineManager.playerBready = true;
+
                 break;
 
             case UI_Actions.Action.MoveRight:
                 actionEventCaller.MoveEventCaller(4, playerTarget);
+
+                if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+                    timeLineManager.playerAready = true;
+                else if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+                    timeLineManager.playerBready = true;
+
                 break;
 
             case UI_Actions.Action.RotateLeft:
                 actionEventCaller.RotateEventCaller(false, playerTarget);
+
+                if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+                    timeLineManager.playerAready = true;
+                else if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+                    timeLineManager.playerBready = true;
+
                 break;
 
             case UI_Actions.Action.RotateRight:
                 actionEventCaller.RotateEventCaller(true, playerTarget);
+
+                if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+                    timeLineManager.playerAready = true;
+                else if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+                    timeLineManager.playerBready = true;
+
                 break;
 
             default:

@@ -21,7 +21,7 @@ public class RotationManager : MonoBehaviour
         grid = GridGenerator.Instance.grid;
     }
 
-    IEnumerator Rotater(float rotateNumber, Transform player, bool both)
+    IEnumerator Rotater(float rotateNumber, Transform player, UI_Actions.PlayerTarget playerTarget)
     {
         Quaternion startRot = player.rotation;
         Transform transformN = player;
@@ -39,19 +39,13 @@ public class RotationManager : MonoBehaviour
 
 
         yield return new WaitForSeconds(1);
-        if (!both)
-        {
-            timeLineManager.currentIndex++;
-            timeLineManager.LaunchTimeline();
-        }
+        if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+            timeLineManager.playerAready = true;
+        else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+            timeLineManager.playerBready = true;
     }
 
-    void Rotate(float rotateNumber)
-    {
-        player.Rotate(0, rotateNumber, 0);
-        timeLineManager.currentIndex++;
-        timeLineManager.LaunchTimeline();
-    }
+
 
     public void RotationActivation(bool right, UI_Actions.PlayerTarget playerTarget)
     {
@@ -64,7 +58,7 @@ public class RotationManager : MonoBehaviour
                 player = playerB;
                 break;
             case UI_Actions.PlayerTarget.Both:
-                rotateBoth(right);
+                rotateBoth(right, playerTarget);
                 return;
         }
 
@@ -73,42 +67,42 @@ public class RotationManager : MonoBehaviour
         {
             //right
             case true:
-                StartCoroutine(Rotater(90, player,false));
+                StartCoroutine(Rotater(90, player,playerTarget));
                 break;
 
             //left
             case false:
-                StartCoroutine(Rotater(-90, player, false));
+                StartCoroutine(Rotater(-90, player, playerTarget));
                 break;
         }
 
 
-        void rotateBoth(bool right)
+        void rotateBoth(bool right, UI_Actions.PlayerTarget playerTarget)
         {
             player = playerA;
-            bool both = true;
+            playerTarget = UI_Actions.PlayerTarget.Avatar_A;
             for (int i = 0; i < 2; i++)
             {
                 if (i == 1)
                 {
                     player = playerB;
-                    both = false;
+                    playerTarget = UI_Actions.PlayerTarget.Avatar_B;
+
                 }
                 switch (right)
                 {
                     //right
                     case true:
-                        StartCoroutine(Rotater(90, player, both));
+                        StartCoroutine(Rotater(90, player, playerTarget));
                         break;
 
                     //left
                     case false:
-                        StartCoroutine(Rotater(-90, player, both));
+                        StartCoroutine(Rotater(-90, player, playerTarget));
                         break;
                 }
             }
-            timeLineManager.currentIndex++;
-            timeLineManager.LaunchTimeline();
+
         }
     }
 }

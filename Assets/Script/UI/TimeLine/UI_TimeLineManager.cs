@@ -11,12 +11,21 @@ public class UI_TimeLineManager : MonoBehaviour
     public bool setUpActions;
     public Timeline_Item[] timeline_Items;
     public int currentIndex;
-    public bool playerAReady, playerBready;
+    public bool playerAready, playerBready;
     //public ObservableCollection<Timeline_Item> timeline_Items;
     private void Start()
     {
         SetUpSpots();
         timeline_Items = new Timeline_Item[spots.Length];
+    }
+
+    private void Update()
+    {
+        if(playerAready && playerBready)
+        {
+            currentIndex++;
+            LaunchTimeline();
+        }
     }
 
     public void preLaunchTimeline()
@@ -44,6 +53,8 @@ public class UI_TimeLineManager : MonoBehaviour
         if(currentIndex < timeline_Items.Length)
         {
             timeline_Items[currentIndex].highlight.enabled = true;
+            playerAready = false;
+            playerBready = false;
             timeline_Items[currentIndex].invokeTimeLineEvent();
 
 

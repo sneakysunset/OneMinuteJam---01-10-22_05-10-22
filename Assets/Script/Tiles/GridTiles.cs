@@ -53,8 +53,10 @@ public class GridTiles : MonoBehaviour
         switch (tileType)
         {
             case TileVariant.Tile:
-                timeLineManager.currentIndex++;
-                timeLineManager.LaunchTimeline();
+                if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+                    timeLineManager.playerAready = true;
+                else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+                    timeLineManager.playerBready = true;
                 break;
             case TileVariant.Tapis_Roulant:
                 TapisRoulant(playerTarget);
@@ -69,7 +71,7 @@ public class GridTiles : MonoBehaviour
                 Teleporteur(playerTarget);
                 break;
             case TileVariant.Boucle:
-                Boucle();
+                Boucle(playerTarget);
                 break;
         }
     }
@@ -96,10 +98,13 @@ public class GridTiles : MonoBehaviour
         GridGenerator.Instance.grid[(int)teleporteurReceptorCoordinates.x, (int)teleporteurReceptorCoordinates.y].TileEffect(playerTarget);
     }
 
-    void Boucle()
+    void Boucle(UI_Actions.PlayerTarget playerTarget)
     {
         timeLineManager.currentIndex = 0;
-        timeLineManager.LaunchTimeline();
+        if(playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+            timeLineManager.playerAready = true;
+        else if(playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+            timeLineManager.playerBready = true;
     }
 
 
