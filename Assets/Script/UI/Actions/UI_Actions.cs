@@ -6,5 +6,13 @@ using TMPro;
 public class UI_Actions : MonoBehaviour
 {
     public enum Action { Move, Switch, Rotate, Wait, DropCube, PushCube };
+    public enum PlayerTarget
+    {
+        Avatar_A,
+        Avatar_B,
+        Both
+    }
+
+    public PlayerTarget Avatar;
     public Action actionType;
 }

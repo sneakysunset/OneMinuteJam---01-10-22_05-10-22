@@ -18,9 +18,6 @@ public class GridGenerator : MonoBehaviour
     [HideInInspector] public bool inAnim;
     [Header("Components References")]
 
-
-    public PathHighlighter highlighter;
-    public PathFindingMovement pathFM;
     [Header("Input Values")]
     
     [SerializeField] public int rows;
@@ -32,7 +29,6 @@ public class GridGenerator : MonoBehaviour
 
     void GetReferences()
     {
-        highlighter = GetComponent<PathHighlighter>();
     }
   
     #endregion
