@@ -11,15 +11,13 @@ public class GridGenerator : MonoBehaviour
     public GridTiles[,] grid;
     [SerializeField] public bool instantiateGrid = false;
     public GameObject Tile;
-    public Transform playerT;
+    public Transform player_A;
+    public Transform player_B;
     public Transform tileFolder;
     public static GridGenerator Instance { get; private set; }
     [HideInInspector] public bool inAnim;
     [Header("Components References")]
 
-
-    public PathHighlighter highlighter;
-    public PathFindingMovement pathFM;
     [Header("Input Values")]
     
     [SerializeField] public int rows;
@@ -31,7 +29,6 @@ public class GridGenerator : MonoBehaviour
 
     void GetReferences()
     {
-        highlighter = GetComponent<PathHighlighter>();
     }
   
     #endregion
@@ -57,7 +54,7 @@ public class GridGenerator : MonoBehaviour
         for (int i = 0; i < list.Length; i++)
         {
             int x = (int)list[i].transform.position.x / (int)list[i].transform.localScale.x;
-            int y = (int)list[i].transform.position.z / (int)list[i].transform.localScale.y;
+            int y = (int)list[i].transform.position.z / (int)list[i].transform.localScale.z;
             grid[x, y] = list[i];
             grid[x, y].name = "tiles " + x + " "+ y;
         }
@@ -71,7 +68,18 @@ public class GridGenerator : MonoBehaviour
             if (obj.originalPos)
             {
                 ogPos = new Vector3(obj.transform.position.x, obj.transform.position.y, obj.transform.position.z);
-                playerT.position = ogPos;
+
+                //check which playerTarget to spawn
+                switch (obj.avatar)
+                {
+                    case GridTiles.Avatar.Avatar_A:
+                        player_A.position = ogPos;
+                        break;
+
+                    case GridTiles.Avatar.Avatar_B:
+                        player_B.position = ogPos;
+                        break;
+                }
             }
         }
     }
@@ -85,7 +93,7 @@ public class GridGenerator : MonoBehaviour
             for (int i = 0; i < list.Length; i++)
             {
                 int x = (int)list[i].transform.position.x / (int)list[i].transform.localScale.x;
-                int y = (int)list[i].transform.position.z / (int)list[i].transform.localScale.y;
+                int y = (int)list[i].transform.position.z / (int)list[i].transform.localScale.z;
                 grid[x, y] = list[i];
                 grid[x, y].name = "tiles " + x + " " + y;
             }
@@ -102,7 +110,7 @@ public class GridGenerator : MonoBehaviour
             for (int i = 0; i < list.Length; i++)
             {
                 int x = (int)list[i].transform.position.x / (int)list[i].transform.localScale.x;
-                int y = (int)list[i].transform.position.z / (int)list[i].transform.localScale.y;
+                int y = (int)list[i].transform.position.z / (int)list[i].transform.localScale.z;
                 grid[x, y] = list[i];
                 grid[x, y].name = "tiles " + x + " " + y;
             }
@@ -140,7 +148,7 @@ public class GridGenerator : MonoBehaviour
 
     }
 
-    public bool PFTestDirectionForMovement(int x, int y, int direction, int step)
+   /* public bool PFTestDirectionForMovement(int x, int y, int direction, int step)
     {
         if (grid[x,y] != null)
         {
@@ -152,12 +160,10 @@ public class GridGenerator : MonoBehaviour
                 case 1:
                     if (y + 1 < columns && grid[x, y + 1].step == -1 && grid[x, y + 1] && grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x, y + 1].walkable)
                     {
-                        print(1);
                         return true;
                     }
                     else
                     {
-                        print(2);
                         return false;
                     }
 
@@ -203,64 +209,32 @@ public class GridGenerator : MonoBehaviour
 
             return false;
         
-    }
+    }*/
 
-    public bool TestDirectionForMovement(int x, int y, int direction)
+    public bool TestDirectionForMovement(int x, int y, int newX, int newY, int direction, UI_Actions.PlayerTarget playerTarget)
     {
+        Transform otherPlayer = null;
+        if(playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+        {
+            otherPlayer = player_B;
+        }
+        else if(playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+        {
+            otherPlayer = player_A;
+        }
         if (grid[x, y] != null)
         {
             if (inAnim)
                 return false;
-            switch (direction)
+
+            if (newX < rows && newX > -1 && newY < columns && newY > -1 && grid[newX, newY] && grid[newX, newY].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[newX, newY].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[newX, newY].walkable /*&& grid[newX, newY].transform.position != otherPlayer.position*/)
             {
-                //up
-                case 1:
-                    if (y + 1 < columns && grid[x, y + 1] && grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x, y + 1].walkable)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-
-
-
-                //down
-                case 2:
-                    if (y - 1 > -1 && grid[x, y - 1] && grid[x, y - 1].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x, y - 1].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x, y - 1].walkable)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-
-                //left
-                case 3:
-                    if (x - 1 > -1 && grid[x - 1, y] && grid[x - 1, y].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x - 1, y].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x - 1, y].walkable)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-
-                //right
-                case 4:
-                    if (x + 1 < rows && grid[x + 1, y] && grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x + 1, y].walkable)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-
-                default:
-                    return false;
+                return true;
+            }
+            else
+            {
+                print(newX + " " + newY);
+                return false;
             }
         }
 

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - tileFolder
+  - ActionFolder
+  - DragItemFolder
   layers:
   - Default
   - TransparentFX
