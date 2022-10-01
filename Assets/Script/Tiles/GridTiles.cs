@@ -18,7 +18,8 @@ public class GridTiles : MonoBehaviour
         Glace,
         Arc_Electrique,
         Teleporteur,
-        Boucle
+        Boucle,
+        End_Tile
     }
 
     public TileVariant tileType;

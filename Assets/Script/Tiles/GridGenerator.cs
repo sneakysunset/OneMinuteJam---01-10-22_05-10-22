@@ -227,7 +227,7 @@ public class GridGenerator : MonoBehaviour
             if (inAnim)
                 return false;
 
-            if (newX < rows && newX > -1 && newY < columns && newY > -1 && grid[newX, newY] && grid[newX, newY].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[newX, newY].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[newX, newY].walkable && grid[newX, newY].transform.position != otherPlayer.position)
+            if (newX < rows && newX > -1 && newY < columns && newY > -1 && grid[newX, newY] && grid[newX, newY].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[newX, newY].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[newX, newY].walkable /*&& grid[newX, newY].transform.position != otherPlayer.position*/)
             {
                 return true;
             }
