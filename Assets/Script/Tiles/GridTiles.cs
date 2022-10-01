@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridTiles : MonoBehaviour
 {
-    //enum to choose between avatar A and B
+    //enum to choose between playerTarget A and B
     public enum Avatar
     {
         Avatar_A,
@@ -63,7 +63,7 @@ public class GridTiles : MonoBehaviour
         if (originalPos && tilemeshR.sharedMaterial != ogPosMatA)
         {
             walkable = true;
-            //change color depending on avatar
+            //change color depending on playerTarget
             switch (avatar)
             {
                 case Avatar.Avatar_A:

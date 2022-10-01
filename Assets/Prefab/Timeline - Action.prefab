@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5435065984940106920}
   - component: {fileID: -7743538230127376822}
   - component: {fileID: 1082291913540776255}
-  - component: {fileID: -1656978048789625561}
+  - component: {fileID: 5355597222788757174}
   m_Layer: 5
   m_Name: Timeline - Action
   m_TagString: Untagged
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragItemPref: {fileID: 6033963910818068341, guid: 660ea1264a854264da2e41d6de6987ed, type: 3}
---- !u!114 &-1656978048789625561
+--- !u!114 &5355597222788757174
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,10 +170,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4141225297393656418}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81dda471b0c7bb4996cddf2dafeae27, type: 3}
+  m_Script: {fileID: 11500000, guid: c645d4a26822577468a1e97ab79d9569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionType: 0
+  playerTarget: 0
   rectTransform: {fileID: 0}
 --- !u!1 &6973663514284611150
 GameObject:

@@ -7,6 +7,7 @@ public class MovementManager : MonoBehaviour
     [Range(.1f, 10)]
     public float timeForMovement;
     public AnimationCurve movementAnimCurve;
+    public UI_TimeLineManager timeLineManager;
     
     public void Move(Vector3 destination, Transform player)
     {
@@ -26,6 +27,10 @@ public class MovementManager : MonoBehaviour
         }
         player.position = endPos;
 
-        yield return null;
+
+        yield return new WaitForSeconds(1);
+        timeLineManager.currentIndex++;
+        timeLineManager.LaunchTimeline();
+
     }
 }

@@ -10,12 +10,37 @@ public class UI_TimeLineManager : MonoBehaviour
     public float xLeftMostPos;
     public bool setUpActions;
     public Timeline_Item[] timeline_Items;
+    public int currentIndex;
     //public ObservableCollection<Timeline_Item> timeline_Items;
     private void Start()
     {
         SetUpSpots();
         timeline_Items = new Timeline_Item[spots.Length];
     }
+
+    public void preLaunchTimeline()
+    {
+        for (int i = 0; i < spots.Length; i++)
+        {
+            if (timeline_Items[i] == null)
+            {
+                return;
+            }
+        }
+
+        LaunchTimeline();
+    }
+
+    public void LaunchTimeline()
+    {
+        if(currentIndex < timeline_Items.Length)
+        {
+            timeline_Items[currentIndex].invokeTimeLineEvent();
+
+
+        }
+    }
+
 
     public void SetUpSpots()
     {

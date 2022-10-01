@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 public class UI_Actions : MonoBehaviour
 {
-    public enum Action { Move, Switch, Rotate, Wait, DropCube, PushCube };
+    public enum Action { MoveForward, MoveRight, MoveLeft, MoveDown, RotateRight, RotateLeft };
     public enum PlayerTarget
     {
         Avatar_A,

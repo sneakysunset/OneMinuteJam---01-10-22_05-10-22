@@ -69,7 +69,7 @@ public class GridGenerator : MonoBehaviour
             {
                 ogPos = new Vector3(obj.transform.position.x, obj.transform.position.y, obj.transform.position.z);
 
-                //check which avatar to spawn
+                //check which playerTarget to spawn
                 switch (obj.avatar)
                 {
                     case GridTiles.Avatar.Avatar_A:

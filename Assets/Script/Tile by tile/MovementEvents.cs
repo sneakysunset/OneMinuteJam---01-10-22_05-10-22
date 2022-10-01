@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class MovementEvents : MonoBehaviour
 {
-    public Avatar avatar = Avatar.Both;
+    //public Avatar playerTarget = Avatar.Both;
     Transform player = null;
     Transform playerA;
     Transform playerB;
@@ -27,20 +27,20 @@ public class MovementEvents : MonoBehaviour
     }
 
     public UnityEvent<Vector3, Transform> MoveEvent;
-    public void MovementActivation(int direction)
+    public void MovementActivation(int direction, UI_Actions.PlayerTarget playerTarget)
     {
 
         
 
-        switch (avatar)
+        switch (playerTarget)
         {
-            case Avatar.Avatar_A:
+            case UI_Actions.PlayerTarget.Avatar_A:
                 player = playerA;
                 break;
-            case Avatar.Avatar_B:
+            case UI_Actions.PlayerTarget.Avatar_B:
                 player = playerB;
                 break;
-            case Avatar.Both:
+            case UI_Actions.PlayerTarget.Both:
                 moveBoth(direction);
                 return;
         }

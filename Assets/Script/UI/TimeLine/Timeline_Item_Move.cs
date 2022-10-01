@@ -5,9 +5,9 @@ using UnityEngine.Events;
 public class Timeline_Item_Move : Timeline_Item
 {
     UnityEvent<int> MoveEvent;
-    public override void invokeTimeLineEvent()
+/*    public void invokeTimeLineEvent()
     {
         //MoveEvent.AddListener(FindObjectOfType<MovementEvents>().MovementActivation());
         base.invokeTimeLineEvent();
-    }
+    }*/
 }
