@@ -13,7 +13,7 @@ public class PathHighlighter : MonoBehaviour
    /* [HideInInspector]*/public List<GridTiles> highlightedTiles; 
     #endregion
 
-    private void Awake()
+    /*private void Awake()
     {
         grid = GridGenerator.Instance.grid;
         stepAssignement = GetComponent<StepAssignement>();      
@@ -134,6 +134,6 @@ public class PathHighlighter : MonoBehaviour
 
         return false;
 
-    }
+    }*/
 
 }

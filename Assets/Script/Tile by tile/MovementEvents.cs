@@ -26,7 +26,7 @@ public class MovementEvents : MonoBehaviour
         grid = GridGenerator.Instance.grid;
     }
 
-    public UnityEvent<Vector3, Transform> MoveEvent;
+    public UnityEvent<Vector3, Transform, UI_Actions.PlayerTarget> MoveEvent;
     public void MovementActivation(int direction, UI_Actions.PlayerTarget playerTarget)
     {
 
@@ -82,17 +82,72 @@ public class MovementEvents : MonoBehaviour
 
         if (GridGenerator.Instance.TestDirectionForMovement((int)player.position.x, (int)player.position.y, (int)nextPos.x, (int)nextPos.z, direction))
         {
-            MoveEvent?.Invoke(grid[(int)nextPos.x, (int)nextPos.z].transform.position, player);
+            MoveEvent?.Invoke(grid[(int)nextPos.x, (int)nextPos.z].transform.position, player, playerTarget);
         }
 
     }
     
+    public void TapisRoulantMovement(int direction, UI_Actions.PlayerTarget playerTarget)
+    {
+        switch (playerTarget)
+        {
+            case UI_Actions.PlayerTarget.Avatar_A:
+                player = playerA;
+                break;
+            case UI_Actions.PlayerTarget.Avatar_B:
+                player = playerB;
+                break;
+            case UI_Actions.PlayerTarget.Both:
+                moveBoth(direction);
+                return;
+        }
+
+        Vector3 nextPos = Vector3.zero;
+
+        switch (direction)
+        {
+            //up
+            case 1:
+                nextPos = player.position + Vector3.forward;
+                break;
+
+            //down
+            case 2:
+                nextPos = player.position - Vector3.back;
+                break;
+
+            //left
+            case 3:
+                nextPos = player.position + Vector3.left;
+                break;
+
+            //right
+            case 4:
+                nextPos = nextPos = player.position + Vector3.right ;
+                break;
+            default:
+                break;
+
+        }
+
+        if (GridGenerator.Instance.TestDirectionForMovement((int)player.position.x, (int)player.position.y, (int)nextPos.x, (int)nextPos.z, direction))
+        {
+            MoveEvent?.Invoke(grid[(int)nextPos.x, (int)nextPos.z].transform.position, player, playerTarget);
+        }
+    }
+
     void moveBoth(int direction)
     {
+        var playerTarget = UI_Actions.PlayerTarget.Avatar_A;
         player = playerA;
         for (int i = 0; i < 2; i++)
         {
-            if (i == 1) player = playerB;
+            if (i == 1) 
+            {
+                player = playerB; 
+                playerTarget = UI_Actions.PlayerTarget.Avatar_B;
+
+            }
 
 
             Vector3 fwdPos = player.position + player.forward;
@@ -132,7 +187,7 @@ public class MovementEvents : MonoBehaviour
 
             if (GridGenerator.Instance.TestDirectionForMovement((int)player.position.x, (int)player.position.y, (int)nextPos.x, (int)nextPos.z, direction))
             {
-                MoveEvent?.Invoke(grid[(int)nextPos.x, (int)nextPos.z].transform.position, player);
+                MoveEvent?.Invoke(grid[(int)nextPos.x, (int)nextPos.z].transform.position, player, playerTarget);
             }
         }
 

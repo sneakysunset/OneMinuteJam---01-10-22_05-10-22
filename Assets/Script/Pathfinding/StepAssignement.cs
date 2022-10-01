@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StepAssignement : MonoBehaviour
 {
-    //[TextArea]
+ /*   //[TextArea]
     //[SerializeField] string Notes = "Comment Here.";
     #region variables
     [HideInInspector] public int startPosX, startPosY, row, columns;
@@ -80,7 +80,7 @@ public class StepAssignement : MonoBehaviour
             SetVisited(x+1, y, step);       
     }
 
-/*
+*//*
     public bool TestDirection(int x, int y,int height, int step, int direction)
     {
         switch (direction)
@@ -201,7 +201,7 @@ public class StepAssignement : MonoBehaviour
         }
         return false;
     }
-*/
+*//*
     void SetVisited(int x, int y, int step)
     {
         if(grid[x, y])
@@ -210,5 +210,5 @@ public class StepAssignement : MonoBehaviour
         }
 
 
-    }
+    }*/
 }

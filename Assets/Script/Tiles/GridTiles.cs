@@ -11,15 +11,31 @@ public class GridTiles : MonoBehaviour
         Avatar_B
     }
 
+    public enum TileVariant
+    {
+        Tile,
+        Tapis_Roulant,
+        Glace,
+        Arc_Electrique,
+        Teleporteur,
+        Boucle
+    }
+
+    public TileVariant tileType;
     public bool walkable;
     public bool originalPos;
+    public int tapisRoulantDirection;
+    public Vector2 teleporteurReceptorCoordinates;
     public Avatar avatar;
     public Material walkableMat, unwalkableMat, ogPosMatA, ogPosMatB;
     public MeshRenderer tilemeshR, contourMeshR;
+    UI_TimeLineManager timeLineManager;
+    MovementEvents movementEvents;
+    Transform Player;
     bool isRuntime = false;
-    public int step;
-    public bool highlight;
-    public GameObject Highlight;
+    //public int step;
+    //public bool highlight;
+    //public GameObject Highlight;
     private void OnDrawGizmos()
     {
         if (!isRuntime)
@@ -29,16 +45,75 @@ public class GridTiles : MonoBehaviour
         }
     }
 
+
+    public void TileEffect(UI_Actions.PlayerTarget playerTarget)
+    {
+        timeLineManager = FindObjectOfType<UI_TimeLineManager>();
+        movementEvents = FindObjectOfType<MovementEvents>();
+        switch (tileType)
+        {
+            case TileVariant.Tile:
+                timeLineManager.currentIndex++;
+                timeLineManager.LaunchTimeline();
+                break;
+            case TileVariant.Tapis_Roulant:
+                TapisRoulant(playerTarget);
+                break;
+            case TileVariant.Glace:
+                Glace(playerTarget);
+                break;
+            case TileVariant.Arc_Electrique:
+                ArcElectrique();
+                break;
+            case TileVariant.Teleporteur:
+                Teleporteur(playerTarget);
+                break;
+            case TileVariant.Boucle:
+                Boucle();
+                break;
+        }
+    }
+
+    void TapisRoulant(UI_Actions.PlayerTarget playerTarget)
+    {
+        movementEvents.TapisRoulantMovement(tapisRoulantDirection, playerTarget);
+    }
+
+    void Glace(UI_Actions.PlayerTarget playerTarget)
+    {
+        movementEvents.MovementActivation(1, playerTarget);
+    }
+
+    void ArcElectrique()
+    {
+
+    }
+
+    void Teleporteur(UI_Actions.PlayerTarget playerTarget)
+    {
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
+        Player.position = GridGenerator.Instance.grid[(int)teleporteurReceptorCoordinates.x, (int)teleporteurReceptorCoordinates.y].transform.position;
+        GridGenerator.Instance.grid[(int)teleporteurReceptorCoordinates.x, (int)teleporteurReceptorCoordinates.y].TileEffect(playerTarget);
+    }
+
+    void Boucle()
+    {
+        timeLineManager.currentIndex = 0;
+        timeLineManager.LaunchTimeline();
+    }
+
+
+
     private void Update()
     {
-        if (highlight)
+/*        if (highlight)
         {
             Highlight.SetActive(true);
         }
         else
         {
             Highlight.SetActive(false);
-        }
+        }*/
     }
 
     void MoveTileOnGizmo()
@@ -98,6 +173,8 @@ public class GridTiles : MonoBehaviour
             tilemeshR.material = walkableMat;
         }
     }
+
+
 
     private void OnMouseOver()
     {

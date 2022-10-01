@@ -148,7 +148,7 @@ public class GridGenerator : MonoBehaviour
 
     }
 
-    public bool PFTestDirectionForMovement(int x, int y, int direction, int step)
+   /* public bool PFTestDirectionForMovement(int x, int y, int direction, int step)
     {
         if (grid[x,y] != null)
         {
@@ -209,7 +209,7 @@ public class GridGenerator : MonoBehaviour
 
             return false;
         
-    }
+    }*/
 
     public bool TestDirectionForMovement(int x, int y, int newX, int newY, int direction)
     {
