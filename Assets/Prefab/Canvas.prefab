@@ -231,6 +231,8 @@ MonoBehaviour:
   actionBar: {fileID: 7558224139783281720}
   actionManager: {fileID: 7558224139783281722}
   timeLineManager: {fileID: 7558224140242859477}
+  scrollDataTimeline: 0
+  scrollDataAction: 0
   scrollSpeed: 10
   maxLength: 0
 --- !u!1001 &1378416382936779964
@@ -503,9 +505,69 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4246388943874215222, guid: 5872795a69fc7a143b03eeb6eed9dbdd, type: 3}
     - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorBoth.b
+      value: 0.24528301
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorBoth.g
+      value: 0.24528301
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorBoth.r
+      value: 0.24528301
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
       propertyPath: actionFolder
       value: 
       objectReference: {fileID: 7558224139783281720}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: forwardRootI
+      value: 
+      objectReference: {fileID: 21300000, guid: 52ca6350a3138394a9e05ed57d3f13bf, type: 3}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: forwardChildI
+      value: 
+      objectReference: {fileID: 21300000, guid: 152fe112c9178f04a8e9866add73b1d3, type: 3}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorAvatarA.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorAvatarA.g
+      value: 0.8215716
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorAvatarA.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorAvatarB.b
+      value: 0.36320752
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorAvatarB.g
+      value: 0.72076726
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorAvatarB.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: RotateLeftRootI
+      value: 
+      objectReference: {fileID: 21300000, guid: f550aefc3b4d193409daa326fdbca326, type: 3}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: RotateLeftChildI
+      value: 
+      objectReference: {fileID: 21300000, guid: 83cac5c530d50734aa7487ee6da04fc2, type: 3}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: RotateRightRootI
+      value: 
+      objectReference: {fileID: 21300000, guid: 00aefddf40d4a9f4b83c6064605235ee, type: 3}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: RotateRightChildI
+      value: 
+      objectReference: {fileID: 21300000, guid: 5e0813ec42685a344950ca1ce3295ce7, type: 3}
     - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
       propertyPath: actions.Array.size
       value: 4

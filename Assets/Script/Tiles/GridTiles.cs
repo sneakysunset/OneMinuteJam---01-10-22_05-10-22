@@ -279,6 +279,8 @@ public class GridTiles : MonoBehaviour
                     tilemeshR.sharedMaterial = glaceMat;
                     break;
                 case TileVariant.Teleporteur:
+                    int rd = Random.Range(0, 3);
+                    tilemeshR.sharedMaterial = walkableMats[rd];
                     SpawnItem("Teleporteur", teleporteur);
 
                     break;
