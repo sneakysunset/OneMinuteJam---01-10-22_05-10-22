@@ -105,37 +105,10 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 6022094002335566527}
+  - {fileID: 2783279667538106365}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-6327737981464600950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Music/GameState
-  m_EditorClassIdentifier: 
-  Name: GameState
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 0
-    data2: 0
-  Type: 2
-  IsGlobal: 1
-  Labels:
-  - Programming
-  - Simulation
-  - Menu
-  Exists: 0
 --- !u!114 &-5832671834739281270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,30 +135,6 @@ MonoBehaviour:
   - Programming
   - Simulation
   - Menu
-  Exists: 0
---- !u!114 &-4190005394893782401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Electricity/Loudness
-  m_EditorClassIdentifier: 
-  Name: Loudness
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 0
-    data2: 0
-  Type: 0
-  IsGlobal: 0
-  Labels: []
   Exists: 0
 --- !u!114 &-4027520667814284529
 MonoBehaviour:
@@ -385,35 +334,8 @@ MonoBehaviour:
   - {fileID: 3886564929098886494}
   StringsBanks:
   - {fileID: 8336488306140637473}
-  cacheTime: 638003261838941868
+  cacheTime: 638003244738151886
   cacheVersion: 9
---- !u!114 &1297085018105239665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Music/GameState
-  m_EditorClassIdentifier: 
-  Name: GameState
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 0
-    data2: 0
-  Type: 2
-  IsGlobal: 1
-  Labels:
-  - Programming
-  - Simulation
-  - Menu
-  Exists: 0
 --- !u!114 &1958585829063059684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,7 +384,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 5969209557141150167}
+  - {fileID: 4607832942566634106}
   MinDistance: 1
   MaxDistance: 20
   Length: 6000
@@ -616,10 +538,10 @@ MonoBehaviour:
   Path: Fmod Project/Pocket jam/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638003261838901862
+  lastModified: 638003244738091895
   FileSizes:
   - Name: Desktop
-    Value: 311776
+    Value: 320992
   Exists: 1
 --- !u!114 &4163035708483415098
 MonoBehaviour:
@@ -696,81 +618,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
---- !u!114 &5743722768981962685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Electricity/Loudness
-  m_EditorClassIdentifier: 
-  Name: Loudness
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 0
-    data2: 0
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 0
---- !u!114 &5969209557141150167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Electricity/Loudness
-  m_EditorClassIdentifier: 
-  Name: Loudness
-  StudioPath: 
-  Min: 0
-  Max: 10
-  Default: 0
-  ID:
-    data1: 0
-    data2: 0
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &6022094002335566527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Music/GameState
-  m_EditorClassIdentifier: 
-  Name: GameState
-  StudioPath: 
-  Min: 0
-  Max: 2
-  Default: 0
-  ID:
-    data1: 0
-    data2: 0
-  Type: 2
-  IsGlobal: 1
-  Labels:
-  - Programming
-  - Simulation
-  - Menu
-  Exists: 1
 --- !u!114 &6546496791095604545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,7 +687,7 @@ MonoBehaviour:
   Path: Fmod Project/Pocket jam/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638003261838941868
+  lastModified: 638003244738151886
   FileSizes:
   - Name: Desktop
     Value: 1618
