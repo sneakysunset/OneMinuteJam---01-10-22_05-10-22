@@ -18,8 +18,7 @@ MonoBehaviour:
     Data2: 1306173999
     Data3: 338081947
     Data4: 1175490682
-  Banks:
-  - {fileID: 3886564929098886494}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -104,7 +103,7 @@ MonoBehaviour:
   Type: 0
   IsGlobal: 0
   Labels: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-7329597571220093611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,10 +182,34 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -5473754108078797000}
+  - {fileID: -4990322449662928849}
   MinDistance: 1
   MaxDistance: 20
   Length: 112941
+--- !u!114 &-6156547679628671017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Electricity/Loudness
+  m_EditorClassIdentifier: 
+  Name: Loudness
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-5832671834739281270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +238,30 @@ MonoBehaviour:
   - Menu
   Exists: 0
 --- !u!114 &-5473754108078797000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/GameState
+  m_EditorClassIdentifier: 
+  Name: GameState
+  StudioPath: 
+  Min: 0
+  Max: 3
+  Default: 3
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 0
+--- !u!114 &-4990322449662928849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -576,7 +623,6 @@ MonoBehaviour:
   - {fileID: 3621081599860852231}
   - {fileID: -6590762690088373705}
   - {fileID: 6885460856800652381}
-  - {fileID: -9131678094288913208}
   - {fileID: 2427249739308979559}
   - {fileID: 8802209354441719321}
   - {fileID: 3559476831670338404}
@@ -601,7 +647,7 @@ MonoBehaviour:
   - {fileID: 3886564929098886494}
   StringsBanks:
   - {fileID: 8336488306140637473}
-  cacheTime: 638003545749081865
+  cacheTime: 638003564649176859
   cacheVersion: 9
 --- !u!114 &16024386499870681
 MonoBehaviour:
@@ -729,7 +775,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -7434687503295692120}
+  - {fileID: -6156547679628671017}
   MinDistance: 1
   MaxDistance: 20
   Length: 6000
@@ -883,10 +929,10 @@ MonoBehaviour:
   Path: Fmod Project/Pocket jam/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638003545749001882
+  lastModified: 638003564649021878
   FileSizes:
   - Name: Desktop
-    Value: 3690368
+    Value: 3690176
   Exists: 1
 --- !u!114 &4163035708483415098
 MonoBehaviour:
@@ -1188,10 +1234,10 @@ MonoBehaviour:
   Path: Fmod Project/Pocket jam/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638003545749081865
+  lastModified: 638003564649176859
   FileSizes:
   - Name: Desktop
-    Value: 2030
+    Value: 2130
   Exists: 1
 --- !u!114 &8488927710628459947
 MonoBehaviour:
