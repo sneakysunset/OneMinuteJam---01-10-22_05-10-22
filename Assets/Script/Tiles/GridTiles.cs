@@ -30,11 +30,12 @@ public class GridTiles : MonoBehaviour
         Left,
         Right
     }
-
     public TileVariant tileType;
     public bool walkable;
     public bool originalPos;
 
+
+    [HideInInspector] public float originalY;
     //public int tapisRoulantDirection;
     public Direction tapisRoulantDirection;
     public Vector2 teleporteurReceptorCoordinates;
@@ -289,6 +290,7 @@ public class GridTiles : MonoBehaviour
 
     private void Start()
     {
+        originalY = transform.position.y;
         isRuntime = true;
         if (!walkable)
         {

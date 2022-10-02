@@ -1598,10 +1598,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6515642462750015349, guid: c7c8d5be31a330f40919a036b99de133, type: 3}
       propertyPath: porteHeightChange
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6515642462750015349, guid: c7c8d5be31a330f40919a036b99de133, type: 3}
       propertyPath: plaqueDePressionCoordinates.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515642462750015349, guid: c7c8d5be31a330f40919a036b99de133, type: 3}
+      propertyPath: plaqueDePressionCoordinates.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7136639149326520052, guid: c7c8d5be31a330f40919a036b99de133, type: 3}
@@ -1825,6 +1829,74 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 631611877985192858, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: xOffSet
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 631611877985192858, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: yOffSet
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 631611877985192858, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: titleArc
+      value: Magical Dysfonction Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 631611877985192858, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: titleEnd
+      value: End Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 631611877985192858, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: corpusArc
+      value: The golem on this tile will skip one instruction (the other player's
+        instruction will resume)
+      objectReference: {fileID: 0}
+    - target: {fileID: 631611877985192858, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: corpusEnd
+      value: 'Both golems need to reach their color matching End Tile in order to
+        complete the level '
+      objectReference: {fileID: 0}
+    - target: {fileID: 631611877985192858, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: titleGlace
+      value: Ice Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 631611877985192858, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: titleTapis
+      value: Moving Carpet Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 631611877985192858, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: corpusGlace
+      value: When a golem walks onto this tile it slides forward
+      objectReference: {fileID: 0}
+    - target: {fileID: 631611877985192858, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: corpusTapis
+      value: When a golem walks onto this tile it slides in the direction of the
+        arrow on the tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 631611877985192858, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: titleBoucle
+      value: Loop Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 631611877985192858, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: titlePlaque
+      value: Pressure Plate Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 631611877985192858, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: corpusBoucle
+      value: Resets the timeline to the first instruction
+      objectReference: {fileID: 0}
+    - target: {fileID: 631611877985192858, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: corpusPlaque
+      value: The matching tile will move when a golem is on this tile. Once the golem
+        leaves this tile the matching tile returns to its original position
+      objectReference: {fileID: 0}
+    - target: {fileID: 631611877985192858, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: titleTeleporteur
+      value: Teleporter
+      objectReference: {fileID: 0}
+    - target: {fileID: 631611877985192858, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: corpusTeleporteur
+      value: The golem teleports to the other teleporter position
+      objectReference: {fileID: 0}
     - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
       propertyPath: xInBetween
       value: 450
