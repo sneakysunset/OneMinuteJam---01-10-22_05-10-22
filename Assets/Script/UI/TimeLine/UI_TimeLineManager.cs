@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections.ObjectModel;
 using FMODUnity;
+using UnityEngine.Events;
 
 public class UI_TimeLineManager : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class UI_TimeLineManager : MonoBehaviour
     public bool stunnedA, stunnedB;
     public AnimationCurve InsertAnimationCurve;
     public float insertAnimationLength;
-    
+    public UnityEvent endLevel;
     public GameObject spot;
     public RectTransform spotFolder;
     public enum scenes { };
@@ -53,6 +54,7 @@ public class UI_TimeLineManager : MonoBehaviour
         {
             flag = true;
             RuntimeManager.PlayOneShot("event:/Game/Simulation Phase/Win");
+            endLevel.Invoke();
             print("Success");
         }
     }
