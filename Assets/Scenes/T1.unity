@@ -1587,10 +1587,10 @@ PrefabInstance:
     - target: {fileID: 4657526486285527471, guid: c7c8d5be31a330f40919a036b99de133, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 05e6ee8afa9b4564c8971822626dfba6, type: 2}
+      objectReference: {fileID: 2100000, guid: f04b29d2d6532ec4abae258d30ab85bc, type: 2}
     - target: {fileID: 6515642462750015349, guid: c7c8d5be31a330f40919a036b99de133, type: 3}
       propertyPath: tileType
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6515642462750015349, guid: c7c8d5be31a330f40919a036b99de133, type: 3}
       propertyPath: walkable
