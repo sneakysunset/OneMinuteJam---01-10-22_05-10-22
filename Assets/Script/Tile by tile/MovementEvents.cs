@@ -18,14 +18,6 @@ public class MovementEvents : MonoBehaviour
         Avatar_B,
         Both
     }
-
-
-    public EventReference Step;
-    public EventReference IceStep;
-    public EventReference Teleporter;
-    public EventReference Conveyor;
-
-
     private void Awake()
     {
         playerA = GridGenerator.Instance.player_A;
@@ -89,7 +81,7 @@ public class MovementEvents : MonoBehaviour
 
         if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget))
         {
-            RuntimeManager.PlayOneShot(Step);
+            RuntimeManager.PlayOneShot("event:/Avatar/Blue/Step");
             MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
         }
 
@@ -140,7 +132,7 @@ public class MovementEvents : MonoBehaviour
 
         if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget))
         {
-            RuntimeManager.PlayOneShot(Conveyor);
+            RuntimeManager.PlayOneShot("event:/Elements/Conveyor Belt");
             MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
         }
     }
@@ -171,7 +163,7 @@ public class MovementEvents : MonoBehaviour
 
         if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget))
         {
-            RuntimeManager.PlayOneShot(IceStep);
+            RuntimeManager.PlayOneShot("event:/Elements/Ice");
             MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
         }
     }
@@ -196,7 +188,7 @@ public class MovementEvents : MonoBehaviour
 
             if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.y), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget))
             {
-                RuntimeManager.PlayOneShot(IceStep);
+                RuntimeManager.PlayOneShot("event:/Elements/Ice");
                 MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
             }
         }
@@ -254,7 +246,7 @@ public class MovementEvents : MonoBehaviour
 
             if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.y), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget))
             {
-                RuntimeManager.PlayOneShot(Step);
+                RuntimeManager.PlayOneShot("event:/Avatar/Blue/Step");
                 MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
             }
         }

@@ -14,8 +14,6 @@ public class RotationManager : MonoBehaviour
     public AnimationCurve rotationAnimCurve;
     public float timeForRotation;
 
-    public EventReference Rotate;
-
     private void Awake()
     {
         playerA = GridGenerator.Instance.player_A;
@@ -47,7 +45,7 @@ public class RotationManager : MonoBehaviour
         else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
             timeLineManager.playerBready = true;
 
-        RuntimeManager.PlayOneShot(Rotate);
+        RuntimeManager.PlayOneShot("event:/Avatar/Blue/Turn");
     }
 
 

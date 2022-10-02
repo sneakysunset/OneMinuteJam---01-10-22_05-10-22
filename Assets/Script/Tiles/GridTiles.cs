@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class GridTiles : MonoBehaviour
 {
@@ -180,7 +181,9 @@ public class GridTiles : MonoBehaviour
             timeLineManager.playerAready = true;
         else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
             timeLineManager.playerBready = true;
-        
+
+        RuntimeManager.PlayOneShot("event:/Elements/Teleport");
+
     }
 
     void Boucle(UI_Actions.PlayerTarget playerTarget)
