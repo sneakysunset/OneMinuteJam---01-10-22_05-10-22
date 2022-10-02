@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections.ObjectModel;
+using FMODUnity;
+
 public class UI_TimeLineManager : MonoBehaviour
 {
     public float timerAfterActionEnd;
@@ -46,6 +48,7 @@ public class UI_TimeLineManager : MonoBehaviour
 
         if(endA && endB)
         {
+            RuntimeManager.PlayOneShot("event:/Game/Simulation Phase/Win");
             print("Success");
         }
     }
