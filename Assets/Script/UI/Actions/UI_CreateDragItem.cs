@@ -10,7 +10,6 @@ public class UI_CreateDragItem : MonoBehaviour
     {
         UI_Actions.Action actionType = GetComponent<UI_Actions>().actionType;
         UI_Actions.PlayerTarget playerTarget = GetComponent<UI_Actions>().Avatar;
-        transform.parent.GetComponent<UI_InstDragAction>().InstatiateDragItem(Input.mousePosition, actionType, playerTarget);
-        //OnActionClickEvent?.Invoke(Input.mousePosition, actionType, playerTarget);
+        OnActionClickEvent?.Invoke(Input.mousePosition, actionType, playerTarget);
     }
 }

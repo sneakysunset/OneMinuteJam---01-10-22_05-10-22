@@ -26,8 +26,12 @@ public class MovementManager : MonoBehaviour
             yield return null;
         }
         player.position = endPos;
-            yield return null;
+
         GridGenerator.Instance.grid[Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z)].TileEffect(playerTarget, startPos);
+        yield return null;
+        //yield return new WaitForSeconds(1);
+/*        timeLineManager.currentIndex++;
+        timeLineManager.LaunchTimeline();*/
 
     }
 }

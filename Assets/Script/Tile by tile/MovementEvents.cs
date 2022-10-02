@@ -158,6 +158,7 @@ public class MovementEvents : MonoBehaviour
 
         nextPos.x += player.position.x;
         nextPos.z += player.position.z;
+        print(nextPos);
        
 
         if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget))

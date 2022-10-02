@@ -4,7 +4,6 @@ using UnityEngine;
 using System.Collections.ObjectModel;
 public class UI_TimeLineManager : MonoBehaviour
 {
-    public float timerAfterActionEnd;
     public TimeLineHover[] spots;
     public float yPos;
     public float xInBetween;
@@ -15,11 +14,6 @@ public class UI_TimeLineManager : MonoBehaviour
     public bool playerAready, playerBready;
     public bool endA, endB;
     public bool playin;
-    public AnimationCurve InsertAnimationCurve;
-    public float insertAnimationLength;
-    public GameObject spot;
-    public RectTransform spotFolder;
-    public enum scenes { };
     //public ObservableCollection<Timeline_Item> timeline_Items;
     private void Start()
     {
@@ -27,20 +21,14 @@ public class UI_TimeLineManager : MonoBehaviour
         timeline_Items = new Timeline_Item[spots.Length];
     }
 
-    IEnumerator timerForNextAction()
-    {
-        yield return new WaitForSeconds(timerAfterActionEnd);
-        currentIndex++;
-        LaunchTimeline();
-    }
+    
 
     private void Update()
     {
         if(playerAready && playerBready)
         {
-            playerAready = false;
-            playerBready = false;
-            StartCoroutine(timerForNextAction());
+            currentIndex++;
+            LaunchTimeline();
         }
 
         if(endA && endB)
@@ -49,34 +37,6 @@ public class UI_TimeLineManager : MonoBehaviour
         }
     }
 
-    public void ResetLevel()
-    {
-        if(currentIndex != 0)
-        {
-            currentIndex = spots.Length;
-            StartCoroutine(WaitForEndOfMovement());
-        }
-        else
-        {
-            GridGenerator.Instance.player_A.position = GridGenerator.Instance.playerOGPosA;
-            GridGenerator.Instance.player_B.position = GridGenerator.Instance.playerOGPosB;
-            GridGenerator.Instance.player_A.rotation = GridGenerator.Instance.playerOGRotA;
-            GridGenerator.Instance.player_B.rotation = GridGenerator.Instance.playerOGRotB;
-            endA = false;
-            endB = false;
-        }
-    }
-
-    IEnumerator WaitForEndOfMovement()
-    {
-        yield return new WaitUntil(() => currentIndex == 0);
-        GridGenerator.Instance.player_A.position = GridGenerator.Instance.playerOGPosA;
-        GridGenerator.Instance.player_B.position = GridGenerator.Instance.playerOGPosB;
-        GridGenerator.Instance.player_A.rotation = GridGenerator.Instance.playerOGRotA;
-        GridGenerator.Instance.player_B.rotation = GridGenerator.Instance.playerOGRotB;
-        endA = false;
-        endB = false;
-    }
 
     public void ResetTimeline()
     {
@@ -88,7 +48,6 @@ public class UI_TimeLineManager : MonoBehaviour
 
     public void preLaunchTimeline()
     {
-        currentIndex = 0;
         for (int i = 0; i < spots.Length; i++)
         {
             if (timeline_Items[i] == null)
@@ -119,7 +78,6 @@ public class UI_TimeLineManager : MonoBehaviour
         else
         {
             playin = false;
-            currentIndex = 0;
         }
     }
 
@@ -129,17 +87,7 @@ public class UI_TimeLineManager : MonoBehaviour
         for (int i = 0; i < spots.Length; i++)
         {
             var xPos = xLeftMostPos + i * xInBetween;
-            if(spots[i] == null)
-            {
-                RectTransform inst = Instantiate(spot, spotFolder).GetComponent<RectTransform>();
-                inst.anchoredPosition = new Vector2(xPos, yPos);
-                spots[i] = inst.GetComponent<TimeLineHover>();
-            }
-            else
-            {
             spots[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(xPos, yPos);
-
-            }
         }
     }
 
@@ -190,32 +138,17 @@ public class UI_TimeLineManager : MonoBehaviour
         for (int i = lastindex - 1; i >= index ; i--)
         {
             timeline_Items[i + 1] = timeline_Items[i];
-            StartCoroutine(InsertAnim(timeline_Items[i + 1].rectTransform.anchoredPosition, spots[i + 1].rectTransform.anchoredPosition, timeline_Items[i + 1].rectTransform));
-            //timeline_Items[i+1].rectTransform.anchoredPosition = spots[i+1].rectTransform.anchoredPosition;
+            timeline_Items[i+1].rectTransform.anchoredPosition = spots[i+1].rectTransform.anchoredPosition;
         }
         timeline_Items[index] = itemToAdd;
     }
 
-    IEnumerator InsertAnim(Vector2 startPos, Vector2 endPos, RectTransform rTransform )
-    {
-        float i = 0;
-        while(i < 1)
-        {
-            i += Time.deltaTime * (1/insertAnimationLength);
-
-            rTransform.anchoredPosition = Vector2.Lerp(startPos, endPos, InsertAnimationCurve.Evaluate(i));
-            yield return null;
-        }
-        rTransform.anchoredPosition = endPos;
-        yield return null;
-    }
-
-/*    private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         if (setUpActions)
         {
             SetUpSpots();
             setUpActions = false;
         }
-    }*/
+    }
 }

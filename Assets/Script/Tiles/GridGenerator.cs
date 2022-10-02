@@ -13,8 +13,6 @@ public class GridGenerator : MonoBehaviour
     public GameObject Tile;
     public Transform player_A;
     public Transform player_B;
-    [HideInInspector] public Vector3 playerOGPosA, playerOGPosB; 
-    [HideInInspector] public Quaternion playerOGRotA, playerOGRotB; 
     public Transform tileFolder;
     public UI_TimeLineManager timeLineManager;
     public static GridGenerator Instance { get; private set; }
@@ -78,14 +76,10 @@ public class GridGenerator : MonoBehaviour
                 {
                     case GridTiles.Avatar.Avatar_A:
                         player_A.position = ogPos;
-                        playerOGPosA = player_A.position;
-                        playerOGRotA = player_A.rotation;
                         break;
 
                     case GridTiles.Avatar.Avatar_B:
                         player_B.position = ogPos;
-                        playerOGPosB = player_B.position;
-                        playerOGRotB = player_B.rotation;
                         break;
                 }
             }
