@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 public class UI_CreateDragItem : MonoBehaviour
 {
-    public UnityEvent<Vector2, UI_Actions.Action, UI_Actions.PlayerTarget> OnActionClickEvent;
+    //public UnityEvent<Vector2, UI_Actions.Action, UI_Actions.PlayerTarget> OnActionClickEvent;
 
     public void InstantiateDragItem()
     {

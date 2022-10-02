@@ -135,6 +135,8 @@ MonoBehaviour:
   originalPos: 0
   tapisRoulantDirection: 0
   teleporteurReceptorCoordinates: {x: 0, y: 0}
+  plaqueDePressionCoordinates: {x: 0, y: 0}
+  porteHeightChange: 0
   avatar: 0
   teleporterMat: {fileID: 2100000, guid: 60c13c4c0ec03484fbbebea07f317366, type: 2}
   tapisRoulantMat: {fileID: 2100000, guid: 308356aabb6d9ac4bbb8e20e6acfde74, type: 2}
@@ -145,12 +147,48 @@ MonoBehaviour:
   ogPosMatB: {fileID: 2100000, guid: b5cf07291f441b143bc3420f1a162232, type: 2}
   tileEndMatP1: {fileID: 2100000, guid: 157de3d0f72fc88489ab4930ec0560da, type: 2}
   tileEndMatP2: {fileID: 2100000, guid: a392fb2270f5b594a87460c360795629, type: 2}
+  tilePlaqueDePressionMat: {fileID: 2100000, guid: 05e6ee8afa9b4564c8971822626dfba6, type: 2}
+  tilePorteMat: {fileID: 2100000, guid: 05d8f73dcb691a54a9b09dc31bc8e97a, type: 2}
   walkableMats:
   - {fileID: 2100000, guid: f04b29d2d6532ec4abae258d30ab85bc, type: 2}
   - {fileID: 2100000, guid: b6f820b8af09f8448955471902a12e37, type: 2}
   - {fileID: 2100000, guid: 9afad7ccf2a249b46bb656ac38ecb94f, type: 2}
   tilemeshR: {fileID: 4657526486285527471}
   contourMeshR: {fileID: 1724981042311170806}
+  animSpeed: 0.5
+  animCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.72006536
+      outSlope: 0.72006536
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.3449328
+    - serializedVersion: 3
+      time: 0.5023272
+      value: 0.5057941
+      inSlope: 3.2449994
+      outSlope: 3.2449994
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.041498274
+      outWeight: 0.067972414
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!65 &4090391093530551919
 BoxCollider:
   m_ObjectHideFlags: 0
