@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class GridTiles : MonoBehaviour
 {
@@ -81,7 +82,7 @@ public class GridTiles : MonoBehaviour
                 Glace(playerTarget, previousPos);
                 break;
             case TileVariant.Arc_Electrique:
-                ArcElectrique();
+                ArcElectrique(playerTarget);
                 break;
             case TileVariant.Teleporteur:
                 Teleporteur(playerTarget);
@@ -122,6 +123,7 @@ public class GridTiles : MonoBehaviour
 
     void PlaqueDePression(UI_Actions.PlayerTarget playerTarget)
     {
+        RuntimeManager.PlayOneShot("event:/Elements/Pressure plate press");
         Transform tile = GridGenerator.Instance.grid[Mathf.RoundToInt(plaqueDePressionCoordinates.x), Mathf.RoundToInt(plaqueDePressionCoordinates.y)].transform;
         StartCoroutine(elevateBloc(Mathf.RoundToInt(tile.position.y), Mathf.RoundToInt(tile.position.y) + porteHeightChange, tile, playerTarget));
     }
@@ -164,9 +166,19 @@ public class GridTiles : MonoBehaviour
         movementEvents.GlaceMovement( playerTarget, previousPos);
     }
 
-    void ArcElectrique()
+    void ArcElectrique(UI_Actions.PlayerTarget playerTarget)
     {
+        if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+        {
+            timeLineManager.playerAready = true;
+            timeLineManager.stunnedA = true;
+        }
+        else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+        {
 
+            timeLineManager.playerBready = true;
+            timeLineManager.stunnedB = true;
+        }
     }
 
     void Teleporteur(UI_Actions.PlayerTarget playerTarget)
@@ -181,6 +193,9 @@ public class GridTiles : MonoBehaviour
             timeLineManager.playerAready = true;
         else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
             timeLineManager.playerBready = true;
+
+        RuntimeManager.PlayOneShot("event:/Elements/Teleport");
+
     }
 
     void Boucle(UI_Actions.PlayerTarget playerTarget)

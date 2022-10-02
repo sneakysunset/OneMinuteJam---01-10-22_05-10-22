@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using FMODUnity;
 
 public class MovementEvents : MonoBehaviour
 {
@@ -17,7 +18,6 @@ public class MovementEvents : MonoBehaviour
         Avatar_B,
         Both
     }
-
     private void Awake()
     {
         playerA = GridGenerator.Instance.player_A;
@@ -81,6 +81,7 @@ public class MovementEvents : MonoBehaviour
 
         if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget))
         {
+            RuntimeManager.PlayOneShot("event:/Avatar/Blue/Step");
             MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
         }
 
@@ -131,7 +132,7 @@ public class MovementEvents : MonoBehaviour
 
         if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget))
         {
-            
+            RuntimeManager.PlayOneShot("event:/Elements/Conveyor Belt");
             MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
         }
     }
@@ -162,7 +163,7 @@ public class MovementEvents : MonoBehaviour
 
         if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget))
         {
-
+            RuntimeManager.PlayOneShot("event:/Elements/Ice");
             MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
         }
     }
@@ -187,6 +188,7 @@ public class MovementEvents : MonoBehaviour
 
             if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.y), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget))
             {
+                RuntimeManager.PlayOneShot("event:/Elements/Ice");
                 MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
             }
         }
@@ -244,6 +246,7 @@ public class MovementEvents : MonoBehaviour
 
             if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.y), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget))
             {
+                RuntimeManager.PlayOneShot("event:/Avatar/Blue/Step");
                 MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
             }
         }
