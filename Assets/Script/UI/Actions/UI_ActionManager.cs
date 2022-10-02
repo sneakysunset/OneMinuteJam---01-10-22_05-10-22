@@ -20,7 +20,8 @@ public class UI_ActionManager : MonoBehaviour
     public float xInBetween;
     public float xLeftMostPos;
     public bool SetUpActions;
-    
+
+    public UI_DragItem currentDraggedItem;
     public TimeLineHover currentHoveredItem;
     public bool dragging, hovering, hover, hoverAction;
     public Color colorAvatarA, colorAvatarB, colorBoth;
