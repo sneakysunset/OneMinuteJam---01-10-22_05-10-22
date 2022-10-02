@@ -15,6 +15,7 @@ public class UI_TimeLineManager : MonoBehaviour
     public bool playerAready, playerBready;
     public bool endA, endB;
     public bool playin;
+    public bool stunnedA, stunnedB;
     public AnimationCurve InsertAnimationCurve;
     public float insertAnimationLength;
     

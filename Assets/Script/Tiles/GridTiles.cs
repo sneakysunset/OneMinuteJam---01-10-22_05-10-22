@@ -81,7 +81,7 @@ public class GridTiles : MonoBehaviour
                 Glace(playerTarget, previousPos);
                 break;
             case TileVariant.Arc_Electrique:
-                ArcElectrique();
+                ArcElectrique(playerTarget);
                 break;
             case TileVariant.Teleporteur:
                 Teleporteur(playerTarget);
@@ -164,9 +164,19 @@ public class GridTiles : MonoBehaviour
         movementEvents.GlaceMovement( playerTarget, previousPos);
     }
 
-    void ArcElectrique()
+    void ArcElectrique(UI_Actions.PlayerTarget playerTarget)
     {
+        if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+        {
+            timeLineManager.playerAready = true;
+            timeLineManager.stunnedA = true;
+        }
+        else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+        {
 
+            timeLineManager.playerBready = true;
+            timeLineManager.stunnedB = true;
+        }
     }
 
     void Teleporteur(UI_Actions.PlayerTarget playerTarget)
