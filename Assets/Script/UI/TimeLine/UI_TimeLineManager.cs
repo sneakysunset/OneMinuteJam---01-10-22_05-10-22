@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections.ObjectModel;
-using FMODUnity;
-
 public class UI_TimeLineManager : MonoBehaviour
 {
     public float timerAfterActionEnd;
@@ -38,6 +36,8 @@ public class UI_TimeLineManager : MonoBehaviour
         LaunchTimeline();
     }
 
+    bool flag;
+
     private void Update()
     {
         if(playerAready && playerBready)
@@ -47,9 +47,9 @@ public class UI_TimeLineManager : MonoBehaviour
             StartCoroutine(timerForNextAction());
         }
 
-        if(endA && endB)
+        if(endA && endB && !flag)
         {
-            RuntimeManager.PlayOneShot("event:/Game/Simulation Phase/Win");
+            flag = false;
             print("Success");
         }
     }
