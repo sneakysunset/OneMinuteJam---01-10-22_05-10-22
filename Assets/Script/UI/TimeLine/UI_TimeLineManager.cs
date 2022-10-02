@@ -67,9 +67,13 @@ public class UI_TimeLineManager : MonoBehaviour
             GridGenerator.Instance.player_B.position = GridGenerator.Instance.playerOGPosB;
             GridGenerator.Instance.player_A.rotation = GridGenerator.Instance.playerOGRotA;
             GridGenerator.Instance.player_B.rotation = GridGenerator.Instance.playerOGRotB;
+            stunnedA = false;
+            stunnedB = false;
             foreach(GridTiles tile in GridGenerator.Instance.grid)
             {
                 tile.transform.position = new Vector3(tile.transform.position.x, tile.originalY, tile.transform.position.z);
+                stunnedA = false;
+                stunnedB = false;
             }
             endA = false;
             endB = false;

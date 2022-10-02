@@ -49,20 +49,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30de406ab31647a48a7e198e12530769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleArc: eq
-  titleBoucle: eqwe
-  titleEnd: ewe
-  titleGlace: we
-  titlePlaque: wewe
-  titleTapis: wewew
-  titleTeleporteur: e
-  corpusArc: wewewewewe
-  corpusBoucle: e
-  corpusEnd: e
-  corpusGlace: e
-  corpusPlaque: we
-  corpusTapis: wew
-  corpusTeleporteur: e
+  titleArc: Magical Dysfonction Tile
+  titleBoucle: Loop Tile
+  titleEnd: End Tile
+  titleGlace: Ice Tile
+  titlePlaque: Pressure Plate Tile
+  titleTapis: Moving Carpet Tile
+  titleTeleporteur: Teleporter
+  corpusArc: The golem on this tile will skip one instruction (the other player's
+    instruction will resume)
+  corpusBoucle: Resets the timeline to the first instruction
+  corpusEnd: 'Both golems need to reach their color matching End Tile in order to
+    complete the level '
+  corpusGlace: When a golem walks onto this tile it slides forward
+  corpusPlaque: The matching tile will move when a golem is on this tile. Once the
+    golem leaves this tile the matching tile returns to its original position
+  corpusTapis: When a golem walks onto this tile it slides in the direction of the
+    arrow on the tile
+  corpusTeleporteur: The golem teleports to the other teleporter position
+  xOffSet: -200
+  yOffSet: -120
   popUp: {fileID: 8994644535378680815, guid: b3cc4dee55c5b894b9daeeb571e88e92, type: 3}
 --- !u!1 &7558224139748607877
 GameObject:
@@ -226,6 +232,7 @@ MonoBehaviour:
   actionManager: {fileID: 7558224139783281722}
   timeLineManager: {fileID: 7558224140242859477}
   scrollSpeed: 10
+  maxLength: 0
 --- !u!1001 &1378416382936779964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -233,6 +240,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7558224140424135830}
     m_Modifications:
+    - target: {fileID: 8918581550168437923, guid: 652317da288c48145b770a58063b2284, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 5845.367
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918581550168437923, guid: 652317da288c48145b770a58063b2284, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2005.615
+      objectReference: {fileID: 0}
     - target: {fileID: 8918581550374959470, guid: 652317da288c48145b770a58063b2284, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -321,6 +336,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimeLine
       objectReference: {fileID: 0}
+    - target: {fileID: 8918581550705744378, guid: 652317da288c48145b770a58063b2284, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 5845.367
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918581550705744378, guid: 652317da288c48145b770a58063b2284, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2005.615
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918581550824914541, guid: 652317da288c48145b770a58063b2284, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 5845.367
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918581550824914541, guid: 652317da288c48145b770a58063b2284, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2005.615
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 652317da288c48145b770a58063b2284, type: 3}
 --- !u!1 &7558224139853755086 stripped
@@ -363,6 +394,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7558224140424135830}
     m_Modifications:
+    - target: {fileID: 4301882647486020280, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 6104.3447
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882647486020280, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2085.1047
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882647494427940, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 6104.3447
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882647494427940, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2085.1047
+      objectReference: {fileID: 0}
     - target: {fileID: 4301882648381945316, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

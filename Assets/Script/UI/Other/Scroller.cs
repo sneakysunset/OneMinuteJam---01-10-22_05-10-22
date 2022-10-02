@@ -9,15 +9,16 @@ public class Scroller : MonoBehaviour
     public RectTransform timelineBar, actionBar;
     public UI_ActionManager actionManager;
     public UI_TimeLineManager timeLineManager;
-    float scrollDataTimeline, scrollDataAction;
+    [HideInInspector] public float scrollDataTimeline, scrollDataAction;
     public float scrollSpeed;
+    public float maxLength;
     private void Start()
     {
         scrollDataTimeline = maxX;
         scrollDataAction = maxX;
 
-        minXTimeline = maxX - Mathf.Clamp((timeLineManager.spots.Length * timeLineManager.xInBetween - 1920), 30, 1080);
-        minXAction = maxX - Mathf.Clamp((actionManager.actions.Length * actionManager.xInBetween - 1920), 30, 1080);
+        minXTimeline = maxX - Mathf.Clamp((timeLineManager.spots.Length * timeLineManager.xInBetween - 1920), 30, 3000);
+        minXAction = maxX - Mathf.Clamp((actionManager.actions.Length * actionManager.xInBetween - 1920), 30, 3000);
     }
 
     public void ScrollBarTimeline()

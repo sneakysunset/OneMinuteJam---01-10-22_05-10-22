@@ -13,10 +13,12 @@ public class UI_DragItem : MonoBehaviour
     public bool dragged, anchored;
     public GameObject Timeline_Item;
     UI_TimeLineManager timeLineManager;
+    Scroller canvas;
     private void Start()
     {
         actionManager = FindObjectOfType<UI_ActionManager>();
         timeLineManager = FindObjectOfType<UI_TimeLineManager>();
+        canvas = transform.parent.parent.GetComponent<Scroller>();
     }
 
     private void Update()
@@ -26,7 +28,8 @@ public class UI_DragItem : MonoBehaviour
             if (actionManager.hovering)
             {
                 anchored = true;
-                rectTransform.anchoredPosition = actionManager.currentHoveredItem.rectTransform.anchoredPosition;
+                Vector3 anchPos = actionManager.currentHoveredItem.rectTransform.anchoredPosition;
+                rectTransform.anchoredPosition = new Vector3(anchPos.x + canvas.scrollDataTimeline, anchPos.y, anchPos.z);
             }
             else if (!actionManager.hovering)
             {
