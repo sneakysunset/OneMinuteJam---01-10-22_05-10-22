@@ -8,7 +8,7 @@ public class MovementManager : MonoBehaviour
     public float timeForMovement;
     public AnimationCurve movementAnimCurve;
     public UI_TimeLineManager timeLineManager;
-    
+
     public void Move(Vector3 destination, Transform player, UI_Actions.PlayerTarget playerTarget)
     {
         StartCoroutine(smoothMovement(player.position, destination, player, playerTarget));

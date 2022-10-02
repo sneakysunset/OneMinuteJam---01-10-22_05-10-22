@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class RotationManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class RotationManager : MonoBehaviour
     UI_TimeLineManager timeLineManager;
     public AnimationCurve rotationAnimCurve;
     public float timeForRotation;
+
+    public EventReference Rotate;
 
     private void Awake()
     {
@@ -43,6 +46,8 @@ public class RotationManager : MonoBehaviour
             timeLineManager.playerAready = true;
         else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
             timeLineManager.playerBready = true;
+
+        RuntimeManager.PlayOneShot(Rotate);
     }
 
 

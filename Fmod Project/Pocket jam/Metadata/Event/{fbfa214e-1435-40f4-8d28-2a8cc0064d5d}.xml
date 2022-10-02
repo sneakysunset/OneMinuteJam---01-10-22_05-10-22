@@ -102,9 +102,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{f3bc4f41-f823-4d6a-81ad-095c7ad74795}" />
 	<object class="MultiSound" id="{0abc71cd-c4e7-4678-b153-fe84ff5b31d5}">
-		<property name="start">
-			<value>0.16671946159159762</value>
-		</property>
 		<property name="length">
 			<value>0.94623582766439907</value>
 		</property>
@@ -116,7 +113,6 @@
 		</relationship>
 		<relationship name="sounds">
 			<destination>{5558775b-19f6-4d70-843a-97d84b5dfbcf}</destination>
-			<destination>{5218ae9e-7a3a-4ba6-b54d-46b6aaa922e4}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{f743cf25-5750-418d-b732-e8d0c83ebf92}">
@@ -149,6 +145,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{783917d5-631e-4123-9ec0-e6107bf8c0af}">
+		<property name="volume">
+			<value>-13</value>
+		</property>
 		<property name="name">
 			<value>Audio 2</value>
 		</property>
@@ -182,11 +181,6 @@
 			<destination>{17d31613-cda9-4315-b6a7-5c91cfff43f2}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{5218ae9e-7a3a-4ba6-b54d-46b6aaa922e4}">
-		<relationship name="audioFile">
-			<destination>{0e2e2bdb-d1e5-4202-a9de-e754293861bb}</destination>
-		</relationship>
-	</object>
 	<object class="MixerBusEffectChain" id="{7c7b3b5d-0055-4d65-a0c7-071ec4e103d7}">
 		<relationship name="effects">
 			<destination>{4b82569a-e63f-4564-aa69-0176f64f80d0}</destination>
@@ -194,11 +188,17 @@
 	</object>
 	<object class="MixerBusPanner" id="{907616e7-2193-43e3-808c-7a7b9de5642a}" />
 	<object class="SingleSound" id="{9bb081fe-fd94-4b8a-b849-3175b34278f7}">
+		<property name="startOffset">
+			<value>14.5</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{31b1265e-3cee-463b-882a-903b8012110f}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{db2a66a6-f658-450f-add9-bd03a2dcebdb}">
+		<property name="startOffset">
+			<value>18</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{0870c12d-3d04-44bf-8c31-ee54971da3b8}</destination>
 		</relationship>

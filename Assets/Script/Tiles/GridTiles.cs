@@ -145,6 +145,7 @@ public class GridTiles : MonoBehaviour
             timeLineManager.playerAready = true;
         else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
             timeLineManager.playerBready = true;
+        
     }
 
     void Boucle(UI_Actions.PlayerTarget playerTarget)

@@ -151,6 +151,27 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 9afad7ccf2a249b46bb656ac38ecb94f, type: 2}
   tilemeshR: {fileID: 4657526486285527471}
   contourMeshR: {fileID: 1724981042311170806}
+  IceStep:
+    Guid:
+      Data1: -331444926
+      Data2: 1232302920
+      Data3: -1130576473
+      Data4: -207465240
+    Path: event:/Elements/Ice
+  Teleporter:
+    Guid:
+      Data1: 1142467529
+      Data2: 1145991840
+      Data3: -225279563
+      Data4: -2070441910
+    Path: event:/Elements/Teleport
+  Conveyor:
+    Guid:
+      Data1: 273510882
+      Data2: 1338121947
+      Data3: -1609297237
+      Data4: 1097860896
+    Path: event:/Elements/Conveyor Belt
 --- !u!65 &4090391093530551919
 BoxCollider:
   m_ObjectHideFlags: 0
