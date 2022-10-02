@@ -19,7 +19,8 @@ public class GridTiles : MonoBehaviour
         Arc_Electrique,
         Teleporteur,
         Boucle,
-        End_Tile
+        End_Tile,
+        Plaque_De_Pression
     }
 
     public enum Direction
@@ -33,9 +34,12 @@ public class GridTiles : MonoBehaviour
     public TileVariant tileType;
     public bool walkable;
     public bool originalPos;
+
     //public int tapisRoulantDirection;
     public Direction tapisRoulantDirection;
     public Vector2 teleporteurReceptorCoordinates;
+    public Vector2 plaqueDePressionCoordinates;
+    [Range(-2,2)] public int porteHeightChange;
     public Avatar avatar;
     public Material teleporterMat, tapisRoulantMat, glaceMat, loopMat, unwalkableMat, ogPosMatA, ogPosMatB, tileEndMatP1, tileEndMatP2;
     public Material[] walkableMats;
@@ -87,9 +91,40 @@ public class GridTiles : MonoBehaviour
             case TileVariant.End_Tile:
                 End_Tile(playerTarget);
                 break;
+            case TileVariant.Plaque_De_Pression:
+                PlaqueDePression(playerTarget);
+                break;
         }
     }
-    
+
+    public float animSpeed;
+    public AnimationCurve animCurve;
+    IEnumerator elevateBloc(int startY, int endY, Transform porte, UI_Actions.PlayerTarget playerTarget)
+    {
+        float i = 0;
+        while (i < 1)
+        {
+            i += Time.deltaTime * (1 / animSpeed);
+
+            porte.position = new Vector3(porte.position.x, Mathf.Lerp(startY, endY, animCurve.Evaluate(i)), porte.position.z);
+            yield return null;
+        }
+        porte.position = new Vector3(porte.position.x, endY, porte.position.z);
+
+        yield return null;
+
+        if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+            timeLineManager.playerAready = true;
+        else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+            timeLineManager.playerBready = true;
+    }
+
+    void PlaqueDePression(UI_Actions.PlayerTarget playerTarget)
+    {
+        Transform tile = GridGenerator.Instance.grid[Mathf.RoundToInt(plaqueDePressionCoordinates.x), Mathf.RoundToInt(plaqueDePressionCoordinates.y)].transform;
+        StartCoroutine(elevateBloc(Mathf.RoundToInt(tile.position.y), Mathf.RoundToInt(tile.position.y) + porteHeightChange, tile, playerTarget));
+    }
+
     void End_Tile(UI_Actions.PlayerTarget playerTarget)
     {
         if (playerTarget == UI_Actions.PlayerTarget.Avatar_A && avatar == Avatar.Avatar_A)

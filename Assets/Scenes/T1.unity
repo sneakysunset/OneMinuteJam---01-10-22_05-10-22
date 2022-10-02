@@ -931,7 +931,7 @@ MonoBehaviour:
   rows: 5
   columns: 2
   ogPos: {x: 0, y: 0, z: 0}
-  stepHeight: 1
+  stepHeight: 0
   dropHeight: -2
 --- !u!1001 &1391617766
 PrefabInstance:
@@ -1258,7 +1258,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
-  timeLineManager: {fileID: 1294881396}
   rotationAnimCurve:
     serializedVersion: 2
     m_Curve:
@@ -1533,8 +1532,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: f04b29d2d6532ec4abae258d30ab85bc, type: 2}
     - target: {fileID: 6515642462750015349, guid: c7c8d5be31a330f40919a036b99de133, type: 3}
+      propertyPath: tileType
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515642462750015349, guid: c7c8d5be31a330f40919a036b99de133, type: 3}
       propertyPath: walkable
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515642462750015349, guid: c7c8d5be31a330f40919a036b99de133, type: 3}
+      propertyPath: porteHeightChange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515642462750015349, guid: c7c8d5be31a330f40919a036b99de133, type: 3}
+      propertyPath: plaqueDePressionCoordinates.x
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7136639149326520052, guid: c7c8d5be31a330f40919a036b99de133, type: 3}
       propertyPath: m_Name

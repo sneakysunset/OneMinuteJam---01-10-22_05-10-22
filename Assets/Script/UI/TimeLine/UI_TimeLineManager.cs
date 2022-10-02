@@ -17,6 +17,7 @@ public class UI_TimeLineManager : MonoBehaviour
     public bool playin;
     public AnimationCurve InsertAnimationCurve;
     public float insertAnimationLength;
+    
     public GameObject spot;
     public RectTransform spotFolder;
     public enum scenes { };
