@@ -23,7 +23,7 @@ public class MovementManager : MonoBehaviour
         {
             player.position = Vector3.Lerp(startPos, endPos, movementAnimCurve.Evaluate(i));
 
-            i += Time.deltaTime * (1 / timeForMovement);
+            i += Time.deltaTime * (1 / .35f);
             yield return null;
         }
         player.position = endPos;

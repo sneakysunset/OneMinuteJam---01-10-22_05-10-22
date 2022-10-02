@@ -70,12 +70,56 @@ public class RotationManager : MonoBehaviour
         {
             //right
             case true:
-                StartCoroutine(Rotater(90, player,playerTarget));
+                if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+                {
+                    if (timeLineManager.stunnedA)
+                    {
+                        timeLineManager.stunnedB = false;
+
+                        timeLineManager.playerAready = true;
+                        
+                    }
+                    else StartCoroutine(Rotater(-90, player, playerTarget));
+
+                }
+                else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+                {
+                    if (timeLineManager.stunnedB)
+                    {
+                        timeLineManager.stunnedB = false;
+                        timeLineManager.playerBready = true;
+
+                    }
+                    else StartCoroutine(Rotater(-90, player, playerTarget));
+                }
+
                 break;
 
             //left
             case false:
-                StartCoroutine(Rotater(-90, player, playerTarget));
+                if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+                {
+                    if (timeLineManager.stunnedA)
+                    {
+                        timeLineManager.stunnedB = false;
+
+                        timeLineManager.playerAready = true;
+
+                    }
+                    else StartCoroutine(Rotater(-90, player, playerTarget));
+                }
+                else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+                {
+                    if (timeLineManager.stunnedB)
+                    {
+                        timeLineManager.stunnedB = false;
+                        timeLineManager.playerBready = true;
+
+                    }
+                    else StartCoroutine(Rotater(-90, player, playerTarget));
+                }
+             
+                
                 break;
         }
 
@@ -96,12 +140,55 @@ public class RotationManager : MonoBehaviour
                 {
                     //right
                     case true:
-                        StartCoroutine(Rotater(90, player, playerTarget));
+                        if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+                        {
+                            if (timeLineManager.stunnedA)
+                            {
+                                timeLineManager.stunnedB = false;
+
+                                timeLineManager.playerAready = true;
+
+                            }
+                            else StartCoroutine(Rotater(-90, player, playerTarget));
+
+                        }
+                        else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+                        {
+                            if (timeLineManager.stunnedB)
+                            {
+                                timeLineManager.stunnedB = false;
+                                timeLineManager.playerBready = true;
+
+                            }
+                            else StartCoroutine(Rotater(-90, player, playerTarget));
+                        }
+
                         break;
 
                     //left
                     case false:
-                        StartCoroutine(Rotater(-90, player, playerTarget));
+                        if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+                        {
+                            if (timeLineManager.stunnedA)
+                            {
+                                timeLineManager.stunnedB = false;
+
+                                timeLineManager.playerAready = true;
+
+                            }
+                            else StartCoroutine(Rotater(-90, player, playerTarget));
+
+                        }
+                        else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+                        {
+                            if (timeLineManager.stunnedB)
+                            {
+                                timeLineManager.stunnedB = false;
+                                timeLineManager.playerBready = true;
+
+                            }
+                            else StartCoroutine(Rotater(-90, player, playerTarget));
+                        }
                         break;
                 }
             }

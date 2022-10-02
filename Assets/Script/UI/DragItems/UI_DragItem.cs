@@ -9,6 +9,7 @@ public class UI_DragItem : MonoBehaviour
 {
     public UI_Actions.Action actionType;
     public UI_Actions.PlayerTarget playerTarget;
+    public Image RootI, ChildI;
 
     public RectTransform rectTransform;
     UI_ActionManager actionManager;
@@ -16,6 +17,8 @@ public class UI_DragItem : MonoBehaviour
     public GameObject Timeline_Item;
     UI_TimeLineManager timeLineManager;
     Scroller canvas;
+    public float yOffSet;
+    public Sprite forwardRootI, forwardChildI, RotateRightRootI, RotateRightChildI, RotateLeftRootI, RotateLeftChildI;
     private void Start()
     {
         actionManager = FindObjectOfType<UI_ActionManager>();
@@ -32,7 +35,7 @@ public class UI_DragItem : MonoBehaviour
             {
                 anchored = true;
                 Vector3 anchPos = actionManager.currentHoveredItem.rectTransform.anchoredPosition;
-                rectTransform.anchoredPosition = new Vector3(anchPos.x + canvas.scrollDataTimeline, anchPos.y, anchPos.z);
+                rectTransform.anchoredPosition = new Vector3(anchPos.x + canvas.scrollDataTimeline, anchPos.y + yOffSet, anchPos.z);
             }
             else if (!actionManager.hovering)
             {
@@ -60,24 +63,48 @@ public class UI_DragItem : MonoBehaviour
             Timeline_Item item = timelineItem.GetComponent<Timeline_Item>();
             item.actionType = actionType;
             item.playerTarget = playerTarget;
-            timelineItem.GetComponentInChildren<TextMeshProUGUI>().text = actionType.ToString();
+            //timelineItem.GetComponentInChildren<TextMeshProUGUI>().text = actionType.ToString();
+
+            switch (item.actionType)
+            {
+                case UI_Actions.Action.MoveForward:
+                    item.rootImage.sprite = forwardRootI;
+                    item.childImage.sprite = forwardChildI;
+                    item.highlight.sprite = forwardChildI;
+                    break;
+
+                case UI_Actions.Action.RotateLeft:
+                    item.rootImage.sprite = RotateLeftRootI;
+                    item.childImage.sprite = RotateLeftChildI;
+                    item.highlight.sprite = RotateLeftChildI;
+                    break;
+
+                case UI_Actions.Action.RotateRight:
+                    item.rootImage.sprite = RotateRightRootI;
+                    item.childImage.sprite = RotateRightChildI;
+                    item.highlight.sprite = RotateRightChildI;
+                    break;
+            }
 
             switch (playerTarget)
             {
                 case UI_Actions.PlayerTarget.Avatar_A:
-                    timelineItem.GetComponentInChildren<Image>().color = actionManager.colorAvatarA;
+                    item.childImage.color = actionManager.colorAvatarA;
+                    item.highlight.color = actionManager.colorAvatarA;
                     break;
 
                 case UI_Actions.PlayerTarget.Avatar_B:
-                    timelineItem.transform.GetComponentInChildren<Image>().color = actionManager.colorAvatarB;
+                    item.childImage.color = actionManager.colorAvatarB;
+                    item.highlight.color = actionManager.colorAvatarB;
                     break;
 
                 case UI_Actions.PlayerTarget.Both:
-                    timelineItem.transform.GetComponentInChildren<Image>().color = actionManager.colorBoth;
+                    item.childImage.color = actionManager.colorBoth;
+                    item.highlight.color = actionManager.colorBoth;
                     break;
 
             }
-            timelineItem.anchoredPosition = rectTransform.anchoredPosition;
+            timelineItem.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - yOffSet);
             timeLineManager.InsertAction(actionManager.currentHoveredItem, timelineItem.GetComponent<Timeline_Item>());
             RuntimeManager.PlayOneShot("event:/Game/Programming phase/UI_Drop");
             Destroy(this.gameObject);

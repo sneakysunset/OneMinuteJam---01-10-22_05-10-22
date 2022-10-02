@@ -56,10 +56,10 @@ public class GridTiles : MonoBehaviour
     //public GameObject Highlight;
     private void OnDrawGizmos()
     {
-        if (!isRuntime && gizmoFlag)
+            MoveTileOnGizmo();
+        if (!isRuntime)
         {
             MaterialsInGizmo();
-            MoveTileOnGizmo();
             gizmoFlag = false;
         }
     }
@@ -261,7 +261,7 @@ public class GridTiles : MonoBehaviour
             {
                 case TileVariant.Tile:
                     tilemeshR.sharedMaterial = walkableMats[0];
-                    break;
+                        break;
                 case TileVariant.Tapis_Roulant:
                     tilemeshR.sharedMaterial = tapisRoulantMat;
                     switch (tapisRoulantDirection)
@@ -287,7 +287,7 @@ public class GridTiles : MonoBehaviour
                 case TileVariant.Teleporteur:
                     int rd = Random.Range(0, 3);
                     tilemeshR.sharedMaterial = walkableMats[rd];
-                    SpawnItem("Teleporteur", teleporteur);
+                    //SpawnItem("Teleporteur", teleporteur);
 
                     break;
                 case TileVariant.Boucle:
@@ -305,11 +305,11 @@ public class GridTiles : MonoBehaviour
                     }
                     break;
                 case TileVariant.Plaque_De_Pression:
-                    SpawnItem("plaque de pression", pressurePlate);
+                    //SpawnItem("plaque de pression", pressurePlate);
 
                     break;
                 case TileVariant.Arc_Electrique:
-                    SpawnItem("arcElectrique", arcElectrique);
+                    //SpawnItem("arcElectrique", arcElectrique);
                     break;
             }
             
@@ -320,45 +320,82 @@ public class GridTiles : MonoBehaviour
         }
     }
 
-    void SpawnItem(string childName, GameObject objectToInst)
+    void MaterialsInPlayMod()
     {
-        if(objectFolder.childCount == 0)
+        if (walkable && !originalPos && (tilemeshR.sharedMaterial != ogPosMatA || tilemeshR.sharedMaterial != walkableMats[0]))
         {
-            GameObject inst = Instantiate(objectToInst, objectFolder);
-            inst.name = childName;
-        }
-        else if(objectFolder.childCount == 1)
-        {
-            if (objectFolder.GetChild(0).name != childName)
+            switch (tileType)
             {
-                DestroyImmediate(objectFolder.GetChild(0).gameObject);
-                GameObject inst = Instantiate(objectToInst, objectFolder);
-                inst.name = childName;
+                case TileVariant.Tile:
+                    int rd = Random.Range(0, 3);
+                    tilemeshR.material = walkableMats[rd];
+
+                    break;
+                case TileVariant.Tapis_Roulant:
+                    tilemeshR.material = tapisRoulantMat;
+
+                    switch (tapisRoulantDirection)
+                    {
+                        case Direction.Up:
+                            tilemeshR.transform.rotation = Quaternion.Euler(0, 90, 0);
+                            break;
+                        case Direction.Down:
+                            tilemeshR.transform.rotation = Quaternion.Euler(0, -90, 0);
+                            break;
+                        case Direction.Left:
+                            tilemeshR.transform.rotation = Quaternion.Euler(0, 0, 0);
+                            break;
+                        case Direction.Right:
+                            tilemeshR.transform.rotation = Quaternion.Euler(0, 180, 0);
+                            break;
+
+                    }
+
+                    break;
+                case TileVariant.Glace:
+                    tilemeshR.material = glaceMat;
+
+                    break;
+                case TileVariant.Teleporteur:
+                    int rd2 = Random.Range(0, 3);
+                    tilemeshR.material = walkableMats[rd2];
+                    SpawnItem("Teleporteur", teleporteur);
+                    break;
+                case TileVariant.Boucle:
+                    tilemeshR.material = loopMat;
+
+                    break;
+                case TileVariant.End_Tile:
+                    switch (avatar)
+                    {
+                        case Avatar.Avatar_A:
+                            tilemeshR.material = tileEndMatP1;
+                            break;
+                        case Avatar.Avatar_B:
+                            tilemeshR.material = tileEndMatP2;
+                            break;
+                    }
+
+                    break;
+                case TileVariant.Plaque_De_Pression:
+                    SpawnItem("plaque de pression", pressurePlate);
+
+                    break;
+                case TileVariant.Arc_Electrique:
+                    SpawnItem("arcElectrique", arcElectrique);
+                    break;
             }
-        }
-        else
-        {
-            print(objectFolder.childCount);
-            Transform[] children = objectFolder.GetComponentsInChildren<Transform>();
-            bool mybool = false;
-            foreach(Transform child in children)
-            {
-                if(child.name != childName)
-                {
-                    DestroyImmediate(child.gameObject);
-                }
-                else
-                {
-                    mybool = true;
-                }
-            }
-            if (!mybool)
-            {
-                GameObject inst = Instantiate(objectToInst, objectFolder);
-                inst.name = childName;
-            }
+
         }
     }
+
+    void SpawnItem(string childName, GameObject objectToInst)
+    {
+            GameObject inst = Instantiate(objectToInst, objectFolder);
+            inst.name = childName;
+    }
+
+
     private void Start()
     {
         originalY = transform.position.y;
@@ -374,12 +411,12 @@ public class GridTiles : MonoBehaviour
             tilemeshR.material = walkableMats[rdMatIndex];
         }
 
-        if(walkable && tileType == TileVariant.Tile)
-        {
-            int rdMatIndex = Random.Range(0, walkableMats.Length - 1);
-            tilemeshR.material = walkableMats[rdMatIndex];
-        }
-
+        /*        if(walkable && tileType == TileVariant.Tile)
+                {
+                    int rdMatIndex = Random.Range(0, walkableMats.Length - 1);
+                    tilemeshR.material = walkableMats[rdMatIndex];
+                }*/
+        MaterialsInPlayMod();
         if(tileType == TileVariant.Plaque_De_Pression) 
         {
             GridGenerator.Instance.grid[Mathf.RoundToInt(plaqueDePressionCoordinates.x), Mathf.RoundToInt(plaqueDePressionCoordinates.y)].tilemeshR.sharedMaterial = tilePorteMat;

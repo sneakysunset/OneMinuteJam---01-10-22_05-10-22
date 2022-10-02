@@ -10,6 +10,7 @@ public class Timeline_Item : MonoBehaviour
     ActionEventsCaller actionEventCaller;
     public Image highlight;
     public UI_TimeLineManager timeLineManager;
+    public Image rootImage, childImage, highlighter;
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
