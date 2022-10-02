@@ -36,6 +36,8 @@ public class UI_TimeLineManager : MonoBehaviour
         LaunchTimeline();
     }
 
+    bool flag;
+
     private void Update()
     {
         if(playerAready && playerBready)
@@ -45,8 +47,9 @@ public class UI_TimeLineManager : MonoBehaviour
             StartCoroutine(timerForNextAction());
         }
 
-        if(endA && endB)
+        if(endA && endB && !flag)
         {
+            flag = false;
             print("Success");
         }
     }
