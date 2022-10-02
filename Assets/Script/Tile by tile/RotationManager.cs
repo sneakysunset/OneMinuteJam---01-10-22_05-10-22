@@ -74,12 +74,12 @@ public class RotationManager : MonoBehaviour
                 {
                     if (timeLineManager.stunnedA)
                     {
-                        timeLineManager.stunnedB = false;
+                        timeLineManager.stunnedA = false;
 
                         timeLineManager.playerAready = true;
                         
                     }
-                    else StartCoroutine(Rotater(-90, player, playerTarget));
+                    else StartCoroutine(Rotater(90, player, playerTarget));
 
                 }
                 else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
@@ -106,7 +106,7 @@ public class RotationManager : MonoBehaviour
                         timeLineManager.playerAready = true;
 
                     }
-                    else StartCoroutine(Rotater(-90, player, playerTarget));
+                    else StartCoroutine(Rotater(90, player, playerTarget));
                 }
                 else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
                 {
@@ -160,7 +160,7 @@ public class RotationManager : MonoBehaviour
                                 timeLineManager.playerBready = true;
 
                             }
-                            else StartCoroutine(Rotater(-90, player, playerTarget));
+                            else StartCoroutine(Rotater(90, player, playerTarget));
                         }
 
                         break;
@@ -187,7 +187,7 @@ public class RotationManager : MonoBehaviour
                                 timeLineManager.playerBready = true;
 
                             }
-                            else StartCoroutine(Rotater(-90, player, playerTarget));
+                            else StartCoroutine(Rotater(90, player, playerTarget));
                         }
                         break;
                 }

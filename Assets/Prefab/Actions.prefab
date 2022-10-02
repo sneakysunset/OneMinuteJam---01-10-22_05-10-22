@@ -926,8 +926,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragItemPref: {fileID: 6033963910818068341, guid: 660ea1264a854264da2e41d6de6987ed, type: 3}
-  blue: {r: 0.2901961, g: 0.83137256, b: 1, a: 0}
-  red: {r: 1, g: 0.7137255, b: 0.16862746, a: 0}
+  blue: {r: 0.2901961, g: 0.83137256, b: 1, a: 1}
+  red: {r: 1, g: 0.7137255, b: 0.16862746, a: 1}
   forwardArrow: {fileID: 21300000, guid: b59a34b785df67c4cb6c1e5f3ea68fe8, type: 3}
   rotateRightArrow: {fileID: 21300000, guid: b887fde5e7d836e4c9e1fb9a06572c95, type: 3}
   rotateLeftArrow: {fileID: 21300000, guid: dd2fc683a80e3084bad5561e308bcd0d, type: 3}

@@ -41,6 +41,7 @@ public class GridTiles : MonoBehaviour
     public Direction tapisRoulantDirection;
     public Vector2 teleporteurReceptorCoordinates;
     public Vector2 plaqueDePressionCoordinates;
+    [HideInInspector] float originalDoorPosition;
     [Range(-2,2)] public int porteHeightChange;
     public Avatar avatar;
     public Material teleporterMat, tapisRoulantMat, glaceMat, loopMat, unwalkableMat, ogPosMatA, ogPosMatB, tileEndMatP1, tileEndMatP2, tilePlaqueDePressionMat, tilePorteMat;
