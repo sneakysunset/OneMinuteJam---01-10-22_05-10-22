@@ -81,6 +81,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1079
+--- !u!114 &-7434687503295692120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Electricity/Loudness
+  m_EditorClassIdentifier: 
+  Name: Loudness
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-7329597571220093611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,14 +179,14 @@ MonoBehaviour:
     Data4: 1136230562
   Banks:
   - {fileID: 3886564929098886494}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters:
-  - {fileID: 5463965299096651886}
+  - {fileID: -5473754108078797000}
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 112941
 --- !u!114 &-5832671834739281270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +214,30 @@ MonoBehaviour:
   - Simulation
   - Menu
   Exists: 0
+--- !u!114 &-5473754108078797000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/GameState
+  m_EditorClassIdentifier: 
+  Name: GameState
+  StudioPath: 
+  Min: 0
+  Max: 3
+  Default: 3
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-4502317301305531347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,6 +502,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 731
+--- !u!114 &-407916798175653360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/GameState
+  m_EditorClassIdentifier: 
+  Name: GameState
+  StudioPath: 
+  Min: 0
+  Max: 3
+  Default: 3
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 0
 --- !u!114 &-396266491587097109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,12 +541,12 @@ MonoBehaviour:
   Name: GameState
   StudioPath: parameter:/GameState
   Min: 0
-  Max: 2
-  Default: 0
+  Max: 3
+  Default: 3
   ID:
     data1: 2409464242
     data2: 1643128077
-  Type: 2
+  Type: 0
   IsGlobal: 1
   Labels:
   - Programming
@@ -529,7 +601,7 @@ MonoBehaviour:
   - {fileID: 3886564929098886494}
   StringsBanks:
   - {fileID: 8336488306140637473}
-  cacheTime: 638003425504671863
+  cacheTime: 638003545749081865
   cacheVersion: 9
 --- !u!114 &16024386499870681
 MonoBehaviour:
@@ -657,7 +729,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 8575145267336363087}
+  - {fileID: -7434687503295692120}
   MinDistance: 1
   MaxDistance: 20
   Length: 6000
@@ -811,10 +883,10 @@ MonoBehaviour:
   Path: Fmod Project/Pocket jam/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638003425504621882
+  lastModified: 638003545749001882
   FileSizes:
   - Name: Desktop
-    Value: 498304
+    Value: 3690368
   Exists: 1
 --- !u!114 &4163035708483415098
 MonoBehaviour:
@@ -945,6 +1017,30 @@ MonoBehaviour:
   - Simulation
   - Menu
   Exists: 1
+--- !u!114 &6258247351393294131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Electricity/Loudness
+  m_EditorClassIdentifier: 
+  Name: Loudness
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 0
 --- !u!114 &6546496791095604545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,7 +1188,7 @@ MonoBehaviour:
   Path: Fmod Project/Pocket jam/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638003425504671863
+  lastModified: 638003545749081865
   FileSizes:
   - Name: Desktop
     Value: 2030

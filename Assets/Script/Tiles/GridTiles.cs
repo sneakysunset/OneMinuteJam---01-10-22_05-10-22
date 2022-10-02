@@ -187,6 +187,7 @@ public class GridTiles : MonoBehaviour
             timeLineManager.playerBready = true;
             timeLineManager.stunnedB = true;
         }
+        RuntimeManager.PlayOneShot("event:/Avatar/Electrocution");
     }
 
     void Teleporteur(UI_Actions.PlayerTarget playerTarget)
