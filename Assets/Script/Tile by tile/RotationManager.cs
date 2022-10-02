@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class RotationManager : MonoBehaviour
 {
@@ -43,6 +44,8 @@ public class RotationManager : MonoBehaviour
             timeLineManager.playerAready = true;
         else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
             timeLineManager.playerBready = true;
+
+        RuntimeManager.PlayOneShot("event:/Avatar/Blue/Turn");
     }
 
 

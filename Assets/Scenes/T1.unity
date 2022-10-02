@@ -1344,6 +1344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
+  timeLineManager: {fileID: 1294881396}
   rotationAnimCurve:
     serializedVersion: 2
     m_Curve:
