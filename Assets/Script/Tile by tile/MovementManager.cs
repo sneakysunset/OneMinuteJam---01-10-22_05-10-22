@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class MovementManager : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class MovementManager : MonoBehaviour
 
     IEnumerator leavePlaque(int startY, int endY, Transform porte, UI_Actions.PlayerTarget playerTarget, GridTiles previousTile, Transform player, Vector3 startPos)
     {
+        RuntimeManager.PlayOneShot("event:/Elements/Pressure plate leave");
         float i = 0;
         while (i < 1)
         {
@@ -58,5 +60,6 @@ public class MovementManager : MonoBehaviour
 
         yield return null;
         GridGenerator.Instance.grid[Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z)].TileEffect(playerTarget, startPos);
+
     }
 }

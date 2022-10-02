@@ -123,6 +123,7 @@ public class GridTiles : MonoBehaviour
 
     void PlaqueDePression(UI_Actions.PlayerTarget playerTarget)
     {
+        RuntimeManager.PlayOneShot("event:/Elements/Pressure plate press");
         Transform tile = GridGenerator.Instance.grid[Mathf.RoundToInt(plaqueDePressionCoordinates.x), Mathf.RoundToInt(plaqueDePressionCoordinates.y)].transform;
         StartCoroutine(elevateBloc(Mathf.RoundToInt(tile.position.y), Mathf.RoundToInt(tile.position.y) + porteHeightChange, tile, playerTarget));
     }
