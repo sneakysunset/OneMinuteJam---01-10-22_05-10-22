@@ -50,15 +50,17 @@ public class GridTiles : MonoBehaviour
     MovementEvents movementEvents;
     Transform Player;
     bool isRuntime = false;
+    public bool gizmoFlag;
     //public int step;
     //public bool highlight;
     //public GameObject Highlight;
     private void OnDrawGizmos()
     {
-        if (!isRuntime)
+        if (!isRuntime && gizmoFlag)
         {
             MaterialsInGizmo();
             MoveTileOnGizmo();
+            gizmoFlag = false;
         }
     }
 
@@ -227,7 +229,9 @@ public class GridTiles : MonoBehaviour
         }
     }
 
+    public Transform objectFolder;
 
+    public GameObject pressurePlate, arcElectrique, teleporteur;
     void MaterialsInGizmo()
     {
         if (originalPos && tilemeshR.sharedMaterial != ogPosMatA)
@@ -275,7 +279,8 @@ public class GridTiles : MonoBehaviour
                     tilemeshR.sharedMaterial = glaceMat;
                     break;
                 case TileVariant.Teleporteur:
-                    tilemeshR.sharedMaterial = teleporterMat;
+                    SpawnItem("Teleporteur", teleporteur);
+
                     break;
                 case TileVariant.Boucle:
                     tilemeshR.sharedMaterial = loopMat;
@@ -292,7 +297,11 @@ public class GridTiles : MonoBehaviour
                     }
                     break;
                 case TileVariant.Plaque_De_Pression:
-                    tilemeshR.sharedMaterial = tilePlaqueDePressionMat;
+                    SpawnItem("plaque de pression", pressurePlate);
+
+                    break;
+                case TileVariant.Arc_Electrique:
+                    SpawnItem("arcElectrique", arcElectrique);
                     break;
             }
             
@@ -303,6 +312,45 @@ public class GridTiles : MonoBehaviour
         }
     }
 
+    void SpawnItem(string childName, GameObject objectToInst)
+    {
+        if(objectFolder.childCount == 0)
+        {
+            GameObject inst = Instantiate(objectToInst, objectFolder);
+            inst.name = childName;
+        }
+        else if(objectFolder.childCount == 1)
+        {
+            if (objectFolder.GetChild(0).name != childName)
+            {
+                DestroyImmediate(objectFolder.GetChild(0).gameObject);
+                GameObject inst = Instantiate(objectToInst, objectFolder);
+                inst.name = childName;
+            }
+        }
+        else
+        {
+            print(objectFolder.childCount);
+            Transform[] children = objectFolder.GetComponentsInChildren<Transform>();
+            bool mybool = false;
+            foreach(Transform child in children)
+            {
+                if(child.name != childName)
+                {
+                    DestroyImmediate(child.gameObject);
+                }
+                else
+                {
+                    mybool = true;
+                }
+            }
+            if (!mybool)
+            {
+                GameObject inst = Instantiate(objectToInst, objectFolder);
+                inst.name = childName;
+            }
+        }
+    }
     private void Start()
     {
         originalY = transform.position.y;
