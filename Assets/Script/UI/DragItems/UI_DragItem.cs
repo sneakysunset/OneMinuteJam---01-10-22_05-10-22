@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using FMODUnity;
+
 public class UI_DragItem : MonoBehaviour
 {
     public UI_Actions.Action actionType;
@@ -17,6 +19,7 @@ public class UI_DragItem : MonoBehaviour
     {
         actionManager = FindObjectOfType<UI_ActionManager>();
         timeLineManager = FindObjectOfType<UI_TimeLineManager>();
+        RuntimeManager.PlayOneShot("event:/Game/Programming phase/UI_Pick");
     }
 
     private void Update()
@@ -45,6 +48,7 @@ public class UI_DragItem : MonoBehaviour
         }
         else if(!anchored)
         {
+            RuntimeManager.PlayOneShot("event:/Game/Programming phase/UI_Drop");
             Destroy(this.gameObject);
         }
         else if (anchored)
@@ -72,6 +76,7 @@ public class UI_DragItem : MonoBehaviour
             }
             timelineItem.anchoredPosition = rectTransform.anchoredPosition;
             timeLineManager.InsertAction(actionManager.currentHoveredItem, timelineItem.GetComponent<Timeline_Item>());
+            RuntimeManager.PlayOneShot("event:/Game/Programming phase/UI_Drop");
             Destroy(this.gameObject);
         }
     }
