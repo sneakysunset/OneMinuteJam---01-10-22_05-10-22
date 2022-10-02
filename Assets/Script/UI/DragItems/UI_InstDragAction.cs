@@ -19,6 +19,11 @@ public class UI_InstDragAction : MonoBehaviour
         pos.y -= (Screen.height / 2);
         UI_DragItem dragItem = Instantiate(dragItemPref, pos, Quaternion.identity, GameObject.FindGameObjectWithTag("DragItemFolder").transform).GetComponent<UI_DragItem>();
         dragItem.dragged = true;
+        if (actionManager.currentDraggedItem != null)
+        {
+            Destroy(actionManager.currentDraggedItem.gameObject);
+        }
+        actionManager.currentDraggedItem = dragItem;
         dragItem.name = "DragItem - " + typeOfAction.ToString();
         dragItem.transform.GetComponentInChildren<TextMeshProUGUI>().text = typeOfAction.ToString();
         switch (playerTarget)
