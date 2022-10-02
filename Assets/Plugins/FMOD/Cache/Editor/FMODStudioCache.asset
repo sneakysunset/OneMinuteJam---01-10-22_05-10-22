@@ -27,6 +27,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-8621795278275755547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Game/Programming phase/UI_Pick
+  m_EditorClassIdentifier: 
+  Path: event:/Game/Programming phase/UI_Pick
+  Guid:
+    Data1: 850232712
+    Data2: 1217273907
+    Data3: -494161491
+    Data4: 1758437564
+  Banks:
+  - {fileID: 3886564929098886494}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 772
+--- !u!114 &-8063060748547271733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Game/Programming phase/Clear Button
+  m_EditorClassIdentifier: 
+  Path: event:/Game/Programming phase/Clear Button
+  Guid:
+    Data1: 164044381
+    Data2: 1284261140
+    Data3: -1527484488
+    Data4: -337979744
+  Banks:
+  - {fileID: 3886564929098886494}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1079
 --- !u!114 &-7329597571220093611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,7 +159,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 8004692164339199258}
+  - {fileID: 5463965299096651886}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
@@ -136,6 +190,33 @@ MonoBehaviour:
   - Simulation
   - Menu
   Exists: 0
+--- !u!114 &-4502317301305531347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Game/Simulation Phase/Bot Finish
+  m_EditorClassIdentifier: 
+  Path: event:/Game/Simulation Phase/Bot Finish
+  Guid:
+    Data1: -1893410130
+    Data2: 1131617105
+    Data3: -331456353
+    Data4: -413372261
+  Banks:
+  - {fileID: 3886564929098886494}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4458
 --- !u!114 &-4027520667814284529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +241,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
+--- !u!114 &-3986781307700487916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Game/Programming phase/UI_Drop
+  m_EditorClassIdentifier: 
+  Path: event:/Game/Programming phase/UI_Drop
+  Guid:
+    Data1: 1622052291
+    Data2: 1120451279
+    Data3: -94191999
+    Data4: -58750846
+  Banks:
+  - {fileID: 3886564929098886494}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 818
 --- !u!114 &-2272118563683630964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +322,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-1448511538684342686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Game/Programming phase/Play Button
+  m_EditorClassIdentifier: 
+  Path: event:/Game/Programming phase/Play Button
+  Guid:
+    Data1: 1430706046
+    Data2: 1294055205
+    Data3: -821152094
+    Data4: -1949927087
+  Banks:
+  - {fileID: 3886564929098886494}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1033
 --- !u!114 &-1169803768176075487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +403,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1317
+--- !u!114 &-942290307217625146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Electricity/Loudness
+  m_EditorClassIdentifier: 
+  Name: Loudness
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-607323786812983293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,14 +516,72 @@ MonoBehaviour:
   - {fileID: 6546496791095604545}
   - {fileID: 2089647789971255541}
   - {fileID: -607323786812983293}
+  - {fileID: -8063060748547271733}
+  - {fileID: -1448511538684342686}
+  - {fileID: -8621795278275755547}
+  - {fileID: -4502317301305531347}
+  - {fileID: 5390971074169717417}
+  - {fileID: 1217227715941396756}
+  - {fileID: -3986781307700487916}
   EditorParameters:
   - {fileID: -396266491587097109}
   MasterBanks:
   - {fileID: 3886564929098886494}
   StringsBanks:
   - {fileID: 8336488306140637473}
-  cacheTime: 638003332570985805
+  cacheTime: 638003425504671863
   cacheVersion: 9
+--- !u!114 &16024386499870681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Electricity/Loudness
+  m_EditorClassIdentifier: 
+  Name: Loudness
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 0
+--- !u!114 &1217227715941396756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Game/Simulation Phase/Win
+  m_EditorClassIdentifier: 
+  Path: event:/Game/Simulation Phase/Win
+  Guid:
+    Data1: 1365488321
+    Data2: 1258410510
+    Data3: -1377035350
+    Data4: -447055615
+  Banks:
+  - {fileID: 3886564929098886494}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5648
 --- !u!114 &1958585829063059684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,7 +657,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 7554144096924890801}
+  - {fileID: 8575145267336363087}
   MinDistance: 1
   MaxDistance: 20
   Length: 6000
@@ -594,10 +811,10 @@ MonoBehaviour:
   Path: Fmod Project/Pocket jam/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638003332570985805
+  lastModified: 638003425504621882
   FileSizes:
   - Name: Desktop
-    Value: 328800
+    Value: 498304
   Exists: 1
 --- !u!114 &4163035708483415098
 MonoBehaviour:
@@ -674,6 +891,60 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
+--- !u!114 &5390971074169717417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Game/Programming phase/Reset Button
+  m_EditorClassIdentifier: 
+  Path: event:/Game/Programming phase/Reset Button
+  Guid:
+    Data1: -1509317952
+    Data2: 1102304720
+    Data3: 500484760
+    Data4: 849425335
+  Banks:
+  - {fileID: 3886564929098886494}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1381
+--- !u!114 &5463965299096651886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/GameState
+  m_EditorClassIdentifier: 
+  Name: GameState
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Programming
+  - Simulation
+  - Menu
+  Exists: 1
 --- !u!114 &6546496791095604545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,6 +1023,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &7887687844829362775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/GameState
+  m_EditorClassIdentifier: 
+  Name: GameState
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Programming
+  - Simulation
+  - Menu
+  Exists: 1
 --- !u!114 &8004692164339199258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,10 +1092,10 @@ MonoBehaviour:
   Path: Fmod Project/Pocket jam/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638003332570985805
+  lastModified: 638003425504671863
   FileSizes:
   - Name: Desktop
-    Value: 1718
+    Value: 2030
   Exists: 1
 --- !u!114 &8488927710628459947
 MonoBehaviour:
@@ -826,6 +1124,30 @@ MonoBehaviour:
   - Simulation
   - Menu
   Exists: 0
+--- !u!114 &8575145267336363087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Electricity/Loudness
+  m_EditorClassIdentifier: 
+  Name: Loudness
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &8802209354441719321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -853,6 +1175,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &9002928238144624457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/GameState
+  m_EditorClassIdentifier: 
+  Name: GameState
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Programming
+  - Simulation
+  - Menu
+  Exists: 0
 --- !u!114 &9054666679238640956
 MonoBehaviour:
   m_ObjectHideFlags: 0

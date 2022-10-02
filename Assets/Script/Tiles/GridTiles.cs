@@ -133,9 +133,15 @@ public class GridTiles : MonoBehaviour
     void End_Tile(UI_Actions.PlayerTarget playerTarget)
     {
         if (playerTarget == UI_Actions.PlayerTarget.Avatar_A && avatar == Avatar.Avatar_A)
+        {
             timeLineManager.endA = true;
+            RuntimeManager.PlayOneShot("event:/Game/Simulation Phase/Bot Finish");
+        }
         else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B && avatar == Avatar.Avatar_B)
+        {
             timeLineManager.endB = true;
+            RuntimeManager.PlayOneShot("event:/Game/Simulation Phase/Bot Finish");
+        }
 
         if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
             timeLineManager.playerAready = true;
