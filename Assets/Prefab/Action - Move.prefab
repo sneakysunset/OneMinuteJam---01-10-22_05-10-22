@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 4226469020985954768}
   - component: {fileID: 8290371460635565774}
   - component: {fileID: 5235791349518958008}
+  - component: {fileID: 1308694473116108756}
   m_Layer: 5
   m_Name: Action - Move
   m_TagString: Untagged
@@ -175,7 +176,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -276, y: -180}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 205, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4468891397932349063
 MonoBehaviour:
@@ -271,3 +272,15 @@ MonoBehaviour:
   OnActionClickEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1308694473116108756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246388943874215222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e22ebd505581b4fa28284a12b12cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -22,10 +22,13 @@ public class TimeLineHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             actionManager.currentHoveredItem = this;
             actionManager.hovering = true;
         }
+        actionManager.hover = true;
     }
 
     public void OnPointerExit(PointerEventData pointerEventData)
     {
         actionManager.hovering = false;
+        actionManager.hover = false;
+
     }
 }

@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class CameraBehavior : MonoBehaviour
 {
-    public Transform target;
+    //public Transform target;
     public float damp;
     private Vector3 velocity = Vector3.zero;
-    private void LateUpdate()
+
+
+    private void Start()
     {
-        transform.position = Vector3.SmoothDamp(transform.position, target.position, ref velocity, damp);
+        float xPos = (float)(GridGenerator.Instance.rows - 1) / 2f;
+        float yPos = ((float)(GridGenerator.Instance.rows - 1) + (float)(GridGenerator.Instance.rows - 1));
+        float zPos = (float)(GridGenerator.Instance.columns - 1) / 2f;
+        transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
     }
+
 }

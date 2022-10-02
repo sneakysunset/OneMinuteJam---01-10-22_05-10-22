@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class RotationManager : MonoBehaviour
 {
-
+    public float timer;
     Transform player = null;
     Transform playerA;
     Transform playerB;
     GridTiles[,] grid;
-    public UI_TimeLineManager timeLineManager;
+    UI_TimeLineManager timeLineManager;
     public AnimationCurve rotationAnimCurve;
     public float timeForRotation;
 
@@ -17,7 +17,7 @@ public class RotationManager : MonoBehaviour
     {
         playerA = GridGenerator.Instance.player_A;
         playerB = GridGenerator.Instance.player_B;
-
+        timeLineManager = FindObjectOfType<UI_TimeLineManager>();
         grid = GridGenerator.Instance.grid;
     }
 
@@ -38,7 +38,7 @@ public class RotationManager : MonoBehaviour
         player.rotation = endRot;
 
 
-        yield return new WaitForSeconds(1);
+        yield return null;
         if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
             timeLineManager.playerAready = true;
         else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
