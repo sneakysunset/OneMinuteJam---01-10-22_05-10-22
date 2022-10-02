@@ -15,4 +15,6 @@ public class UI_Actions : MonoBehaviour
 
     public PlayerTarget Avatar;
     public Action actionType;
+
+    public Image rootImage, childImage;
 }

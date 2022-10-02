@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+
 
 [System.Serializable]
 public struct action
@@ -21,6 +21,7 @@ public class UI_ActionManager : MonoBehaviour
     public float xLeftMostPos;
     public bool SetUpActions;
 
+    public Sprite forwardRootI, forwardChildI, RotateLeftRootI, RotateLeftChildI, RotateRightRootI, RotateRightChildI;
     public UI_DragItem currentDraggedItem;
     public TimeLineHover currentHoveredItem;
     public bool dragging, hovering, hover, hoverAction;
@@ -48,20 +49,38 @@ public class UI_ActionManager : MonoBehaviour
             actions[i].actionType = actionss[i].actionType;
             actions[i].Avatar = actionss[i].playerTarget;
             actions[i].name = "Action - " + actions[i].actionType.ToString();
-            actions[i].transform.GetComponentInChildren<TextMeshProUGUI>().text = actions[i].actionType.ToString();
+            switch (actions[i].actionType)
+            {
+                case UI_Actions.Action.MoveForward:
+                    actions[i].rootImage.sprite = forwardRootI;
+                    actions[i].childImage.sprite = forwardChildI;     
+                    break;
+
+                case UI_Actions.Action.RotateLeft:
+                    actions[i].rootImage.sprite = RotateLeftRootI;
+                    actions[i].childImage.sprite = RotateLeftChildI;
+                    break;
+
+                case UI_Actions.Action.RotateRight:
+                    actions[i].rootImage.sprite = RotateRightRootI;
+                    actions[i].childImage.sprite = RotateRightChildI;
+                    break;
+            }
+
+            //actions[i].transform.GetComponentInChildren<TextMeshProUGUI>().text = actions[i].actionType.ToString();
 
             switch (actions[i].Avatar)
             {
                 case UI_Actions.PlayerTarget.Avatar_A:
-                    actions[i].transform.GetComponentInChildren<Image>().color = colorAvatarA;
+                    actions[i].childImage.color = colorAvatarA;
                     break;
 
                 case UI_Actions.PlayerTarget.Avatar_B:
-                    actions[i].transform.GetComponentInChildren<Image>().color = colorAvatarB;
+                    actions[i].childImage.color = colorAvatarB;
                     break;
 
                 case UI_Actions.PlayerTarget.Both:
-                    actions[i].transform.GetComponentInChildren<Image>().color = colorBoth;
+                    actions[i].childImage.color = colorBoth;
                     break;
 
             }
