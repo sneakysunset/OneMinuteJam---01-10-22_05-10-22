@@ -231,6 +231,8 @@ MonoBehaviour:
   actionBar: {fileID: 7558224139783281720}
   actionManager: {fileID: 7558224139783281722}
   timeLineManager: {fileID: 7558224140242859477}
+  scrollDataTimeline: 0
+  scrollDataAction: 0
   scrollSpeed: 10
   maxLength: 0
 --- !u!1001 &1378416382936779964
@@ -344,6 +346,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 2005.615
       objectReference: {fileID: 0}
+    - target: {fileID: 8918581550824914540, guid: 652317da288c48145b770a58063b2284, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8918581550824914541, guid: 652317da288c48145b770a58063b2284, type: 3}
       propertyPath: m_SizeDelta.x
       value: 5845.367
@@ -359,6 +365,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8918581550824914546, guid: 652317da288c48145b770a58063b2284, type: 3}
   m_PrefabInstance: {fileID: 1378416382936779964}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &112356445148632333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7558224139853755086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 694666bf031397d4eb3404179b7e4be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1715367088805380805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,9 +521,41 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4246388943874215222, guid: 5872795a69fc7a143b03eeb6eed9dbdd, type: 3}
     - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorBoth.b
+      value: 0.22745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorBoth.g
+      value: 0.22745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorBoth.r
+      value: 0.22745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
       propertyPath: actionFolder
       value: 
       objectReference: {fileID: 7558224139783281720}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorAvatarA.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorAvatarA.g
+      value: 0.6653924
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorAvatarA.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorAvatarB.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
+      propertyPath: colorAvatarB.g
+      value: 0.4448824
+      objectReference: {fileID: 0}
     - target: {fileID: 4301882648381945318, guid: 2b2c5ec8259b9d749a58c8931a368d1b, type: 3}
       propertyPath: actions.Array.size
       value: 4
