@@ -15,6 +15,7 @@ public class UI_TimeLineManager : MonoBehaviour
     public bool playerAready, playerBready;
     public bool endA, endB;
     public bool playin;
+    public bool stunnedA, stunnedB;
     public AnimationCurve InsertAnimationCurve;
     public float insertAnimationLength;
     
@@ -35,6 +36,8 @@ public class UI_TimeLineManager : MonoBehaviour
         LaunchTimeline();
     }
 
+    bool flag;
+
     private void Update()
     {
         if(playerAready && playerBready)
@@ -44,8 +47,9 @@ public class UI_TimeLineManager : MonoBehaviour
             StartCoroutine(timerForNextAction());
         }
 
-        if(endA && endB)
+        if(endA && endB && !flag)
         {
+            flag = false;
             print("Success");
         }
     }
@@ -63,6 +67,10 @@ public class UI_TimeLineManager : MonoBehaviour
             GridGenerator.Instance.player_B.position = GridGenerator.Instance.playerOGPosB;
             GridGenerator.Instance.player_A.rotation = GridGenerator.Instance.playerOGRotA;
             GridGenerator.Instance.player_B.rotation = GridGenerator.Instance.playerOGRotB;
+            foreach(GridTiles tile in GridGenerator.Instance.grid)
+            {
+                tile.transform.position = new Vector3(tile.transform.position.x, tile.originalY, tile.transform.position.z);
+            }
             endA = false;
             endB = false;
         }

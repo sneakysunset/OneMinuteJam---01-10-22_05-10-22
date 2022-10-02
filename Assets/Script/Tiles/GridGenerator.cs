@@ -221,18 +221,15 @@ public class GridGenerator : MonoBehaviour
 
     public bool TestDirectionForMovement(int x, int y, int newX, int newY,  UI_Actions.PlayerTarget playerTarget)
     {
-        Transform otherPlayer = null;
         bool ready = false;
         bool end = false;
         if(playerTarget == UI_Actions.PlayerTarget.Avatar_A)
         {
-            otherPlayer = player_B;
             end = timeLineManager.endA;
             ready = timeLineManager.playerAready;
         }
         else if(playerTarget == UI_Actions.PlayerTarget.Avatar_B)
         {
-            otherPlayer = player_A;
             end = timeLineManager.endB;
             ready = timeLineManager.playerBready;
         }
@@ -243,6 +240,27 @@ public class GridGenerator : MonoBehaviour
 
             if (newX < rows && newX > -1 && newY < columns && newY > -1 && grid[newX, newY] && grid[newX, newY].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[newX, newY].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[newX, newY].walkable && !end /*&& grid[newX, newY].transform.position != otherPlayer.position*/)
             {
+
+                if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+                {
+                    if (timeLineManager.stunnedA)
+                    {
+                        timeLineManager.stunnedB = false;
+
+                        timeLineManager.playerAready = true;
+                        return false;
+                    }
+                }
+                else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+                {
+                    if (timeLineManager.stunnedB)
+                    {
+                        timeLineManager.stunnedB = false;
+                        timeLineManager.playerBready = true;
+                        return false;
+                    }
+                }
+
                 return true;
             }
             else
