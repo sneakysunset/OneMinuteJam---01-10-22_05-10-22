@@ -147,6 +147,8 @@ MonoBehaviour:
   ogPosMatB: {fileID: 2100000, guid: b5cf07291f441b143bc3420f1a162232, type: 2}
   tileEndMatP1: {fileID: 2100000, guid: 157de3d0f72fc88489ab4930ec0560da, type: 2}
   tileEndMatP2: {fileID: 2100000, guid: a392fb2270f5b594a87460c360795629, type: 2}
+  tilePlaqueDePressionMat: {fileID: 2100000, guid: 05e6ee8afa9b4564c8971822626dfba6, type: 2}
+  tilePorteMat: {fileID: 2100000, guid: 05d8f73dcb691a54a9b09dc31bc8e97a, type: 2}
   walkableMats:
   - {fileID: 2100000, guid: f04b29d2d6532ec4abae258d30ab85bc, type: 2}
   - {fileID: 2100000, guid: b6f820b8af09f8448955471902a12e37, type: 2}

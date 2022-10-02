@@ -41,7 +41,7 @@ public class GridTiles : MonoBehaviour
     public Vector2 plaqueDePressionCoordinates;
     [Range(-2,2)] public int porteHeightChange;
     public Avatar avatar;
-    public Material teleporterMat, tapisRoulantMat, glaceMat, loopMat, unwalkableMat, ogPosMatA, ogPosMatB, tileEndMatP1, tileEndMatP2;
+    public Material teleporterMat, tapisRoulantMat, glaceMat, loopMat, unwalkableMat, ogPosMatA, ogPosMatB, tileEndMatP1, tileEndMatP2, tilePlaqueDePressionMat, tilePorteMat;
     public Material[] walkableMats;
     public MeshRenderer tilemeshR, contourMeshR;
     UI_TimeLineManager timeLineManager;
@@ -193,17 +193,7 @@ public class GridTiles : MonoBehaviour
 
 
 
-    private void Update()
-    {
-/*        if (highlight)
-        {
-            Highlight.SetActive(true);
-        }
-        else
-        {
-            Highlight.SetActive(false);
-        }*/
-    }
+
 
     void MoveTileOnGizmo()
     {
@@ -285,6 +275,9 @@ public class GridTiles : MonoBehaviour
                             break;
                     }
                     break;
+                case TileVariant.Plaque_De_Pression:
+                    tilemeshR.sharedMaterial = tilePlaqueDePressionMat;
+                    break;
             }
             
         }
@@ -314,6 +307,10 @@ public class GridTiles : MonoBehaviour
             tilemeshR.material = walkableMats[rdMatIndex];
         }
 
+        if(tileType == TileVariant.Plaque_De_Pression) 
+        {
+            GridGenerator.Instance.grid[Mathf.RoundToInt(plaqueDePressionCoordinates.x), Mathf.RoundToInt(plaqueDePressionCoordinates.y)].tilemeshR.sharedMaterial = tilePorteMat;
+        }
 /*        if(tileType == TileVariant.Glace)
         {
             float rotation = Random.Range(0, 3) * 90;
@@ -321,6 +318,14 @@ public class GridTiles : MonoBehaviour
         }*/
     }
 
+
+    private void Update()
+    {
+        if (tileType == TileVariant.Plaque_De_Pression)
+        {
+            GridGenerator.Instance.grid[Mathf.RoundToInt(plaqueDePressionCoordinates.x), Mathf.RoundToInt(plaqueDePressionCoordinates.y)].tilemeshR.sharedMaterial = tilePorteMat;
+        }
+    }
 
 
     private void OnMouseOver()
