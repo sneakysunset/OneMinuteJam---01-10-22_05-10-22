@@ -94,6 +94,7 @@ public class UI_TimeLineManager : MonoBehaviour
     IEnumerator WaitForEndOfMovement()
     {
         yield return new WaitUntil(() => currentIndex == timeline_Items.Length);
+        currentIndex = 0;
         waitingToReset = false;
         playin = false;
         GridGenerator.Instance.player_A.position = GridGenerator.Instance.playerOGPosA;
