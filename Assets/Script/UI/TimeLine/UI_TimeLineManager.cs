@@ -61,15 +61,15 @@ public class UI_TimeLineManager : MonoBehaviour
 
     public void ResetLevel()
     {
-        playin = true;
-        if(currentIndex != 0)
+        playin = false;
+        if(currentIndex != timeline_Items.Length)
         {
-            currentIndex = spots.Length;
+            currentIndex = 0;
             StartCoroutine(WaitForEndOfMovement());
         }
         else
         {
-            currentIndex = spots.Length;
+            currentIndex = 0;
             GridGenerator.Instance.player_A.position = GridGenerator.Instance.playerOGPosA;
             GridGenerator.Instance.player_B.position = GridGenerator.Instance.playerOGPosB;
             GridGenerator.Instance.player_A.rotation = GridGenerator.Instance.playerOGRotA;
@@ -117,10 +117,10 @@ public class UI_TimeLineManager : MonoBehaviour
         currentIndex = 0;
         for (int i = 0; i < spots.Length; i++)
         {
-            if (timeline_Items[i] == null)
+/*            if (timeline_Items[i] == null)
             {
                 return;
-            }
+            }*/
         }
         playin = true;
         LaunchTimeline();
@@ -130,12 +130,14 @@ public class UI_TimeLineManager : MonoBehaviour
     {
         for (int i = 0; i < timeline_Items.Length; i++)
         {
-            if(i != currentIndex)
+            if(i != currentIndex && timeline_Items[i] != null)
             {
                 timeline_Items[i].highlight.enabled = false;
             }
+
+
         }
-        if(currentIndex < timeline_Items.Length)
+        if(currentIndex < timeline_Items.Length &&  timeline_Items[currentIndex] != null)
         {
             timeline_Items[currentIndex].highlight.enabled = true;
             playerAready = false;
@@ -144,7 +146,8 @@ public class UI_TimeLineManager : MonoBehaviour
         }
         else
         {
-            currentIndex = 0;
+            currentIndex = timeline_Items.Length;
+            //playin = false;
         }
     }
 
