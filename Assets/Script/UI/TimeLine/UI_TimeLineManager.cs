@@ -24,6 +24,7 @@ public class UI_TimeLineManager : MonoBehaviour
     public UnityEvent endLevel;
     public GameObject spot;
     public RectTransform spotFolder;
+    public bool waitingToReset = false;
     public enum scenes { };
     //public ObservableCollection<Timeline_Item> timeline_Items;
     private void Start()
@@ -61,14 +62,16 @@ public class UI_TimeLineManager : MonoBehaviour
 
     public void ResetLevel()
     {
-        playin = false;
-        if(currentIndex != timeline_Items.Length)
+        playin = true;
+        if (currentIndex != timeline_Items.Length)
         {
             currentIndex = 0;
+            waitingToReset = true;
             StartCoroutine(WaitForEndOfMovement());
         }
         else
         {
+            
             currentIndex = 0;
             GridGenerator.Instance.player_A.position = GridGenerator.Instance.playerOGPosA;
             GridGenerator.Instance.player_B.position = GridGenerator.Instance.playerOGPosB;
@@ -76,7 +79,8 @@ public class UI_TimeLineManager : MonoBehaviour
             GridGenerator.Instance.player_B.rotation = GridGenerator.Instance.playerOGRotB;
             stunnedA = false;
             stunnedB = false;
-            foreach(GridTiles tile in GridGenerator.Instance.grid)
+            playin = false;
+            foreach (GridTiles tile in GridGenerator.Instance.grid)
             {
                 tile.transform.position = new Vector3(tile.transform.position.x, tile.originalY, tile.transform.position.z);
                 stunnedA = false;
@@ -89,7 +93,9 @@ public class UI_TimeLineManager : MonoBehaviour
 
     IEnumerator WaitForEndOfMovement()
     {
-        yield return new WaitUntil(() => currentIndex == 0);
+        yield return new WaitUntil(() => currentIndex == timeline_Items.Length);
+        waitingToReset = false;
+        playin = false;
         GridGenerator.Instance.player_A.position = GridGenerator.Instance.playerOGPosA;
         GridGenerator.Instance.player_B.position = GridGenerator.Instance.playerOGPosB;
         GridGenerator.Instance.player_A.rotation = GridGenerator.Instance.playerOGRotA;
@@ -137,7 +143,7 @@ public class UI_TimeLineManager : MonoBehaviour
 
 
         }
-        if(currentIndex < timeline_Items.Length &&  timeline_Items[currentIndex] != null)
+        if(currentIndex < timeline_Items.Length &&  timeline_Items[currentIndex] != null && !waitingToReset)
         {
             timeline_Items[currentIndex].highlight.enabled = true;
             playerAready = false;

@@ -1287,7 +1287,7 @@ PrefabInstance:
     - target: {fileID: 4657526486285527471, guid: c7c8d5be31a330f40919a036b99de133, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f04b29d2d6532ec4abae258d30ab85bc, type: 2}
+      objectReference: {fileID: 2100000, guid: b6f820b8af09f8448955471902a12e37, type: 2}
     - target: {fileID: 6515642462750015349, guid: c7c8d5be31a330f40919a036b99de133, type: 3}
       propertyPath: tileType
       value: 4
@@ -1992,9 +1992,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1836439454042548472, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4047173380215829720, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7192683292363757209, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
       propertyPath: actionss.Array.size
-      value: 9
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: actionss.Array.data[1].actionType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: actionss.Array.data[2].actionType
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
       propertyPath: actionss.Array.data[3].actionType
@@ -2002,11 +2022,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
       propertyPath: actionss.Array.data[4].actionType
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
       propertyPath: actionss.Array.data[5].actionType
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
       propertyPath: actionss.Array.data[6].actionType
@@ -2026,31 +2046,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
       propertyPath: actionss.Array.data[1].playerTarget
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
       propertyPath: actionss.Array.data[2].playerTarget
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
       propertyPath: actionss.Array.data[3].playerTarget
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
-      propertyPath: actionss.Array.data[4].playerTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
-      propertyPath: actionss.Array.data[5].playerTarget
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
-      propertyPath: actionss.Array.data[6].playerTarget
+      propertyPath: actionss.Array.data[4].playerTarget
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
-      propertyPath: actionss.Array.data[7].playerTarget
+      propertyPath: actionss.Array.data[5].playerTarget
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: actionss.Array.data[6].playerTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
+      propertyPath: actionss.Array.data[7].playerTarget
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7558224139783281722, guid: b66ca6bbadb15664d95356b4a1c23ef9, type: 3}
       propertyPath: actionss.Array.data[8].playerTarget
