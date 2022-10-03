@@ -1277,6 +1277,10 @@ PrefabInstance:
       propertyPath: timerAfterActionEnd
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 8918581550374959465, guid: 652317da288c48145b770a58063b2284, type: 3}
+      propertyPath: endLevel.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7192683292363757209}
     - target: {fileID: 8918581550374959470, guid: 652317da288c48145b770a58063b2284, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

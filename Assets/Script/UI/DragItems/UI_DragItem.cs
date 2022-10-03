@@ -104,7 +104,7 @@ public class UI_DragItem : MonoBehaviour
                     break;
 
             }
-            timelineItem.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - yOffSet);
+            timelineItem.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x - canvas.scrollDataTimeline, rectTransform.anchoredPosition.y - yOffSet);
             timeLineManager.InsertAction(actionManager.currentHoveredItem, timelineItem.GetComponent<Timeline_Item>());
             RuntimeManager.PlayOneShot("event:/Game/Programming phase/UI_Drop");
             Destroy(this.gameObject);

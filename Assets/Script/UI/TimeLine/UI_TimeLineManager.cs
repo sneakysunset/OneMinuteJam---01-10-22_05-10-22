@@ -61,6 +61,7 @@ public class UI_TimeLineManager : MonoBehaviour
 
     public void ResetLevel()
     {
+        playin = true;
         if(currentIndex != 0)
         {
             currentIndex = spots.Length;
@@ -143,7 +144,6 @@ public class UI_TimeLineManager : MonoBehaviour
         }
         else
         {
-            playin = false;
             currentIndex = 0;
         }
     }

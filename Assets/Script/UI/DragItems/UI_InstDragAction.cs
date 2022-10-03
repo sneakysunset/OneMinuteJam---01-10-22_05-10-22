@@ -29,7 +29,7 @@ public class UI_InstDragAction : MonoBehaviour
         dragItem.name = "DragItem - " + typeOfAction.ToString();
         //dragItem.transform.GetComponentInChildren<TextMeshProUGUI>().text = typeOfAction.ToString();
 
-        switch (dragItem.actionType)
+        switch (typeOfAction)
         {
             case UI_Actions.Action.MoveForward:
                 dragItem.ChildI.sprite = forwardArrow;
