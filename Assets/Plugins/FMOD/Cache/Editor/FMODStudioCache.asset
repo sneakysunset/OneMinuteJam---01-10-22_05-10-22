@@ -262,6 +262,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
+--- !u!114 &-8195051780144888164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Electricity/Loudness
+  m_EditorClassIdentifier: 
+  Name: Loudness
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-8063060748547271733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1078,7 +1102,7 @@ MonoBehaviour:
   Path: Fmod Project/Pocket jam/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638003590300445041
+  lastModified: 638003586765099335
   FileSizes:
   - Name: Desktop
     Value: 3690176
@@ -1549,7 +1573,7 @@ MonoBehaviour:
   - {fileID: -2724911001120628434}
   StringsBanks:
   - {fileID: 3822798148307078164}
-  cacheTime: 638003590301424634
+  cacheTime: 638003586765139223
   cacheVersion: 9
 --- !u!114 &16024386499870681
 MonoBehaviour:
@@ -2042,7 +2066,7 @@ MonoBehaviour:
   Path: Fmod Project/Pocket jam/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638003590301424634
+  lastModified: 638003586765139223
   FileSizes:
   - Name: Desktop
     Value: 2130
@@ -2274,6 +2298,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
+--- !u!114 &5195516193400059936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/GameState
+  m_EditorClassIdentifier: 
+  Name: GameState
+  StudioPath: 
+  Min: 0
+  Max: 3
+  Default: 3
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &5337380936730697133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2880,7 +2928,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -6619767782659023485}
+  - {fileID: 5195516193400059936}
   MinDistance: 1
   MaxDistance: 20
   Length: 112941
@@ -3138,7 +3186,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -7388451881372381089}
+  - {fileID: -8195051780144888164}
   MinDistance: 1
   MaxDistance: 20
   Length: 6000
