@@ -285,7 +285,7 @@ MonoBehaviour:
   Type: 0
   IsGlobal: 0
   Labels: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-8063060748547271733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,6 +313,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1079
+--- !u!114 &-8006295108169041356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Electricity/Loudness
+  m_EditorClassIdentifier: 
+  Name: Loudness
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-8002337981531771664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +436,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-7383097066691606464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Electricity/Loudness
+  m_EditorClassIdentifier: 
+  Name: Loudness
+  StudioPath: 
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 0
 --- !u!114 &-7377220734369044025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -755,6 +803,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1033
+--- !u!114 &-5268414917306834089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/GameState
+  m_EditorClassIdentifier: 
+  Name: GameState
+  StudioPath: 
+  Min: 0
+  Max: 3
+  Default: 3
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-5199725265289528948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1102,7 +1174,7 @@ MonoBehaviour:
   Path: Fmod Project/Pocket jam/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638003586765099335
+  lastModified: 638004201980570707
   FileSizes:
   - Name: Desktop
     Value: 3690176
@@ -1340,6 +1412,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-654765917438645897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/GameState
+  m_EditorClassIdentifier: 
+  Name: GameState
+  StudioPath: 
+  Min: 0
+  Max: 3
+  Default: 3
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 0
 --- !u!114 &-648053602641243794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1573,7 +1669,7 @@ MonoBehaviour:
   - {fileID: -2724911001120628434}
   StringsBanks:
   - {fileID: 3822798148307078164}
-  cacheTime: 638003586765139223
+  cacheTime: 638004201980610760
   cacheVersion: 9
 --- !u!114 &16024386499870681
 MonoBehaviour:
@@ -2066,7 +2162,7 @@ MonoBehaviour:
   Path: Fmod Project/Pocket jam/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638003586765139223
+  lastModified: 638004201980610760
   FileSizes:
   - Name: Desktop
     Value: 2130
@@ -2321,7 +2417,7 @@ MonoBehaviour:
   Type: 0
   IsGlobal: 1
   Labels: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &5337380936730697133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2928,7 +3024,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 5195516193400059936}
+  - {fileID: -5268414917306834089}
   MinDistance: 1
   MaxDistance: 20
   Length: 112941
@@ -3186,7 +3282,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -8195051780144888164}
+  - {fileID: -8006295108169041356}
   MinDistance: 1
   MaxDistance: 20
   Length: 6000
