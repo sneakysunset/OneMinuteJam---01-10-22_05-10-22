@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="MixerPort" id="{2dbb494a-b293-4e64-abf5-82d85cb284e0}">
 		<property name="volume">
-			<value>-20.5</value>
+			<value>-35</value>
 		</property>
 		<property name="name">
 			<value>Musique</value>
