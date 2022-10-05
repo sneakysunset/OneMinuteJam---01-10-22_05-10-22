@@ -9,6 +9,7 @@ public class PopUpManager : MonoBehaviour
 
     public float xOffSet, yOffSet;
 
+    public UI_TimeLineManager timeLineManager;
     GridTiles tile;
     public GameObject popUp;
     GameObject currentPopUp;
@@ -21,8 +22,16 @@ public class PopUpManager : MonoBehaviour
 
     private void Update()
     {
-        PopUpLauncher();
+        if(!(timeLineManager.endA && timeLineManager.endB))
+            PopUpLauncher();
+        else if (currentPopUp != null)
+            {
+                Destroy(currentPopUp);
+                tile = null;
+            }
     }
+
+    
 
     void PopUpLauncher()
     {

@@ -15,7 +15,7 @@ public class BackgroundMusic : MonoBehaviour
             backgroundMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Game/Music");
             backgroundMusic.start();
             musicLoader = true;
-            DontDestroyOnLoad(transform.gameObject);
+            //DontDestroyOnLoad(transform.gameObject);
         }
     }
 }

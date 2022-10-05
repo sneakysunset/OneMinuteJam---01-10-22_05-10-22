@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 #if  UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -38,6 +38,7 @@ public class GridGenerator : MonoBehaviour
     #endregion
     void Awake()
     {
+        timeLineManager = FindObjectOfType<UI_TimeLineManager>();
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -156,70 +157,73 @@ public class GridGenerator : MonoBehaviour
 
     }
 
-   /* public bool PFTestDirectionForMovement(int x, int y, int direction, int step)
-    {
-        if (grid[x,y] != null)
-        {
-            if (inAnim)
-                return false;
-            switch (direction)
-            {
-                //up
-                case 1:
-                    if (y + 1 < columns && grid[x, y + 1].step == -1 && grid[x, y + 1] && grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x, y + 1].walkable)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+    /* public bool PFTestDirectionForMovement(int x, int y, int direction, int step)
+     {
+         if (grid[x,y] != null)
+         {
+             if (inAnim)
+                 return false;
+             switch (direction)
+             {
+                 //up
+                 case 1:
+                     if (y + 1 < columns && grid[x, y + 1].step == -1 && grid[x, y + 1] && grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x, y + 1].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x, y + 1].walkable)
+                     {
+                         return true;
+                     }
+                     else
+                     {
+                         return false;
+                     }
 
-                   
 
-                //down
-                case 2:
-                    if (y - 1 > -1 && grid[x, y - 1].step == -1 && grid[x, y - 1] && grid[x, y - 1].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x, y - 1].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x, y - 1].walkable)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
 
-                //left
-                case 3:
-                    if (x - 1 > -1 && grid[x-1, y].step == -1 && grid[x - 1, y] && grid[x - 1, y].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x-1, y].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x - 1, y].walkable)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                 //down
+                 case 2:
+                     if (y - 1 > -1 && grid[x, y - 1].step == -1 && grid[x, y - 1] && grid[x, y - 1].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x, y - 1].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x, y - 1].walkable)
+                     {
+                         return true;
+                     }
+                     else
+                     {
+                         return false;
+                     }
 
-                //right
-                case 4:
-                    if (x + 1 < rows && grid[x+1, y].step == -1 && grid[x + 1, y] && grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x + 1, y].walkable)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                 //left
+                 case 3:
+                     if (x - 1 > -1 && grid[x-1, y].step == -1 && grid[x - 1, y] && grid[x - 1, y].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x-1, y].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x - 1, y].walkable)
+                     {
+                         return true;
+                     }
+                     else
+                     {
+                         return false;
+                     }
 
-                default:
-                    return false;
-            }
-        }
+                 //right
+                 case 4:
+                     if (x + 1 < rows && grid[x+1, y].step == -1 && grid[x + 1, y] && grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y <= stepHeight && grid[x + 1, y].transform.position.y - grid[x, y].transform.position.y >= dropHeight && grid[x + 1, y].walkable)
+                     {
+                         return true;
+                     }
+                     else
+                     {
+                         return false;
+                     }
 
-            return false;
-        
-    }*/
+                 default:
+                     return false;
+             }
+         }
 
-    public bool TestDirectionForMovement(int x, int y, int newX, int newY,  UI_Actions.PlayerTarget playerTarget)
+             return false;
+
+     }*/
+
+
+    public UnityEvent<Vector3, Transform, UI_Actions.PlayerTarget> cancelledMoveEvent;
+
+    public bool TestDirectionForMovement(int x, int y, int newX, int newY,  UI_Actions.PlayerTarget playerTarget, Vector3 startPos, Transform endTarget)
     {
         bool ready = false;
         bool end = false;
@@ -273,10 +277,11 @@ public class GridGenerator : MonoBehaviour
                 {
                     timeLineManager.playerBready = true;
                 }
+                cancelledMoveEvent.Invoke(startPos, endTarget, playerTarget);
                 return false;
             }
         }
-
+        cancelledMoveEvent.Invoke(startPos, endTarget, playerTarget);
         return false;
 
     }

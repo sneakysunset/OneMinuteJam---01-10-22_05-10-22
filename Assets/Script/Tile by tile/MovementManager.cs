@@ -7,13 +7,18 @@ public class MovementManager : MonoBehaviour
 {
     [Range(.1f, 10)]
     public float timeForMovement;
-    public AnimationCurve movementAnimCurve;
+    public AnimationCurve movementAnimCurve, cancelledMovementAnimCurve;
     public UI_TimeLineManager timeLineManager;
 
     public void Move(Vector3 destination, Transform player, UI_Actions.PlayerTarget playerTarget)
     {
         StartCoroutine(smoothMovement(player.position, destination, player, playerTarget));
 
+    }
+
+    public void CancelledMovement(Vector3 destination, Transform player, UI_Actions.PlayerTarget playerTarget)
+    {
+        StartCoroutine(smoothCancelledMovement(player.position, destination, player, playerTarget));
     }
 
     IEnumerator smoothMovement(Vector3 startPos, Vector3 endPos, Transform player, UI_Actions.PlayerTarget playerTarget)
@@ -44,6 +49,28 @@ public class MovementManager : MonoBehaviour
         }
 
     }
+
+    IEnumerator smoothCancelledMovement(Vector3 startPos, Vector3 endPos, Transform player, UI_Actions.PlayerTarget playerTarget)
+    {
+        float i = 0;
+        while (i < 1)
+        {
+            player.position = Vector3.Lerp(startPos, endPos, cancelledMovementAnimCurve.Evaluate(i));
+
+            i += Time.deltaTime * (1 / .35f);
+            yield return null;
+        }
+        player.position = startPos;
+        yield return null;
+
+
+        GridTiles previousTile = GridGenerator.Instance.grid[Mathf.RoundToInt(startPos.x), Mathf.RoundToInt(startPos.z)];
+        GridGenerator.Instance.grid[Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z)].TileEffect(playerTarget, endPos);
+    }
+
+
+
+
 
     IEnumerator leavePlaque(int startY, int endY, Transform porte, UI_Actions.PlayerTarget playerTarget, GridTiles previousTile, Transform player, Vector3 startPos)
     {

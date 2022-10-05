@@ -25,6 +25,7 @@ public class UI_TimeLineManager : MonoBehaviour
     public GameObject spot;
     public RectTransform spotFolder;
     public bool waitingToReset = false;
+    public bool both, bothA, bothB;
     public enum scenes { };
     //public ObservableCollection<Timeline_Item> timeline_Items;
     private void Start()
@@ -41,7 +42,7 @@ public class UI_TimeLineManager : MonoBehaviour
     }
 
     bool flag;
-
+    bool endFlagA, endFlagB;
     private void Update()
     {
         if(playerAready && playerBready)
@@ -56,7 +57,25 @@ public class UI_TimeLineManager : MonoBehaviour
             flag = true;
             RuntimeManager.PlayOneShot("event:/Game/Simulation Phase/Win");
             endLevel.Invoke();
-            print("Success");
+        }
+
+        if(endA && !endFlagA)
+        {
+            GridGenerator.Instance.player_A.GetComponentInChildren<MeshRenderer>().material.color = Color.black;
+            endFlagA = true;
+        }
+
+        if (endB && !endFlagB)
+        {
+            GridGenerator.Instance.player_B.GetComponentInChildren<MeshRenderer>().material.color = Color.black;
+            endFlagB = true;
+        }
+
+        if (playerAready || playerBready)
+        {
+            both = false;
+            bothA = false;
+            bothB = false;
         }
     }
 
@@ -121,6 +140,8 @@ public class UI_TimeLineManager : MonoBehaviour
 
     public void preLaunchTimeline()
     {
+        if (currentIndex == timeline_Items.Length)
+            ResetLevel();
         currentIndex = 0;
         for (int i = 0; i < spots.Length; i++)
         {
@@ -154,7 +175,7 @@ public class UI_TimeLineManager : MonoBehaviour
         else
         {
             currentIndex = timeline_Items.Length;
-            //playin = false;
+            playin = false;
         }
     }
 

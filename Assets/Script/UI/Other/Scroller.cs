@@ -45,7 +45,6 @@ public class Scroller : MonoBehaviour
     
     public void ScrollBarAction()
     {
-        print(1);
         float xDelta = maxX - minXAction;
         scrollDataAction = scrollDataAction + Input.mouseScrollDelta.y * Time.deltaTime * xDelta * scrollSpeed;
         scrollDataAction = Mathf.Clamp(scrollDataAction, minXAction, maxX);
