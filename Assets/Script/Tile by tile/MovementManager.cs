@@ -16,9 +16,9 @@ public class MovementManager : MonoBehaviour
 
     }
 
-    public void CancelledMovement(Vector3 destination, Transform player, UI_Actions.PlayerTarget playerTarget)
+    public void CancelledMovement(Vector3 destination, Transform player, UI_Actions.PlayerTarget playerTarget, bool recoil)
     {
-        StartCoroutine(smoothCancelledMovement(player.position, destination, player, playerTarget));
+        StartCoroutine(smoothCancelledMovement(player.position, destination, player, playerTarget,  recoil));
     }
 
     IEnumerator smoothMovement(Vector3 startPos, Vector3 endPos, Transform player, UI_Actions.PlayerTarget playerTarget)
@@ -45,12 +45,13 @@ public class MovementManager : MonoBehaviour
         }
         else
         {
+            print(2);
             GridGenerator.Instance.grid[Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z)].TileEffect(playerTarget, startPos);
         }
 
     }
 
-    IEnumerator smoothCancelledMovement(Vector3 startPos, Vector3 endPos, Transform player, UI_Actions.PlayerTarget playerTarget)
+    IEnumerator smoothCancelledMovement(Vector3 startPos, Vector3 endPos, Transform player, UI_Actions.PlayerTarget playerTarget, bool recoil)
     {
         float i = 0;
         while (i < 1)
@@ -65,7 +66,22 @@ public class MovementManager : MonoBehaviour
 
 
         GridTiles previousTile = GridGenerator.Instance.grid[Mathf.RoundToInt(startPos.x), Mathf.RoundToInt(startPos.z)];
-        GridGenerator.Instance.grid[Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z)].TileEffect(playerTarget, endPos);
+        if (recoil)
+        {
+            GridGenerator.Instance.grid[Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z)].TileEffect(playerTarget, endPos);
+        }
+        else
+        {
+            print(playerTarget.ToString());
+            if(playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+            {
+                timeLineManager.playerAready = true;
+            }
+            else
+            {
+                timeLineManager.playerBready = true;   
+            }
+        }
     }
 
 

@@ -79,6 +79,7 @@ public class GridTiles : MonoBehaviour
                     timeLineManager.playerBready = true;
                 break;
             case TileVariant.Tapis_Roulant:
+                print(playerTarget);
                 TapisRoulant(playerTarget, previousPos);
                 break;
             case TileVariant.Glace:
@@ -307,6 +308,8 @@ public class GridTiles : MonoBehaviour
                     }
                     break;
                 case TileVariant.Plaque_De_Pression:
+                    int rd3 = Random.Range(0, 3);
+                    tilemeshR.material = walkableMats[rd3];
                     //SpawnItem("plaque de pression", pressurePlate);
 
                     break;
@@ -380,6 +383,8 @@ public class GridTiles : MonoBehaviour
 
                     break;
                 case TileVariant.Plaque_De_Pression:
+                    int rd3 = Random.Range(0, 3);
+                    tilemeshR.material = walkableMats[rd3];
                     SpawnItem("plaque de pression", pressurePlate);
 
                     break;

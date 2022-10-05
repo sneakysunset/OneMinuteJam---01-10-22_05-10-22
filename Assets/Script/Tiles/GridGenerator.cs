@@ -221,7 +221,7 @@ public class GridGenerator : MonoBehaviour
      }*/
 
 
-    public UnityEvent<Vector3, Transform, UI_Actions.PlayerTarget> cancelledMoveEvent;
+    public UnityEvent<Vector3, Transform, UI_Actions.PlayerTarget, bool> cancelledMoveEvent;
 
     public bool TestDirectionForMovement(int x, int y, int newX, int newY,  UI_Actions.PlayerTarget playerTarget, Vector3 startPos, Transform endTarget)
     {
@@ -277,11 +277,11 @@ public class GridGenerator : MonoBehaviour
                 {
                     timeLineManager.playerBready = true;
                 }
-                cancelledMoveEvent.Invoke(startPos, endTarget, playerTarget);
+                cancelledMoveEvent.Invoke(startPos, endTarget, playerTarget, false);
                 return false;
             }
         }
-        cancelledMoveEvent.Invoke(startPos, endTarget, playerTarget);
+        cancelledMoveEvent.Invoke(startPos, endTarget, playerTarget, false);
         return false;
 
     }

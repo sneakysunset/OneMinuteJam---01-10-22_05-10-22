@@ -32,7 +32,7 @@ public class MovementEvents : MonoBehaviour
     }
 
     public UnityEvent<Vector3, Transform, UI_Actions.PlayerTarget> MoveEvent;
-    public UnityEvent<Vector3, Transform, UI_Actions.PlayerTarget> cancelledMoveEvent;
+    public UnityEvent<Vector3, Transform, UI_Actions.PlayerTarget, bool> cancelledMoveEvent;
     public void MovementActivation(int direction, UI_Actions.PlayerTarget playerTarget, Vector3 previousPos)
     {
         Transform otherPlayer = null;
@@ -112,6 +112,14 @@ public class MovementEvents : MonoBehaviour
     {
         Transform otherPlayer = null;
 
+        print(timeLineManager.playerAready);
+        print(timeLineManager.playerBready);
+        if(!timeLineManager.playerAready || !timeLineManager.playerBready)
+        {
+            timeLineManager.both = false;
+        }
+
+
         switch (playerTarget)
         {
             case UI_Actions.PlayerTarget.Avatar_A:
@@ -153,10 +161,11 @@ public class MovementEvents : MonoBehaviour
 
         }
         GridGenerator gridG = GridGenerator.Instance;
-        if (nextPos.x >= 0 && nextPos.z < gridG.rows && nextPos.x >= 0 && nextPos.z < gridG.columns)
+        if (nextPos.x >= 0 && nextPos.x < gridG.rows && nextPos.z >= 0 && nextPos.z < gridG.columns)
         { 
             if (timeLineManager.both)
             {
+                print(4);
                 if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
                 {
                     nextPos1 = nextPos;
@@ -174,6 +183,7 @@ public class MovementEvents : MonoBehaviour
             }
             else if (grid[Mathf.RoundToInt(otherPlayer.position.x), Mathf.RoundToInt(otherPlayer.position.z)] == grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)] && !timeLineManager.both)
             {
+                print(5);
                 if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
                 {
                     timeLineManager.playerAready = true;
@@ -185,8 +195,10 @@ public class MovementEvents : MonoBehaviour
             }
             else
             {
+                print(6);
                 if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget, new Vector3(nextPos.x, player.position.y, nextPos.z), player))
                 {
+                    print(3);
                     RuntimeManager.PlayOneShot("event:/Elements/Ice");
                     MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
                 }
@@ -194,6 +206,7 @@ public class MovementEvents : MonoBehaviour
         }
         else
         {
+            print(7);
             if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.z), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget, new Vector3(nextPos.x, player.position.y, nextPos.z), player))
             {
                 RuntimeManager.PlayOneShot("event:/Elements/Ice");
@@ -204,7 +217,10 @@ public class MovementEvents : MonoBehaviour
 
     public void GlaceMovement(UI_Actions.PlayerTarget playerTarget, Vector3 previousPos)
     {
-
+        if (!timeLineManager.playerAready || !timeLineManager.playerBready)
+        {
+            timeLineManager.both = false;
+        }
         Vector3 prevPos = Vector3.zero;
         Transform otherPlayer = null;
         switch (playerTarget)
@@ -227,7 +243,7 @@ public class MovementEvents : MonoBehaviour
         nextPos.z = 2 * player.position.z - previousPos.z;
 
         GridGenerator gridG = GridGenerator.Instance;
-        if (nextPos.x >= 0 && nextPos.z < gridG.rows && nextPos.x >= 0 && nextPos.z < gridG.columns)
+        if (nextPos.x >= 0 && nextPos.x < gridG.rows && nextPos.z >= 0 && nextPos.z < gridG.columns)
         { 
             if (timeLineManager.both)
             {
@@ -275,8 +291,6 @@ public class MovementEvents : MonoBehaviour
             }
         }
     }
-
-
 
 
     void moveBoth(int direction)
@@ -339,7 +353,7 @@ public class MovementEvents : MonoBehaviour
             //print(grid[Mathf.RoundToInt(otherPlayer.position.x), Mathf.RoundToInt(otherPlayer.position.z)].name + "      " + grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].name);
 
             GridGenerator gridG = GridGenerator.Instance; 
-            if(nextPos.x >= 0  && nextPos.z < gridG.rows && nextPos.x >= 0 && nextPos.z <gridG.columns && otherNextPos.x >= 0 && otherNextPos.x < gridG.rows && otherNextPos.z >= 0 && otherNextPos.z < gridG.columns)
+            if(nextPos.x >= 0  && nextPos.x < gridG.rows && nextPos.z >= 0 && nextPos.z <gridG.columns && otherNextPos.x >= 0 && otherNextPos.x < gridG.rows && otherNextPos.z >= 0 && otherNextPos.z < gridG.columns)
             {
                 bool bothmeetingInSameTile = grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)] == grid[Mathf.RoundToInt(otherNextPos.x), Mathf.RoundToInt(otherNextPos.z)];
                 bool goingOntoOthersTile = grid[Mathf.RoundToInt(otherPlayer.position.x), Mathf.RoundToInt(otherPlayer.position.z)] == grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)];
@@ -355,10 +369,11 @@ public class MovementEvents : MonoBehaviour
                     {
                         timeLineManager.playerBready = true;
                     }
-                    cancelledMoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
+                    cancelledMoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget, true);
                 }
                 else if (GridGenerator.Instance.TestDirectionForMovement(Mathf.RoundToInt(player.position.x), Mathf.RoundToInt(player.position.y), Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z), playerTarget, new Vector3(nextPos.x, player.position.y, nextPos.z), player))
                 {
+                    print(1);
                     RuntimeManager.PlayOneShot("event:/Avatar/Blue/Step");
                     MoveEvent?.Invoke(grid[Mathf.RoundToInt(nextPos.x), Mathf.RoundToInt(nextPos.z)].transform.position, player, playerTarget);
                 }
@@ -397,7 +412,7 @@ public class MovementEvents : MonoBehaviour
             }
 
 
-            cancelledMoveEvent?.Invoke(grid[Mathf.RoundToInt(currentNextPos.x), Mathf.RoundToInt(currentNextPos.z)].transform.position, currentPlayer, playerTarget);
+            cancelledMoveEvent?.Invoke(grid[Mathf.RoundToInt(currentNextPos.x), Mathf.RoundToInt(currentNextPos.z)].transform.position, currentPlayer, playerTarget, true);
             
         }
         else
