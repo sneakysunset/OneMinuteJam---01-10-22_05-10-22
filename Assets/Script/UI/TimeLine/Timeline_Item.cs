@@ -20,13 +20,13 @@ public class Timeline_Item : MonoBehaviour
 
     public void invokeTimeLineEvent()
     {
-        if((playerTarget == UI_Actions.PlayerTarget.Avatar_A || playerTarget == UI_Actions.PlayerTarget.Both) && (timeLineManager.endA || timeLineManager.stunnedA))
+        if((playerTarget == UI_Actions.PlayerTarget.Avatar_A || playerTarget == UI_Actions.PlayerTarget.Both) && (timeLineManager.endA /*|| timeLineManager.stunnedA*/))
         {
             timeLineManager.playerAready = true;
             if(playerTarget == UI_Actions.PlayerTarget.Both)
                 playerTarget = UI_Actions.PlayerTarget.Avatar_B;
         }
-        else if((playerTarget == UI_Actions.PlayerTarget.Avatar_B || playerTarget == UI_Actions.PlayerTarget.Both) && (timeLineManager.endB || timeLineManager.stunnedB))
+        else if((playerTarget == UI_Actions.PlayerTarget.Avatar_B || playerTarget == UI_Actions.PlayerTarget.Both) && (timeLineManager.endB /*|| timeLineManager.stunnedB*/))
         {
             timeLineManager.playerBready = true;
             if (playerTarget == UI_Actions.PlayerTarget.Both)

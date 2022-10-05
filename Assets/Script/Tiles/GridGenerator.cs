@@ -249,7 +249,7 @@ public class GridGenerator : MonoBehaviour
                 {
                     if (timeLineManager.stunnedA)
                     {
-                        timeLineManager.stunnedB = false;
+                        timeLineManager.stunnedA = false;
 
                         timeLineManager.playerAready = true;
                         return false;
@@ -259,6 +259,7 @@ public class GridGenerator : MonoBehaviour
                 {
                     if (timeLineManager.stunnedB)
                     {
+                        print(1);
                         timeLineManager.stunnedB = false;
                         timeLineManager.playerBready = true;
                         return false;
@@ -271,10 +272,12 @@ public class GridGenerator : MonoBehaviour
             {
                 if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
                 {
+
                     timeLineManager.playerAready = true;
                 }
                 else
                 {
+
                     timeLineManager.playerBready = true;
                 }
                 cancelledMoveEvent.Invoke(startPos, endTarget, playerTarget, false);

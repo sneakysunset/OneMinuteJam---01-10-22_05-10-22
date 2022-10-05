@@ -101,7 +101,7 @@ public class RotationManager : MonoBehaviour
                 {
                     if (timeLineManager.stunnedA)
                     {
-                        timeLineManager.stunnedB = false;
+                        timeLineManager.stunnedA = false;
 
                         timeLineManager.playerAready = true;
 
@@ -171,7 +171,7 @@ public class RotationManager : MonoBehaviour
                         {
                             if (timeLineManager.stunnedA)
                             {
-                                timeLineManager.stunnedB = false;
+                                timeLineManager.stunnedA = false;
 
                                 timeLineManager.playerAready = true;
 

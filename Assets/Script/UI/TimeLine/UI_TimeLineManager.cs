@@ -26,6 +26,7 @@ public class UI_TimeLineManager : MonoBehaviour
     public RectTransform spotFolder;
     public bool waitingToReset = false;
     public bool both, bothA, bothB;
+    public bool tileCheckedA, tileCheckedB;
     public enum scenes { };
     //public ObservableCollection<Timeline_Item> timeline_Items;
     private void Start()

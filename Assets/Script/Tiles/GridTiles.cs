@@ -70,20 +70,43 @@ public class GridTiles : MonoBehaviour
     {
         timeLineManager = FindObjectOfType<UI_TimeLineManager>();
         movementEvents = FindObjectOfType<MovementEvents>();
+
         switch (tileType)
         {
             case TileVariant.Tile:
                 if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+                {
                     timeLineManager.playerAready = true;
+                    timeLineManager.tileCheckedA = true;
+                }
                 else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+                {
                     timeLineManager.playerBready = true;
+                    timeLineManager.tileCheckedB = true;
+                }
                 break;
             case TileVariant.Tapis_Roulant:
-                print(playerTarget);
-                TapisRoulant(playerTarget, previousPos);
+                if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+                {
+                    timeLineManager.tileCheckedA = true;
+                }
+                else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+                {
+                    timeLineManager.tileCheckedB = true;
+                }
+                StartCoroutine(waiterForTileEffect(playerTarget, previousPos));
+                
                 break;
             case TileVariant.Glace:
-                Glace(playerTarget, previousPos);
+                if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+                {
+                    timeLineManager.tileCheckedA = true;
+                }
+                else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+                {
+                    timeLineManager.tileCheckedB = true;
+                }
+                StartCoroutine(waiterForTileEffect(playerTarget, previousPos));
                 break;
             case TileVariant.Arc_Electrique:
                 ArcElectrique(playerTarget);
@@ -99,6 +122,23 @@ public class GridTiles : MonoBehaviour
                 break;
             case TileVariant.Plaque_De_Pression:
                 PlaqueDePression(playerTarget);
+                break;
+        }
+    }
+
+    IEnumerator waiterForTileEffect(UI_Actions.PlayerTarget playerTarget, Vector3 previousPos)
+    {
+        yield return new WaitUntil(() => timeLineManager.tileCheckedA && timeLineManager.tileCheckedB);
+        switch (tileType)
+        {
+            case TileVariant.Glace:
+                Glace(playerTarget, previousPos);
+                break;
+            case TileVariant.Tapis_Roulant:
+                TapisRoulant(playerTarget, previousPos);
+                break;
+            default:
+                Debug.LogError("notSupposedToHappen");
                 break;
         }
     }
@@ -120,9 +160,16 @@ public class GridTiles : MonoBehaviour
         yield return null;
 
         if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+        {
             timeLineManager.playerAready = true;
+            timeLineManager.tileCheckedA = true;
+        }
         else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+        {
             timeLineManager.playerBready = true;
+            timeLineManager.tileCheckedB = true;
+
+        }
     }
 
     void PlaqueDePression(UI_Actions.PlayerTarget playerTarget)
@@ -146,9 +193,15 @@ public class GridTiles : MonoBehaviour
         }
 
         if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+        {
             timeLineManager.playerAready = true;
+            timeLineManager.tileCheckedA = true;
+        }
         else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+        {
             timeLineManager.playerBready = true;
+            timeLineManager.tileCheckedB = true;
+        }
     }
 
     void TapisRoulant(UI_Actions.PlayerTarget playerTarget, Vector3 previousPos)
@@ -182,12 +235,14 @@ public class GridTiles : MonoBehaviour
         {
             timeLineManager.playerAready = true;
             timeLineManager.stunnedA = true;
+            timeLineManager.tileCheckedA = true;
         }
         else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
         {
 
             timeLineManager.playerBready = true;
             timeLineManager.stunnedB = true;
+            timeLineManager.tileCheckedB = true;
         }
         RuntimeManager.PlayOneShot("event:/Avatar/Electrocution");
     }
@@ -201,9 +256,15 @@ public class GridTiles : MonoBehaviour
         Player.position = GridGenerator.Instance.grid[(int)teleporteurReceptorCoordinates.x, (int)teleporteurReceptorCoordinates.y].transform.position;
         //GridGenerator.Instance.grid[(int)teleporteurReceptorCoordinates.x, (int)teleporteurReceptorCoordinates.y].TileEffect(playerTarget);
         if (playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+        {
             timeLineManager.playerAready = true;
+            timeLineManager.tileCheckedA = true;
+        }
         else if (playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+        {
             timeLineManager.playerBready = true;
+            timeLineManager.tileCheckedB = true;
+        }
 
         RuntimeManager.PlayOneShot("event:/Elements/Teleport");
 
@@ -213,9 +274,15 @@ public class GridTiles : MonoBehaviour
     {
         timeLineManager.currentIndex = -1;
         if(playerTarget == UI_Actions.PlayerTarget.Avatar_A)
+        {
             timeLineManager.playerAready = true;
+            timeLineManager.tileCheckedA = true;
+        }
         else if(playerTarget == UI_Actions.PlayerTarget.Avatar_B)
+        {
             timeLineManager.playerBready = true;
+            timeLineManager.tileCheckedB = true;
+        }
     }
 
 
