@@ -4,8 +4,8 @@ using UnityEngine;
 using TMPro;
 public class PopUpManager : MonoBehaviour
 {
-    public string titleArc, titleBoucle, titleEnd, titleGlace, titlePlaque, titleTapis, titleTeleporteur;
-    public string corpusArc, corpusBoucle, corpusEnd, corpusGlace, corpusPlaque, corpusTapis, corpusTeleporteur;
+    public string titleNormal, titleArc, titleBoucle, titleEnd, titleGlace, titlePlaque, titleTapis, titleTeleporteur;
+    public string  corpusNormal, corpusArc, corpusBoucle, corpusEnd, corpusGlace, corpusPlaque, corpusTapis, corpusTeleporteur;
 
     public float xOffSet, yOffSet;
 
@@ -30,10 +30,21 @@ public class PopUpManager : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-
-            if(tile != hit.transform.GetComponent<GridTiles>() && hit.transform.GetComponent<GridTiles>())
+            if (currentPopUp != null)
             {
-                if(currentPopUp != null)
+                if (hit.transform.GetComponent<GridTiles>() == null)
+                {
+                    Destroy(currentPopUp);
+                    tile = null;
+                    return;
+                }
+                tile = null;
+            }
+
+            if (tile != hit.transform.GetComponent<GridTiles>() && hit.transform.GetComponent<GridTiles>())
+            {
+
+                if (currentPopUp != null)
                 {
                     Destroy(currentPopUp);
                 }
@@ -41,7 +52,7 @@ public class PopUpManager : MonoBehaviour
                 switch (tile.tileType)
                 {
                     case GridTiles.TileVariant.Tile:
-                    
+                        createPopUp(tile, titleNormal, corpusNormal);
                         break;
                     case GridTiles.TileVariant.Arc_Electrique:
                         createPopUp(tile, titleArc, corpusArc);
@@ -67,12 +78,12 @@ public class PopUpManager : MonoBehaviour
                         break;
                     case GridTiles.TileVariant.Teleporteur:
                         createPopUp(tile, titleTeleporteur, corpusTeleporteur);
-
                         break;
                 }
             }
+
         }
-        else
+/*        else
         {
             if (currentPopUp != null)
             {
@@ -80,7 +91,7 @@ public class PopUpManager : MonoBehaviour
             }
                 tile = null;
 
-        }
+        }*/
     }
 
     void createPopUp(GridTiles tile, string title, string corpus) 

@@ -17,7 +17,7 @@ public class ResetLevelButton : MonoBehaviour
 
     private void Update()
     {
-        if (timeLineManager.currentIndex == 0)
+        if (timeLineManager.currentIndex == 0 || timeLineManager.waitingToReset)
             button.interactable = false;
         else
             button.interactable = true;
